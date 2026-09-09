@@ -683,20 +683,27 @@ header.site.overlay .nav nav a[aria-current="page"] {
  * reproducible within our own contrast rule.)
  */
 .strip {
-  background: var(--eb-bg-accent); color: var(--eb-on-accent);
-  overflow: hidden; padding: var(--eb-space-4) 0;
+  background: var(--eb-bg-brand); color: var(--eb-fg-on-brand);
+  overflow: hidden; padding: var(--eb-space-5) 0;
 }
 .strip .track {
-  display: flex; align-items: center; gap: var(--eb-space-8);
+  display: flex; align-items: center; gap: var(--eb-space-6);
   width: max-content;
-  animation: strip-scroll 46s linear infinite;
+  /* Twelve logos make a longer track than the eight labels did, so the
+     duration rises more than the count to actually read slower. */
+  animation: strip-scroll 60s linear infinite;
 }
 .strip .item {
-  display: inline-flex; align-items: center; gap: 0.625rem;
-  font-size: var(--eb-text-sm); font-weight: var(--eb-fw-bold);
-  white-space: nowrap;
+  display: inline-flex; align-items: center; justify-content: center;
+  flex: none; height: 4.25rem; padding: 0 1.5rem;
+  /* The logos are drawn for white grounds — several are near-black or grey
+     and would sink into the blue, so each one keeps its own white plate. */
+  background: var(--eb-bg-1); border-radius: var(--eb-radius-md);
 }
-.strip .item svg { flex-shrink: 0; opacity: .75; }
+.strip .item img {
+  display: block; max-height: 2.75rem; max-width: 9rem;
+  width: auto; height: auto;
+}
 @keyframes strip-scroll {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
