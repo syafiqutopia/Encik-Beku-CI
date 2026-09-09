@@ -1260,12 +1260,27 @@
     var target = parseFloat(el.getAttribute('data-count'));
     var decimals = (el.getAttribute('data-count').split('.')[1] || '').length;
     var started = null;
-    el.textContent = (0).toFixed(decimals);
+    var done = false;
+
+    /* The figure must never be left mid-count. requestAnimationFrame is
+       throttled to a standstill in a background tab, an offscreen view or Low
+       Power Mode, and a loop that stalls part-way would leave the page stating
+       a number that is simply false. setTimeout keeps running where rAF does
+       not, so it puts the real figure up regardless. */
+    function settle() {
+      if (done) return;
+      done = true;
+      el.textContent = target.toFixed(decimals);
+    }
+    setTimeout(settle, 2500);
+
     requestAnimationFrame(function frame(now) {
-      if (started === null) started = now;
+      if (done) return;
+      if (started === null) started = now;   // rewind happens here, in-frame
       var p = Math.min((now - started) / 1500, 1);
       el.textContent = (target * easeOutQuart(p)).toFixed(decimals);
       if (p < 1) requestAnimationFrame(frame);
+      else done = true;
     });
   }
 
