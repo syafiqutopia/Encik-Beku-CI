@@ -5,8 +5,8 @@
   "version": "1.0.0",
   "locked": "2026-08-19",
   "owner": "Encik Beku Aircond Sdn Bhd (1561739-D)",
-  "fileCount": 150,
-  "totalBytes": 55566925,
+  "fileCount": 176,
+  "totalBytes": 57202780,
   "entries": [
     {
       "path": ".gitattributes",
@@ -15,8 +15,13 @@
     },
     {
       "path": ".gitignore",
-      "bytes": 302,
-      "sha256": "7286fac56f9a0b45564cc3343addb559304a07bbe0627a7475754edc30b75526"
+      "bytes": 358,
+      "sha256": "63505f84e7a8ce1b84c9f9c6a9f142f0fd3b43a3f746b1a0e3f92a682c4561b6"
+    },
+    {
+      "path": "Bang Guard.png",
+      "bytes": 17741,
+      "sha256": "54cfac00efb4452b4ab1417440f41443f4cd0629708449ec7902202c8457dd6a"
     },
     {
       "path": "CHAT-LOG-2026-09-08.md",
@@ -34,14 +39,49 @@
       "sha256": "3aed279bcfc73cb3341c13dcdc67d309d6e35d79bc9d50de56a811883a969389"
     },
     {
+      "path": "Cabinet.png",
+      "bytes": 18235,
+      "sha256": "74e1c8698c6a577076901ccc82d7c0b0f4dc51cb3906414279d0b3281793dfb3"
+    },
+    {
+      "path": "Cat Rumah.png",
+      "bytes": 89175,
+      "sha256": "3f3f2c63abd325ae5d63a23c5d3cf449bbd3043d273bb6ccdd24f02ce42f546f"
+    },
+    {
       "path": "DESIGN-TEAM-HANDOFF.md",
       "bytes": 4655,
       "sha256": "0bd210a0d42be6913c52b8408af12ba4dd5d590a6e65c9a4072837320853084e"
     },
     {
+      "path": "Decking.png",
+      "bytes": 80073,
+      "sha256": "941cbb0fe3fc7a0004a21c4a1769256721a453ff73fd2643b64d5f3391225cce"
+    },
+    {
+      "path": "En Beku.png",
+      "bytes": 50576,
+      "sha256": "4cb9587419ab69efb2c47fd89b650d7b225c7ff4b48b8929b27c1937322bcd53"
+    },
+    {
+      "path": "Encik Paip.png",
+      "bytes": 154452,
+      "sha256": "01679cbae6847fac7cfdceb855bc62bce22875d265f23c9dcaaf97624935bb9a"
+    },
+    {
       "path": "Encik-Beku-CI.code-workspace",
       "bytes": 60,
       "sha256": "69e7b37e2ebdaf8fc313bf6cb74882fed65895e5f853736e65759bafb333bc6b"
+    },
+    {
+      "path": "Epoxy.png",
+      "bytes": 16410,
+      "sha256": "317096e0c80b969a523875ddfdeb06b4da0bfc35178f4ee2733c5af2e8104727"
+    },
+    {
+      "path": "Invisi.png",
+      "bytes": 60486,
+      "sha256": "e4dec26f272c8066460f3f23b7073a10c9fcc1c1d813cfa24a470a1723e19962"
     },
     {
       "path": "Logo-Encik-Beku/Primary Logo For Dark Background.svg",
@@ -79,14 +119,39 @@
       "sha256": "a36188c2072ebcb7a516554cfd253c09017d8130942b7af366f993f68090f3ba"
     },
     {
+      "path": "Mr Ceiling.png",
+      "bytes": 145305,
+      "sha256": "f05b3e11b983ada5225a4138d601ef26ee968786a07b47927c356741beeefd4b"
+    },
+    {
+      "path": "Partition.png",
+      "bytes": 6429,
+      "sha256": "6318def96521338bb3dc643149d1c94913f9249bc9062be9eedc83ddcdce6dc4"
+    },
+    {
       "path": "README.md",
       "bytes": 5838,
       "sha256": "0252464fe0b00ba85a5b50845155aea72ac9d8425b93bc523bd0276c77e1392a"
     },
     {
+      "path": "Screen Recording 2026-09-07 at 3.54.10 PM.mp4",
+      "bytes": 125605,
+      "sha256": "1272fe0e8af713da42653e1cb7cd3aca3671e825bcedbbee463b3fb2aa921af0"
+    },
+    {
       "path": "Screen Recording 2026-09-07 at 3.54.10 PM.mov",
       "bytes": 804779,
       "sha256": "3a47f39552ee9981d6389fc1fa8114fdf01e7628dbff6cd7937b950b013e8583"
+    },
+    {
+      "path": "Wallpanel.png",
+      "bytes": 76011,
+      "sha256": "9b6bb6c299413e83f38098539c06c00b8c66ade3675d13a634142b55385b9374"
+    },
+    {
+      "path": "Wiring.png",
+      "bytes": 30144,
+      "sha256": "b87f48d52a13fbc9b4e8e5b4e78f810b9948d3fe7e598683edca8c0fd3a4f0f4"
     },
     {
       "path": "_source/README.md",
@@ -515,8 +580,8 @@
     },
     {
       "path": "tools/build-manifest.mjs",
-      "bytes": 1921,
-      "sha256": "c706fbd075a3227c90d2cca003c280364a285be4b0c8823d512d14648e5d1c35"
+      "bytes": 2010,
+      "sha256": "92b4a88f8b5231787f88db4b60d7f01307fd5f00ca509535bad14dd3484a9cb9"
     },
     {
       "path": "tools/build-service-photos.sh",
@@ -579,6 +644,11 @@
       "sha256": "b75beea1aede0606693326dc7d690bd05e2007395d4081ad69c416142a9df391"
     },
     {
+      "path": "tools/video-frames.swift",
+      "bytes": 1449,
+      "sha256": "9e6545fd59549926cb72a7d8160b2e4bcc269d407ef2a6df2d1d6f3e5a9373e9"
+    },
+    {
       "path": "webisoft.mp4",
       "bytes": 53501,
       "sha256": "f82e2427aa3b9b78e222d489ec037d7056fcf8b4ac812933f41ab909846fe1bb"
@@ -595,8 +665,8 @@
     },
     {
       "path": "website/about.html",
-      "bytes": 73854,
-      "sha256": "9e27b57789c88c44d5870d9e7c142311aff2c5a5d12d012fa2ba24a81040fe6c"
+      "bytes": 100159,
+      "sha256": "55e2fbaf104106d4f35903c11ad80e3f96d0744575bca63332b2a93a4bdf4e33"
     },
     {
       "path": "website/anim.js",
@@ -627,6 +697,66 @@
       "path": "website/i18n.js",
       "bytes": 8383,
       "sha256": "968e891737f3d6e46b6330692975f170d8426d54b0c199fddf7ba399190e92ed"
+    },
+    {
+      "path": "website/img/brands/bang-guard.png",
+      "bytes": 17741,
+      "sha256": "54cfac00efb4452b4ab1417440f41443f4cd0629708449ec7902202c8457dd6a"
+    },
+    {
+      "path": "website/img/brands/cabine.png",
+      "bytes": 18235,
+      "sha256": "74e1c8698c6a577076901ccc82d7c0b0f4dc51cb3906414279d0b3281793dfb3"
+    },
+    {
+      "path": "website/img/brands/cat-rumah.png",
+      "bytes": 89175,
+      "sha256": "3f3f2c63abd325ae5d63a23c5d3cf449bbd3043d273bb6ccdd24f02ce42f546f"
+    },
+    {
+      "path": "website/img/brands/decking.png",
+      "bytes": 80073,
+      "sha256": "941cbb0fe3fc7a0004a21c4a1769256721a453ff73fd2643b64d5f3391225cce"
+    },
+    {
+      "path": "website/img/brands/encik-beku.png",
+      "bytes": 50576,
+      "sha256": "4cb9587419ab69efb2c47fd89b650d7b225c7ff4b48b8929b27c1937322bcd53"
+    },
+    {
+      "path": "website/img/brands/encik-paip.png",
+      "bytes": 154452,
+      "sha256": "01679cbae6847fac7cfdceb855bc62bce22875d265f23c9dcaaf97624935bb9a"
+    },
+    {
+      "path": "website/img/brands/epoxy-flakes.png",
+      "bytes": 16410,
+      "sha256": "317096e0c80b969a523875ddfdeb06b4da0bfc35178f4ee2733c5af2e8104727"
+    },
+    {
+      "path": "website/img/brands/invisiguard.png",
+      "bytes": 60486,
+      "sha256": "e4dec26f272c8066460f3f23b7073a10c9fcc1c1d813cfa24a470a1723e19962"
+    },
+    {
+      "path": "website/img/brands/mr-ceiling.png",
+      "bytes": 145305,
+      "sha256": "f05b3e11b983ada5225a4138d601ef26ee968786a07b47927c356741beeefd4b"
+    },
+    {
+      "path": "website/img/brands/partition.png",
+      "bytes": 6429,
+      "sha256": "6318def96521338bb3dc643149d1c94913f9249bc9062be9eedc83ddcdce6dc4"
+    },
+    {
+      "path": "website/img/brands/wall-panel.png",
+      "bytes": 76011,
+      "sha256": "9b6bb6c299413e83f38098539c06c00b8c66ade3675d13a634142b55385b9374"
+    },
+    {
+      "path": "website/img/brands/wiring.png",
+      "bytes": 30144,
+      "sha256": "b87f48d52a13fbc9b4e8e5b4e78f810b9948d3fe7e598683edca8c0fd3a4f0f4"
     },
     {
       "path": "website/img/covers/brand-guidelines.jpg",
@@ -735,8 +865,8 @@
     },
     {
       "path": "website/index.html",
-      "bytes": 14842,
-      "sha256": "6450dfe9836b4d2b6638168945fcf05e229bedf5cd3599bbd13be0af6eae8e27"
+      "bytes": 6712,
+      "sha256": "0b307b82924571c0a9ef3afed9c2eff308affbdb8a58300367a2f56f2e56d1da"
     },
     {
       "path": "website/locations.js",
@@ -755,8 +885,8 @@
     },
     {
       "path": "website/site.css",
-      "bytes": 43708,
-      "sha256": "cfce504117313ced0b12edf47b87bb8d99f1241ffa343a8f28bd670f2cfccb02"
+      "bytes": 44115,
+      "sha256": "901a9250679c469b2ee8fec444803038ddd3a3931a0778fba6531575d75232ed"
     }
   ]
 }
