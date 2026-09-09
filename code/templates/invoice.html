@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Encik Beku — Invoice</title>
+<!--
+  ENCIK BEKU · A4 invoice template
+
+  Replace the [BRACKETED] fields. Duplicate a <tr class="item"> per line.
+  The status chip uses the semantic status colours, not the brand palette —
+  the brand has only one warm colour, so "unpaid" and "overdue" would
+  otherwise be indistinguishable. See CI.md §9.
+-->
+<link rel="stylesheet" href="../../fonts/fonts.css">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<style>
+  @page { size: A4; margin: 0; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--eb-font-sans);
+    font-weight: var(--eb-fw-medium);
+    color: var(--eb-fg-1);
+    background: var(--eb-neutral-100);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .sheet {
+    width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff;
+    display: flex; flex-direction: column;
+  }
+  .rule { display: flex; height: 6px; flex-shrink: 0; }
+  .rule i { display: block; height: 100%; }
+  .rule .a { width: 60%; background: var(--eb-tech-blue); }
+  .rule .b { width: 30%; background: var(--eb-fresh-sky); }
+  .rule .c { width: 10%; background: var(--eb-pumpkin); }
+
+  header {
+    padding: 16mm 18mm 0;
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 10mm;
+  }
+  header img { width: 58mm; height: auto; display: block; }
+  .doctype { text-align: right; }
+  .doctype h1 {
+    font-weight: var(--eb-fw-black); font-size: 26pt; margin: 0;
+    letter-spacing: var(--eb-tracking-tight);
+    color: var(--eb-french-blue); text-transform: uppercase; line-height: 1;
+  }
+  .doctype .no { font-size: 10pt; color: var(--eb-fg-2); margin-top: 2mm; }
+
+  .chip {
+    display: inline-block; padding: 1.4mm 3.2mm; border-radius: 999px;
+    font-size: 8pt; font-weight: var(--eb-fw-bold); margin-top: 2.5mm;
+    border: 1px solid;
+  }
+  .chip.unpaid  { color: var(--eb-warning); background: rgba(181,71,8,.10);  border-color: rgba(181,71,8,.24); }
+  .chip.paid    { color: var(--eb-success); background: rgba(13,129,73,.10); border-color: rgba(13,129,73,.24); }
+  .chip.overdue { color: var(--eb-danger);  background: rgba(180,35,24,.10); border-color: rgba(180,35,24,.24); }
+
+  main { padding: 10mm 18mm 0; flex: 1; }
+
+  .parties {
+    display: flex; gap: 10mm; font-size: 9.5pt; line-height: 1.6;
+    border-top: 1px solid var(--eb-border-1);
+    border-bottom: 1px solid var(--eb-border-1);
+    padding: 6mm 0; margin-bottom: 8mm;
+  }
+  .parties > div { flex: 1; }
+  .parties .lbl {
+    font-size: 7.6pt; font-weight: var(--eb-fw-bold);
+    letter-spacing: var(--eb-tracking-wide); text-transform: uppercase;
+    color: var(--eb-tech-blue); margin-bottom: 2mm;
+  }
+  .parties b { font-weight: var(--eb-fw-bold); }
+  .parties .muted { color: var(--eb-fg-2); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 9.5pt; }
+  thead th {
+    text-align: left; padding: 3mm 2.5mm;
+    background: var(--eb-tech-blue); color: #fff;
+    font-size: 8pt; font-weight: var(--eb-fw-bold);
+    letter-spacing: var(--eb-tracking-wide); text-transform: uppercase;
+  }
+  thead th:first-child { border-radius: 6px 0 0 6px; }
+  thead th:last-child  { border-radius: 0 6px 6px 0; }
+  .num { text-align: right; white-space: nowrap; }
+  tbody td { padding: 3.4mm 2.5mm; border-bottom: 1px solid var(--eb-border-1); vertical-align: top; }
+  tbody .desc b { font-weight: var(--eb-fw-bold); display: block; }
+  tbody .desc span { color: var(--eb-fg-2); font-size: 8.6pt; }
+
+  .totals { margin-top: 6mm; display: flex; justify-content: flex-end; }
+  .totals table { width: 78mm; }
+  .totals td { padding: 2.2mm 2.5mm; font-size: 9.5pt; }
+  .totals tr.grand td {
+    border-top: 2px solid var(--eb-french-blue);
+    font-weight: var(--eb-fw-black); font-size: 13pt;
+    color: var(--eb-french-blue); padding-top: 3mm;
+  }
+
+  .pay {
+    margin-top: 9mm; background: var(--eb-bg-tint);
+    border-radius: var(--eb-radius-md); padding: 6mm; font-size: 9pt; line-height: 1.65;
+  }
+  .pay .lbl {
+    font-size: 7.6pt; font-weight: var(--eb-fw-bold);
+    letter-spacing: var(--eb-tracking-wide); text-transform: uppercase;
+    color: var(--eb-tech-blue); margin-bottom: 2mm;
+  }
+
+  footer {
+    margin-top: auto; padding: 6mm 18mm 10mm;
+    border-top: 1px solid var(--eb-border-1);
+    font-size: 7.6pt; line-height: 1.5; color: var(--eb-fg-3);
+    display: flex; justify-content: space-between; gap: 8mm;
+  }
+  @media print { body { background: #fff; } }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="rule"><i class="a"></i><i class="b"></i><i class="c"></i></div>
+
+  <header>
+    <img src="../../svg/logo/encik-beku-secondary-light.svg" alt="Encik Beku">
+    <div class="doctype">
+      <h1>Invoice</h1>
+      <div class="no">No. <b>[INV-2026-0001]</b></div>
+      <div class="no">Date: [19 Aug 2026] · Due: [02 Sep 2026]</div>
+      <span class="chip unpaid">UNPAID</span>
+    </div>
+  </header>
+
+  <main>
+    <div class="parties">
+      <div>
+        <div class="lbl">Billed to</div>
+        <b>[Customer Name]</b><br>
+        <span class="muted">[Address Line 1]<br>[Postcode, City, State]<br>[Phone] · [Email]</span>
+      </div>
+      <div>
+        <div class="lbl">From</div>
+        <b>Encik Beku Aircond Sdn Bhd</b> <span class="muted">(1561739-D)</span><br>
+        <span class="muted">5, Jln Bukit Badong 26/4, Hicom Industrial Estate<br>
+        40400 Shah Alam, Selangor<br>
+        +6018 929 4628 · encikbekuaircondmy@gmail.com</span>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width:52%">Description</th>
+          <th class="num" style="width:10%">Qty</th>
+          <th class="num" style="width:19%">Unit price</th>
+          <th class="num" style="width:19%">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="item">
+          <td class="desc"><b>[Aircond service — 1.0HP wall unit]</b><span>[Chemical wash, filter clean, gas top-up check]</span></td>
+          <td class="num">[2]</td>
+          <td class="num">RM [80.00]</td>
+          <td class="num">RM [160.00]</td>
+        </tr>
+        <tr class="item">
+          <td class="desc"><b>[Installation — new unit]</b><span>[Includes bracket, piping up to 3m, testing]</span></td>
+          <td class="num">[1]</td>
+          <td class="num">RM [350.00]</td>
+          <td class="num">RM [350.00]</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="totals">
+      <table>
+        <tr><td>Subtotal</td><td class="num">RM [510.00]</td></tr>
+        <tr><td>Discount</td><td class="num">– RM [0.00]</td></tr>
+        <tr><td>SST [0%]</td><td class="num">RM [0.00]</td></tr>
+        <tr class="grand"><td>Total due</td><td class="num">RM [510.00]</td></tr>
+      </table>
+    </div>
+
+    <div class="pay">
+      <div class="lbl">Payment details</div>
+      Bank: <b>[Bank name]</b> · Account: <b>[000000000000]</b> · Name: <b>Encik Beku Aircond Sdn Bhd</b><br>
+      Please state the invoice number <b>[INV-2026-0001]</b> as your payment reference and send the receipt
+      to <b>encikbekuaircondmy@gmail.com</b> or WhatsApp <b>+6018 929 4628</b>.
+    </div>
+  </main>
+
+  <footer>
+    <div>Encik Beku Aircond Sdn Bhd (1561739-D) · HQ Shah Alam, Selangor · www.serviceaircond.my</div>
+    <div>Page 1 of 1</div>
+  </footer>
+</div>
+</body>
+</html>

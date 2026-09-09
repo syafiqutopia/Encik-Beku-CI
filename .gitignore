@@ -1,0 +1,13 @@
+# Another company's brand kit — kept locally as a structural reference only.
+# Never ship Utopia Group assets from the Encik Beku repo.
+_reference/
+utopia-brand-kit.zip
+
+# Derived page renders of the source PDFs (~9MB, regenerate with tools/render-pdf.swift)
+_source/page-renders/
+
+# macOS
+.DS_Store
+
+# Generated upload bundle for the static host
+_deploy/

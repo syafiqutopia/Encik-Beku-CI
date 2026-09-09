@@ -1,0 +1,762 @@
+{
+  "schemaVersion": 1,
+  "brand": "Encik Beku",
+  "identity": "encik-beku-tech-blue",
+  "version": "1.0.0",
+  "locked": "2026-08-19",
+  "owner": "Encik Beku Aircond Sdn Bhd (1561739-D)",
+  "fileCount": 150,
+  "totalBytes": 55566925,
+  "entries": [
+    {
+      "path": ".gitattributes",
+      "bytes": 66,
+      "sha256": "1a1dbe176bc233b499d35a57db7513f2941c99ab9759f177830c9149be99005b"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 302,
+      "sha256": "7286fac56f9a0b45564cc3343addb559304a07bbe0627a7475754edc30b75526"
+    },
+    {
+      "path": "CHAT-LOG-2026-09-08.md",
+      "bytes": 66834,
+      "sha256": "a879331b92ef3407befc23c3d5d8b2a4bcf80c6af0b1af088020e52467bb27e8"
+    },
+    {
+      "path": "CI.md",
+      "bytes": 28056,
+      "sha256": "35ac9cc3e2f291b08279427e169bad1ac4f9be78d738977d12751cb4194942a4"
+    },
+    {
+      "path": "CLAUDE.md",
+      "bytes": 764,
+      "sha256": "3aed279bcfc73cb3341c13dcdc67d309d6e35d79bc9d50de56a811883a969389"
+    },
+    {
+      "path": "DESIGN-TEAM-HANDOFF.md",
+      "bytes": 4655,
+      "sha256": "0bd210a0d42be6913c52b8408af12ba4dd5d590a6e65c9a4072837320853084e"
+    },
+    {
+      "path": "Encik-Beku-CI.code-workspace",
+      "bytes": 60,
+      "sha256": "69e7b37e2ebdaf8fc313bf6cb74882fed65895e5f853736e65759bafb333bc6b"
+    },
+    {
+      "path": "Logo-Encik-Beku/Primary Logo For Dark Background.svg",
+      "bytes": 826268,
+      "sha256": "1340f8b26205955797f070fd154aaafefe62eee02c8390a6cda4b2d9e2fe4102"
+    },
+    {
+      "path": "Logo-Encik-Beku/Primary Logo For Light Background.svg",
+      "bytes": 827425,
+      "sha256": "cb7487629cff112ecad312cb85e6be7c5d69fe1e569fe86b140244dc3947895e"
+    },
+    {
+      "path": "Logo-Encik-Beku/README.md",
+      "bytes": 2328,
+      "sha256": "afb935063ced5c93414e2d6e6168d32feaa2e44cbba767551ebf97b1468feae3"
+    },
+    {
+      "path": "Logo-Encik-Beku/Secondary Logo For Dark Background.svg",
+      "bytes": 822486,
+      "sha256": "d59fbfaa69741cd2d57ab42788ff0dda80fb9e7fea9fcab0ca6a18bbf0876999"
+    },
+    {
+      "path": "Logo-Encik-Beku/Secondary Logo For Light Background.svg",
+      "bytes": 823930,
+      "sha256": "ff63f201eb8c9fc761714049f2ad05e4d39ce3b9a6bac4b5545809efaf4b3901"
+    },
+    {
+      "path": "Logo-Encik-Beku/Single Colour Logo 2.svg",
+      "bytes": 800491,
+      "sha256": "40f779e35cf7a9a50758c1de20d3f1e69262f8608a6f83af607159b47370f63a"
+    },
+    {
+      "path": "Logo-Encik-Beku/Single Colour Logo.svg",
+      "bytes": 804547,
+      "sha256": "a36188c2072ebcb7a516554cfd253c09017d8130942b7af366f993f68090f3ba"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5838,
+      "sha256": "0252464fe0b00ba85a5b50845155aea72ac9d8425b93bc523bd0276c77e1392a"
+    },
+    {
+      "path": "Screen Recording 2026-09-07 at 3.54.10 PM.mov",
+      "bytes": 804779,
+      "sha256": "3a47f39552ee9981d6389fc1fa8114fdf01e7628dbff6cd7937b950b013e8583"
+    },
+    {
+      "path": "_source/README.md",
+      "bytes": 1216,
+      "sha256": "fdfc0f506187466ae5513e8e9aa74a4c53c47792f8099abe64bff48701a75472"
+    },
+    {
+      "path": "_source/encik-beku-brand-guidelines-2026.pdf",
+      "bytes": 5770706,
+      "sha256": "07c53e9ed940331c8e697e221028b8d6f9854830706d45ebe0fa32804d73a760"
+    },
+    {
+      "path": "_source/encik-beku-catalogue-2026.pdf",
+      "bytes": 3276799,
+      "sha256": "43d1422fea05b54e0591ce41ce2b0f20fe1ab18230643106d4aad2bc7034f752"
+    },
+    {
+      "path": "_source/encik-beku-company-profile-2026.pdf",
+      "bytes": 15336027,
+      "sha256": "7fe4120931503d2bbfb5441221f53e7dad01a27b6f0c7738079bb682be9638ae"
+    },
+    {
+      "path": "_source/encik-beku-home-hero.png",
+      "bytes": 2769000,
+      "sha256": "adcf5a68389c5b070ccb06279a3fa0e256ad3872ea599d0e8e57feabd6638313"
+    },
+    {
+      "path": "code/README.md",
+      "bytes": 4821,
+      "sha256": "38e538304b57052789e267d9c76b805276cdd971c01e5faf29bcce27e9b75439"
+    },
+    {
+      "path": "code/email/signature.html",
+      "bytes": 4436,
+      "sha256": "ef097f410c10460084974c8720d19a268978601d6b139e23bc5df652b837be8b"
+    },
+    {
+      "path": "code/index.ts",
+      "bytes": 781,
+      "sha256": "ffbcc69c41f50c1ee70f39938de0bb31b946c428a63ca702e1141b61f1220400"
+    },
+    {
+      "path": "code/templates/invoice.html",
+      "bytes": 7387,
+      "sha256": "cafe21e9e5f501e2d92c8127f1b37bad4ad3e68b1ebc69e9a9e18841c80fdc5b"
+    },
+    {
+      "path": "code/templates/letterhead.html",
+      "bytes": 5099,
+      "sha256": "bc8165e533f881ff1a78915328d44671805c92f9b65660ab95823869d90eb9bf"
+    },
+    {
+      "path": "code/templates/quotation.html",
+      "bytes": 8731,
+      "sha256": "78e02b7822f3d5ee088a3408768026cbb3b3fd52b9701d87f8d0cdc9d33e6554"
+    },
+    {
+      "path": "code/tokens/tailwind.preset.ts",
+      "bytes": 4159,
+      "sha256": "a3dd92d057b42e2e64a20b05a0704eb870fd00496449d654e0f08d0709d69739"
+    },
+    {
+      "path": "code/tokens/tokens.css",
+      "bytes": 10231,
+      "sha256": "f61b084a87ed3c8ea6ec84030071f89bc316c1487b4a257074618680bc98db52"
+    },
+    {
+      "path": "code/tokens/tokens.ts",
+      "bytes": 7483,
+      "sha256": "1b126e208cb813eb812486241740739c7f6982ac68031480a847adf32f06274f"
+    },
+    {
+      "path": "code/ui/Button.tsx",
+      "bytes": 5486,
+      "sha256": "5b22becf920b9bc399007435a7e4258567b02dedb31b7d14cda0646d6a97ff8e"
+    },
+    {
+      "path": "code/ui/Card.tsx",
+      "bytes": 2392,
+      "sha256": "c6b351e92c0b55d012406d2e27bebfa88fbb315c4233121580c425c8ce036461"
+    },
+    {
+      "path": "code/ui/Chip.tsx",
+      "bytes": 2838,
+      "sha256": "bfca0cb3cdafbbe6ce44fcca55521a5c11cd3c080d041191e86dd073d7f80921"
+    },
+    {
+      "path": "code/ui/Logo.tsx",
+      "bytes": 2700,
+      "sha256": "21aa59ada3c74f7bf2838d3ebfcf4619521d06f21a6e7e9246d0b8b99a729a73"
+    },
+    {
+      "path": "distribution/README.md",
+      "bytes": 1400,
+      "sha256": "b11c2000b3e239c399ada5b7ce08bd37dc60093335bf8e0e35f8238d80f535e3"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-mark-light-1024w.png",
+      "bytes": 182310,
+      "sha256": "e0282fc641d0f2ac989a373330fdccb26ad8c100664328aed898ba778a4c0c6a"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-mark-light-256w.png",
+      "bytes": 37836,
+      "sha256": "6cb72369b1e02c82a5a42ec1286078ff19c3d5c7ff1855397fb867e39a4fd0bb"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-mark-light-512w.png",
+      "bytes": 82670,
+      "sha256": "dd738908ec1bab4624dc9d60e18b5ce5009a22b925c58d648b51de6a8d692185"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-mark-navy-1024w.png",
+      "bytes": 154183,
+      "sha256": "1b568486cbcfd2a735ef12a5a77edf64fce4248c2a392c8824d88d701a43e477"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-mark-navy-256w.png",
+      "bytes": 31130,
+      "sha256": "e13fd8be9e1d6075e283dfed058d63df658c0a1553d1de9428a232de713d4f7d"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-mark-navy-512w.png",
+      "bytes": 69723,
+      "sha256": "c4a3a9b9e780fbdc76ca100606a02d68b181eabd330b1d71532f2dbdda9777dd"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-mark-white-1024w.png",
+      "bytes": 118658,
+      "sha256": "8c1f3bec10a36eb34f9cc3446b8a646e7a864a7934e64a07558a52256dbca96b"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-mark-white-256w.png",
+      "bytes": 20366,
+      "sha256": "b715773256e1ef2f0984d5966bf34d696a2d5f8faa83a09f7944acfbc4d8fff2"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-mark-white-512w.png",
+      "bytes": 48969,
+      "sha256": "5685f323fd4f2465b1d49f5c32298e32192bbadc6a03a5283c3a498e19a73c84"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-primary-dark-1024w.png",
+      "bytes": 179521,
+      "sha256": "a46534036d372d5508f1d9077d4fe90e738ac0c389f32ee3ebd0d11ffb8514a1"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-primary-dark-2048w.png",
+      "bytes": 415991,
+      "sha256": "519643d285209fcc0d47afe789731153e8c4a552854c41064d3229527a71dda7"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-primary-dark-3840w.png",
+      "bytes": 930801,
+      "sha256": "7ac39607cb270d3c1adb4c70f4694638678c5a5889677f92f37fb9c50758ee35"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-primary-dark-512w.png",
+      "bytes": 79800,
+      "sha256": "d759b7cd238b1daabd529e77066afaacdfba3b6c24103b37813eff18750747a5"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-primary-light-1024w.png",
+      "bytes": 207668,
+      "sha256": "2fa5be4e9ef4def81c5683ad2f0b56fc0c2b173d83d831a04b4a9bd9c5d270b1"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-primary-light-2048w.png",
+      "bytes": 471468,
+      "sha256": "4ceda3d260e52ee82bc3634517f9d241dcd96b4c70ef7fc44caca093db3a2e95"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-primary-light-3840w.png",
+      "bytes": 1031038,
+      "sha256": "c33f985ce1543cee5e285e168592396bd2ce97e21ed6a98404a2398c1dd914d0"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-primary-light-512w.png",
+      "bytes": 94111,
+      "sha256": "497478987d2ce7a1bc3d2ed3f1a4181187626b348cd2b91f433350f265e9ada1"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-primary-light-print.pdf",
+      "bytes": 35458,
+      "sha256": "5e49ed56c754f8a400e57813b830e0ded9750406a5e1a750c18866768cc8cf7e"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-secondary-dark-1024w.png",
+      "bytes": 50593,
+      "sha256": "d390681677586cc0d3fca7bf583b49edd227a3114648621d29ab9158c149a3a0"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-secondary-dark-2048w.png",
+      "bytes": 115250,
+      "sha256": "255e6bf5bbb04a71fbf63eda5bcf1e8157af9c7bf899968354b900561c7565b5"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-secondary-dark-3840w.png",
+      "bytes": 250782,
+      "sha256": "b805463261c51079bc3a065e207681549c895c1c9295a1db064b9d14e4222dcc"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-secondary-dark-512w.png",
+      "bytes": 21273,
+      "sha256": "c7d7b978523818fd919c94db07a7f39a080a88e6f7de92e6db5a68996907a96c"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-secondary-light-1024w.png",
+      "bytes": 58818,
+      "sha256": "c50eb11c93de9baaa51d3744ac46c4eb2620e953ce04ce5ed757e94043803027"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-secondary-light-2048w.png",
+      "bytes": 132417,
+      "sha256": "312d3189901ee3258a2ef78cf5c378a3142b1ef781a750013d895437de80a06c"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-secondary-light-3840w.png",
+      "bytes": 282441,
+      "sha256": "c7c74c34fb935510d3c182088a563473b2b618a98d36612c84cc752b8ac116eb"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-secondary-light-512w.png",
+      "bytes": 25662,
+      "sha256": "63b7eea439664acbcb1f636943ebe47e7fa25196d7f6bd864d13b04f3d2532c1"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-secondary-light-print.pdf",
+      "bytes": 38321,
+      "sha256": "4f89165e5e6a8c452d2f104780c26e11b6887aceeda53ace102d718eee164e57"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-single-navy-1024w.png",
+      "bytes": 179157,
+      "sha256": "ca7c4e75ae8393715c6726fba223380818e1acccfc6f85e5372fbc469ebc38fb"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-single-navy-2048w.png",
+      "bytes": 412647,
+      "sha256": "729943bc5b05027bcd4ecb4a80d74d2519094d8a556c83ff287dc121cc43919c"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-single-navy-3840w.png",
+      "bytes": 919066,
+      "sha256": "5491c17b396b926e8c3183aa47474bca579ab22c4b26c392121ae41adc7f0413"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-single-navy-512w.png",
+      "bytes": 80522,
+      "sha256": "930dc68484ff935ae9f67a5e8ae453e73152712be953099d3891f516c7453ed5"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-single-navy-print.pdf",
+      "bytes": 11685,
+      "sha256": "9d1014aa81b70253e4fd860ff6a246d950ac385e1caa7ea9f3f103af6468d932"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-single-white-1024w.png",
+      "bytes": 138411,
+      "sha256": "7c0bc27680138880f08c8cbc5c345177228cc5216d57ee1f8996130423649cb4"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-single-white-2048w.png",
+      "bytes": 330411,
+      "sha256": "3f06d2ebebcc82fa2dff86498782e9fbfb696c975ba6f6026235c31b97cdc834"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-single-white-3840w.png",
+      "bytes": 762825,
+      "sha256": "1809d1bc609c2bd2cd00011f3614f84121d1e943f06b1e1ccb31e3a6a1d5f729"
+    },
+    {
+      "path": "distribution/encik-beku/encik-beku-single-white-512w.png",
+      "bytes": 57362,
+      "sha256": "1adbd5119cc1b19c75a777685db905d93b90f0dab2009bd3bc231570bfa3fcbe"
+    },
+    {
+      "path": "fonts/LICENSE-SATOSHI.md",
+      "bytes": 1707,
+      "sha256": "8b535430525d0758beb2aa16742cc2050766b854dad20141301ef8e9f4c95a03"
+    },
+    {
+      "path": "fonts/Satoshi-Black.otf",
+      "bytes": 46928,
+      "sha256": "49bdb8b9436b8b9192f6f14b7ce4b96d1a3822e13c504c00c0b2842357d265cc"
+    },
+    {
+      "path": "fonts/Satoshi-BlackItalic.otf",
+      "bytes": 47792,
+      "sha256": "452bb2dbf019bcd8efe0f0d5f1697574643cf65bc522b7e3c18b84d89be5a8ba"
+    },
+    {
+      "path": "fonts/Satoshi-Bold.otf",
+      "bytes": 49668,
+      "sha256": "50e4f9b7c1864c50761d729d6001bfac708c80457fa6fc41559a8ab1bd2573ff"
+    },
+    {
+      "path": "fonts/Satoshi-BoldItalic.otf",
+      "bytes": 51524,
+      "sha256": "b7ae114a1ac1850676e4c89e83ecc4e784409c4044b27622ae042912cc13b864"
+    },
+    {
+      "path": "fonts/Satoshi-Italic.otf",
+      "bytes": 51304,
+      "sha256": "8be5ca91c666e7f697c8db93f1ccf00adbdae7b9309df912ae550371206dddc4"
+    },
+    {
+      "path": "fonts/Satoshi-Light.otf",
+      "bytes": 45128,
+      "sha256": "f9b532a143181bc76adf9fd5968708c502c807acf7b7b1f0a0d46aba293dd2ba"
+    },
+    {
+      "path": "fonts/Satoshi-LightItalic.otf",
+      "bytes": 46580,
+      "sha256": "52d316ba2bfbd45baa6a704b9d2a9db55f735703fda382328d44ca0b4568504e"
+    },
+    {
+      "path": "fonts/Satoshi-Medium.otf",
+      "bytes": 50352,
+      "sha256": "93330866d109f6b2e298748958ec6fa4010cacef586783f281a0b268cab7fc6e"
+    },
+    {
+      "path": "fonts/Satoshi-MediumItalic.otf",
+      "bytes": 51500,
+      "sha256": "9fe8f9b50e84e26dd37641acbc1ee60c8466ecd087213594133d2c29ff73ed57"
+    },
+    {
+      "path": "fonts/Satoshi-Regular.otf",
+      "bytes": 49560,
+      "sha256": "711c6243cdc5431f9cc966e4de18bfb940365bad81acffd1e7948dbe3f254386"
+    },
+    {
+      "path": "fonts/fonts.css",
+      "bytes": 2569,
+      "sha256": "65ca1347de6f53bb0dca2dc966f9bd77e244d518599b02d85b791943465dc059"
+    },
+    {
+      "path": "start-preview.command",
+      "bytes": 406,
+      "sha256": "84c56159f21538d7e3c2914a6506c5647ab86917903d5d4faccdf0bec2d78689"
+    },
+    {
+      "path": "svg/README.md",
+      "bytes": 2744,
+      "sha256": "8fc5a79c077ab368998881492bd8025742743d9b7ce2f7225a57c0d0e62b2e97"
+    },
+    {
+      "path": "svg/logo/encik-beku-primary-dark.svg",
+      "bytes": 40349,
+      "sha256": "d528717d01469f69cfb677bad4efea37f8d792a91d504520402a022a44370f27"
+    },
+    {
+      "path": "svg/logo/encik-beku-primary-light.svg",
+      "bytes": 41631,
+      "sha256": "f1102a6b2c980a944e002e919749f91fafa4f3f6fd57ac66c0524ee1178e406b"
+    },
+    {
+      "path": "svg/logo/encik-beku-secondary-dark.svg",
+      "bytes": 36316,
+      "sha256": "9ee8bb18ed2bd4cf61d533a29f1992ae69f4d35ea7d834b1f7365ace25b90d90"
+    },
+    {
+      "path": "svg/logo/encik-beku-secondary-light.svg",
+      "bytes": 37744,
+      "sha256": "3810bf8258f804d52ac9131e40c1b94d0e364456cb3a271ec1ab44d4f14f3abc"
+    },
+    {
+      "path": "svg/logo/encik-beku-single-navy.svg",
+      "bytes": 19361,
+      "sha256": "a9f33749f60e31af838f0cde3ef0cead2cb88be9791cdba295196a8b6fa0718d"
+    },
+    {
+      "path": "svg/logo/encik-beku-single-white.svg",
+      "bytes": 15566,
+      "sha256": "f8a27f2345b9d416d8576b960478eae4da19d0a7744b407e41cc7071124b3729"
+    },
+    {
+      "path": "svg/mark/encik-beku-mark-dark.svg",
+      "bytes": 40348,
+      "sha256": "b38c5edc89a44f06ca7bb6ced4fddb5e739660e784a843932df806c6fabeb5ae"
+    },
+    {
+      "path": "svg/mark/encik-beku-mark-light.svg",
+      "bytes": 41630,
+      "sha256": "90fa0b76026a5dc485e0c9f86def36e3dc8728c4c31849e9eebee20111e1cd7e"
+    },
+    {
+      "path": "svg/mark/encik-beku-mark-navy.svg",
+      "bytes": 19360,
+      "sha256": "602553ef365fad41356544e382720efea67e485eb4a718460b2529bfbe20b491"
+    },
+    {
+      "path": "svg/mark/encik-beku-mark-white.svg",
+      "bytes": 15565,
+      "sha256": "76e69eb4ef90645619b62c0aa8ddc2e49df3ab666e63bd0457189f817b2b620a"
+    },
+    {
+      "path": "tokens/README.md",
+      "bytes": 1547,
+      "sha256": "5e3b3ed65d4474c1a817b4a60925dac14254f631ed66e31a7201f0d642e4dc20"
+    },
+    {
+      "path": "tokens/tokens.css",
+      "bytes": 10231,
+      "sha256": "f61b084a87ed3c8ea6ec84030071f89bc316c1487b4a257074618680bc98db52"
+    },
+    {
+      "path": "tokens/tokens.source.mjs",
+      "bytes": 9037,
+      "sha256": "108555095d5a842a47465c60c2594015b4bf40757ee49e27ea7f276b46a48cf0"
+    },
+    {
+      "path": "tools/build-distribution.sh",
+      "bytes": 3287,
+      "sha256": "98b24754e6c46a2decc23419df699cbcc0a6557d8dc69f4b3c64e7b2c6954484"
+    },
+    {
+      "path": "tools/build-downloads.sh",
+      "bytes": 1435,
+      "sha256": "3f1ec892a587ff792f8d48c66d24834abda4aa81aafc41699835d63e222099cb"
+    },
+    {
+      "path": "tools/build-logos.sh",
+      "bytes": 2693,
+      "sha256": "3e16a15b0ca7029841b4969dceb8fddcc3b75d04260ba8b2274dc67a831d3a2b"
+    },
+    {
+      "path": "tools/build-manifest.mjs",
+      "bytes": 1921,
+      "sha256": "c706fbd075a3227c90d2cca003c280364a285be4b0c8823d512d14648e5d1c35"
+    },
+    {
+      "path": "tools/build-service-photos.sh",
+      "bytes": 2045,
+      "sha256": "2928185eced665da5d71511e5f6072220c1b6556b4f4291d4fad770f1879b8bd"
+    },
+    {
+      "path": "tools/build-site-preview.mjs",
+      "bytes": 9624,
+      "sha256": "fb1112e2bf4d43045fe7b10823ef4bda24fa7c1a6c7dde5321fe06c60e2d3a49"
+    },
+    {
+      "path": "tools/build-tokens.mjs",
+      "bytes": 11388,
+      "sha256": "bd76bd5b083f9b36eed540bf6fd16ea32b1c4acf04b552e693288ea3622f4fdd"
+    },
+    {
+      "path": "tools/compress-pdf.swift",
+      "bytes": 2390,
+      "sha256": "86b1661fbe91f14710924b97678d93d5c4275edf4cd9a99bc2a1b95677582679"
+    },
+    {
+      "path": "tools/extract-pdf-images.py",
+      "bytes": 1723,
+      "sha256": "dc7271b073143412ff056a850a8cae70f8c0b9370b6c39d4213df619137ca117"
+    },
+    {
+      "path": "tools/optimize-svg.py",
+      "bytes": 3122,
+      "sha256": "b61eeb76b8a46da41e0e4d9be280205ead9db118226f0e1c4f6482a4030bbc9a"
+    },
+    {
+      "path": "tools/preview-server.py",
+      "bytes": 864,
+      "sha256": "cd68287fc57c5e9361f2cf9438db3e367474c8ac9bb931faf655b2866bc037d4"
+    },
+    {
+      "path": "tools/render-html.swift",
+      "bytes": 2172,
+      "sha256": "9699299b575f4326122bf2ee318b99c80e4e66f25089020f04b9df0ec2dcfe90"
+    },
+    {
+      "path": "tools/render-pdf.swift",
+      "bytes": 2159,
+      "sha256": "189d8b9d6395c67e357d38a0f40a118d41b46c7336b00d11b62a66a78ef6112f"
+    },
+    {
+      "path": "tools/stamp-assets.mjs",
+      "bytes": 1194,
+      "sha256": "ee7d7039716af7bc562ff2922b46ab563c13665b50c1f140de7961f4133fdce7"
+    },
+    {
+      "path": "tools/svg-to-pdf.swift",
+      "bytes": 2360,
+      "sha256": "73b9ec3d075195129004d6735a81723b4f872b5815e4fb966e32936518c9281d"
+    },
+    {
+      "path": "tools/verify.mjs",
+      "bytes": 13534,
+      "sha256": "b75beea1aede0606693326dc7d690bd05e2007395d4081ad69c416142a9df391"
+    },
+    {
+      "path": "webisoft.mp4",
+      "bytes": 53501,
+      "sha256": "f82e2427aa3b9b78e222d489ec037d7056fcf8b4ac812933f41ab909846fe1bb"
+    },
+    {
+      "path": "website/CLAIMS-TO-VERIFY.md",
+      "bytes": 3474,
+      "sha256": "125d99b1954439ae2337fcb10be7898445884ef1283ea8122a109d5458913af3"
+    },
+    {
+      "path": "website/README.md",
+      "bytes": 6102,
+      "sha256": "e78be17f9f27b26e06b00303fa9671aa58bfcaf92b0092970ca3851165593cf2"
+    },
+    {
+      "path": "website/about.html",
+      "bytes": 73854,
+      "sha256": "9e27b57789c88c44d5870d9e7c142311aff2c5a5d12d012fa2ba24a81040fe6c"
+    },
+    {
+      "path": "website/anim.js",
+      "bytes": 5420,
+      "sha256": "a33a961816e01396e72d462d8d4fb519b6fe6a54f2fc23ec10e3f7745e8eef86"
+    },
+    {
+      "path": "website/brand.html",
+      "bytes": 28313,
+      "sha256": "a61bb2f10208728f84a7f72b3a704aecd9ce22a6b8348543875426c2f46c783c"
+    },
+    {
+      "path": "website/downloads/Encik-Beku-Brand-Guidelines-2026-v1.0.pdf",
+      "bytes": 3726427,
+      "sha256": "f1987ca64a6276aac162de5f70a8c05549a04f1ac8faecf4327025181d805020"
+    },
+    {
+      "path": "website/downloads/Encik-Beku-Company-Profile-2026-v1.0.pdf",
+      "bytes": 2769113,
+      "sha256": "5516521bcd5b3960c199a975e242976cb80d94f0b08067dc1ccc90e88aa254d5"
+    },
+    {
+      "path": "website/downloads/Encik-Beku-Service-Catalogue-2026-v1.0.pdf",
+      "bytes": 3276799,
+      "sha256": "43d1422fea05b54e0591ce41ce2b0f20fe1ab18230643106d4aad2bc7034f752"
+    },
+    {
+      "path": "website/i18n.js",
+      "bytes": 8383,
+      "sha256": "968e891737f3d6e46b6330692975f170d8426d54b0c199fddf7ba399190e92ed"
+    },
+    {
+      "path": "website/img/covers/brand-guidelines.jpg",
+      "bytes": 13548,
+      "sha256": "9b5e5b689f7f1054c90480363fd77fc8a4c622589b558ff4c382dd24623cf391"
+    },
+    {
+      "path": "website/img/covers/company-profile.jpg",
+      "bytes": 15401,
+      "sha256": "afaecb64386d5d7bfeff561d8b8098b69a547f5365bb643ee83bc089dffd4e34"
+    },
+    {
+      "path": "website/img/covers/service-catalogue.jpg",
+      "bytes": 16666,
+      "sha256": "b60699dcda2ca24f902860e008d066031004024705547c641b76d840497002c1"
+    },
+    {
+      "path": "website/img/hero-team-1788.jpg",
+      "bytes": 549850,
+      "sha256": "4681ba4efc9e0e5690b6ce9b77dd8a27bd6b9bc3a88a660445597859aa9160c9"
+    },
+    {
+      "path": "website/img/hero-team-900.jpg",
+      "bytes": 116440,
+      "sha256": "db32fceebe0cc70e71f2f59c4b303f2942d5677fba43e26c280e0d2501719156"
+    },
+    {
+      "path": "website/img/malaysia.svg",
+      "bytes": 33651,
+      "sha256": "32990c5a989b10bf0ff4734793719f466cb0e7119dbddb980c2ee363ac1adfaa"
+    },
+    {
+      "path": "website/img/services/aircond-service.jpg",
+      "bytes": 74201,
+      "sha256": "0d8772ffc5f98acfcd19ddd53ddd8736dd23a77d9fef6e0d2a4ca96564498076"
+    },
+    {
+      "path": "website/img/services/aircond.jpg",
+      "bytes": 42321,
+      "sha256": "60da007ced26e297038e26bd1e90c054cf24a0edd1bbfb3ad7dd6d9d46e96df6"
+    },
+    {
+      "path": "website/img/services/cabinet.jpg",
+      "bytes": 40550,
+      "sha256": "064b1efd90c9561671a8a4891c170e8f381858f34713180c7f87f64e29eadf62"
+    },
+    {
+      "path": "website/img/services/cctv.jpg",
+      "bytes": 73526,
+      "sha256": "c4a1716f03b1a447fd2b3b0ee8b5b1564d4a6924dbc44ea56e3be3a77662ecb7"
+    },
+    {
+      "path": "website/img/services/decking.jpg",
+      "bytes": 84093,
+      "sha256": "478724beaa52e5689d8ef2b58d12c49ff3edf8a24f42ec182a5a53767f28857e"
+    },
+    {
+      "path": "website/img/services/electrical-testing.jpg",
+      "bytes": 55868,
+      "sha256": "4d92b4c530ca0850a018b5c2e13509e3e99600a527453e6f105bdedf134ffd23"
+    },
+    {
+      "path": "website/img/services/electrical.jpg",
+      "bytes": 50312,
+      "sha256": "0d3411f19f2107f086aeec48bcfeffbb2c43d246d89b03d1133fb463b6af805d"
+    },
+    {
+      "path": "website/img/services/invisible-grille.jpg",
+      "bytes": 71507,
+      "sha256": "19f34ec28c3460775cbe594e03e03544ca5128a0baeee4ac870074c9df531b03"
+    },
+    {
+      "path": "website/img/services/partition.jpg",
+      "bytes": 54683,
+      "sha256": "0cf30a3bb9437326fd0bb40c59138fc3d460c29472ecb6410b2a2818495f91d5"
+    },
+    {
+      "path": "website/img/services/plaster-ceiling.jpg",
+      "bytes": 50786,
+      "sha256": "b4b583501ade370d45eb6b2ef240187679210d6262fb99038b7d1ece7d30f7b4"
+    },
+    {
+      "path": "website/img/services/plumbing.jpg",
+      "bytes": 48037,
+      "sha256": "697f0cb81a320869b8d4ee19d42d1ca000e95c5f0251f1c587b4da7241488cac"
+    },
+    {
+      "path": "website/img/services/wall-finishing.jpg",
+      "bytes": 44868,
+      "sha256": "493d2db64113e149d07336e6e55931a413c7389ab82e12f2d24715dacf4ed445"
+    },
+    {
+      "path": "website/img/services/wall-panel.jpg",
+      "bytes": 57627,
+      "sha256": "aef8245c7ed668b3d01e8b591445b7dbc68af6f56a0977b2e56a9a39a50a9cb0"
+    },
+    {
+      "path": "website/img/services/water-protection.jpg",
+      "bytes": 37224,
+      "sha256": "35c46513ca2f61235e3f3cbf009ec7fe721a2c20efb11b76fb7e6de2a867fca9"
+    },
+    {
+      "path": "website/img/services/waterproofing.jpg",
+      "bytes": 56619,
+      "sha256": "0d436ea625f4b639706a9883bdf1133acd2f15739612d9b5d446051336024210"
+    },
+    {
+      "path": "website/index.html",
+      "bytes": 14842,
+      "sha256": "6450dfe9836b4d2b6638168945fcf05e229bedf5cd3599bbd13be0af6eae8e27"
+    },
+    {
+      "path": "website/locations.js",
+      "bytes": 4925,
+      "sha256": "9475e0ea0a56762f7faa91eae0be8a7021f2433a6628c9fe19040425d43d3741"
+    },
+    {
+      "path": "website/services.html",
+      "bytes": 27333,
+      "sha256": "e57835083747d34b5d435fda17ebf7ffb9d47255e467e44d7388203237df47df"
+    },
+    {
+      "path": "website/site-preview.html",
+      "bytes": 1948730,
+      "sha256": "3ab7cf84e6ce9fa3f9bf3a11074ca2e3fa88f055d72feaf9df047fc624ccadb5"
+    },
+    {
+      "path": "website/site.css",
+      "bytes": 43708,
+      "sha256": "cfce504117313ced0b12edf47b87bb8d99f1241ffa343a8f28bd670f2cfccb02"
+    }
+  ]
+}
