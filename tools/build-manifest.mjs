@@ -5,7 +5,8 @@
  *
  *   node tools/build-manifest.mjs
  *
- * Excluded: the manifest itself, _reference/, _source/page-renders/, .git/,
+ * Excluded: the manifest itself, _reference/, _source/page-renders/, _deploy/
+ * (the generated upload bundle — a copy of files already listed), .git/,
  * and macOS cruft.
  */
 import { createHash } from 'node:crypto';
@@ -16,7 +17,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
-const SKIP_DIRS = new Set(['.git', 'node_modules', '_reference', 'page-renders']);
+const SKIP_DIRS = new Set(['.git', 'node_modules', '_reference', 'page-renders', '_deploy']);
 const SKIP_FILES = new Set(['brand-kit-manifest.json', '.DS_Store']);
 
 function walk(dir, out = []) {
