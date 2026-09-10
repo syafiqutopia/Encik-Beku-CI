@@ -607,11 +607,16 @@ footer.site a:hover { color: var(--eb-fg-on-brand); }
  * straight over the photograph at 1.5-2.0:1 against a 4.5:1 requirement,
  * recorded here as a signed-off trade.
  *
- * Measured off the composited page — not off the flat token, which would
- * flatter it — white now runs 4.57-5.57:1 across 390 to 2560 wide. Every
- * element clears AA, the headline being large text besides. That is the
- * constraint the gradient stops below is tuned to: weaken the .64/.94 band
- * and the headline drops under 4.5:1 again. Re-measure if you touch it.
+ * The bed is deliberately confined to the bottom third: ramping from 40%
+ * swallowed half the frame and drained the colour out of the crew, and the
+ * plate is the point. It starts late and climbs hard instead.
+ *
+ * That leaves the contrast floor tight, so it is measured off the composited
+ * page rather than off the flat token, which would flatter it. Body copy and
+ * the CTA run 4.68-5.67:1 across 390 to 2560 wide; the headline runs
+ * 3.69-4.87:1 and is large text (64px/900), where the bar is 3.0:1. Weaken
+ * the .40/.90 stops or raise .hero .copy off the bottom and the headline
+ * goes under 3.0. Re-measure if you touch either.
  *
  * The sky is inset past the frame by a fixed 14px — more than the 9px it
  * can travel — so an edge is never exposed, at any window width. The
@@ -678,10 +683,17 @@ body.home main { flex: 1; min-height: 0; display: flex; flex-direction: column; 
    shins the supplied frame cuts off sit under the opaque part of the bed.
    The two plates no longer need to register: the fade hides the horizon. */
 .hero { --crew-w: min(112vw, 110rem); --crew-drop: 6vh; }
-.layer-crew { position: absolute; left: 0; right: 0; bottom: calc(var(--crew-drop) * -1); }
+/* Centred by arithmetic, not by `margin: auto` — auto margins resolve to 0
+   the moment the plate is wider than the frame, which is exactly the case on
+   a phone, and it sat hard against the left edge. Not by `transform` either:
+   the entrance animation owns that on this element. */
+.layer-crew {
+  position: absolute;
+  left: calc((100% - var(--crew-w)) / 2); width: var(--crew-w);
+  bottom: calc(var(--crew-drop) * -1);
+}
 .layer-crew img {
-  display: block; width: var(--crew-w); height: auto;
-  margin-inline: auto;              /* centred without spending `transform` */
+  display: block; width: 100%; height: auto;
   transform: translate3d(calc(var(--px) * 22px), calc(var(--py) * 12px), 0);
 }
 /* Two full-screen composited planes are only worth GPU promotion while
@@ -690,18 +702,18 @@ body.home main { flex: 1; min-height: 0; display: flex; flex-direction: column; 
 
 .hero-fade {
   position: absolute; inset: 0; pointer-events: none;
-  /* Held clear of the faces: the ramp starts below the waist so the crew
-     stay crisp and the blue reads as a field behind them, not a veil over
-     them. By the headline it is solid enough to carry white type. */
+  /* Confined to the bottom quarter. Ramping from 40% swallowed half the
+     frame and drained the crew; the plate is the point, so the bed starts
+     late and climbs hard instead of leaning across the whole image. */
   background: linear-gradient(180deg,
-    rgba(3, 92, 194, 0) 0%,    rgba(3, 92, 194, 0) 40%,
-    rgba(3, 92, 194, .64) 57%, rgba(3, 92, 194, .94) 67%,
-    rgba(3, 92, 194, .99) 79%, var(--eb-blue-600) 100%);
+    rgba(3, 92, 194, 0) 0%,    rgba(3, 92, 194, 0) 58%,
+    rgba(3, 92, 194, .40) 66%, rgba(3, 92, 194, .90) 73%,
+    rgba(3, 92, 194, .99) 81%, var(--eb-blue-600) 100%);
 }
 
 .hero .copy {
   position: relative; z-index: 1;
-  padding-bottom: var(--eb-space-9);
+  padding-bottom: var(--eb-space-7);
   color: var(--eb-fg-on-brand);
   text-align: center;
 }
@@ -1035,14 +1047,27 @@ body.home main { flex: 1; min-height: 0; display: flex; flex-direction: column; 
    is legible before the pointer is ever moved. Pure CSS, so a failed script
    cannot strand the page mid-entrance.
    These five delays are tuned to the loader. Retime it and they move too. */
-.has-anim .hero .layer,
 .has-anim .hero .copy > .wrap > * {
-  opacity: 0;
+  opacity: 0; transform: translateY(1.5rem);
   animation: eb-hero-in 0.9s var(--eb-ease-quart) forwards;
 }
-.has-anim .hero .copy > .wrap > * { transform: translateY(1.5rem); }
-.has-anim .hero .layer-sky  { animation-delay: 1.55s; }
-.has-anim .hero .layer-crew { animation-delay: 1.70s; }
+
+/* The two plates do not just appear — they settle, and at different rates,
+   so the depth is legible before the pointer is ever moved. The crew comes
+   from further out and a beat later, which reads as it stepping forward out
+   of the sky. Transform is free here: the crew is centred by arithmetic on
+   `left`, and the drift lives on the <img> inside. */
+.has-anim .hero .layer { opacity: 0; animation-fill-mode: forwards; }
+.has-anim .hero .layer-sky {
+  animation: eb-sky-in 1.6s var(--eb-ease-quart) 1.45s forwards;
+}
+.has-anim .hero .layer-crew {
+  animation: eb-crew-in 1.5s var(--eb-ease-quart) 1.62s forwards;
+}
+@keyframes eb-sky-in  { from { opacity: 0; transform: scale(1.05); }
+                        to   { opacity: 1; transform: none; } }
+@keyframes eb-crew-in { from { opacity: 0; transform: scale(1.10) translateY(2.5%); }
+                        to   { opacity: 1; transform: none; } }
 .has-anim .hero .copy > .wrap > *:nth-child(1) { animation-delay: 1.85s; }
 .has-anim .hero .copy > .wrap > *:nth-child(2) { animation-delay: 1.98s; }
 .has-anim .hero .copy > .wrap > *:nth-child(3) { animation-delay: 2.11s; }

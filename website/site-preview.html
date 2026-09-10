@@ -822,10 +822,14 @@ body.home main { flex: 1; min-height: 0; display: flex; flex-direction: column; 
 
 
 .hero { --crew-w: min(112vw, 110rem); --crew-drop: 6vh; }
-.layer-crew { position: absolute; left: 0; right: 0; bottom: calc(var(--crew-drop) * -1); }
+
+.layer-crew {
+  position: absolute;
+  left: calc((100% - var(--crew-w)) / 2); width: var(--crew-w);
+  bottom: calc(var(--crew-drop) * -1);
+}
 .layer-crew img {
-  display: block; width: var(--crew-w); height: auto;
-  margin-inline: auto;              
+  display: block; width: 100%; height: auto;
   transform: translate3d(calc(var(--px) * 22px), calc(var(--py) * 12px), 0);
 }
 
@@ -835,14 +839,14 @@ body.home main { flex: 1; min-height: 0; display: flex; flex-direction: column; 
   position: absolute; inset: 0; pointer-events: none;
   
   background: linear-gradient(180deg,
-    rgba(3, 92, 194, 0) 0%,    rgba(3, 92, 194, 0) 48%,
-    rgba(3, 92, 194, .30) 62%, rgba(3, 92, 194, .82) 76%,
-    rgba(3, 92, 194, .98) 86%, var(--eb-blue-600) 100%);
+    rgba(3, 92, 194, 0) 0%,    rgba(3, 92, 194, 0) 58%,
+    rgba(3, 92, 194, .40) 66%, rgba(3, 92, 194, .90) 73%,
+    rgba(3, 92, 194, .99) 81%, var(--eb-blue-600) 100%);
 }
 
 .hero .copy {
   position: relative; z-index: 1;
-  padding-bottom: var(--eb-space-9);
+  padding-bottom: var(--eb-space-7);
   color: var(--eb-fg-on-brand);
   text-align: center;
 }
@@ -1112,14 +1116,23 @@ body.home main { flex: 1; min-height: 0; display: flex; flex-direction: column; 
 .has-anim [data-anim="img"].is-in { clip-path: inset(0 0 0 0); }
 
 
-.has-anim .hero .layer,
 .has-anim .hero .copy > .wrap > * {
-  opacity: 0;
+  opacity: 0; transform: translateY(1.5rem);
   animation: eb-hero-in 0.9s var(--eb-ease-quart) forwards;
 }
-.has-anim .hero .copy > .wrap > * { transform: translateY(1.5rem); }
-.has-anim .hero .layer-sky  { animation-delay: 1.55s; }
-.has-anim .hero .layer-crew { animation-delay: 1.70s; }
+
+
+.has-anim .hero .layer { opacity: 0; animation-fill-mode: forwards; }
+.has-anim .hero .layer-sky {
+  animation: eb-sky-in 1.6s var(--eb-ease-quart) 1.45s forwards;
+}
+.has-anim .hero .layer-crew {
+  animation: eb-crew-in 1.5s var(--eb-ease-quart) 1.62s forwards;
+}
+@keyframes eb-sky-in  { from { opacity: 0; transform: scale(1.05); }
+                        to   { opacity: 1; transform: none; } }
+@keyframes eb-crew-in { from { opacity: 0; transform: scale(1.10) translateY(2.5%); }
+                        to   { opacity: 1; transform: none; } }
 .has-anim .hero .copy > .wrap > *:nth-child(1) { animation-delay: 1.85s; }
 .has-anim .hero .copy > .wrap > *:nth-child(2) { animation-delay: 1.98s; }
 .has-anim .hero .copy > .wrap > *:nth-child(3) { animation-delay: 2.11s; }
@@ -2167,7 +2180,7 @@ table { max-width: none; }
         <h4>Design tokens</h4>
         <p class="muted small">The whole palette, type scale, spacing, radii and shadows as ready-to-use code &#8212; the same values this site is built from.</p>
         <div class="dl-links" style="margin-top:var(--eb-space-3)">
-          <a href="../tokens/tokens.css?v=mtv0qw69" download>tokens.css</a>
+          <a href="../tokens/tokens.css?v=mtv1jino" download>tokens.css</a>
           <a href="../code/tokens/tokens.ts" download>tokens.ts</a>
           <a href="../code/tokens/tailwind.preset.ts" download>tailwind.preset.ts</a>
         </div>

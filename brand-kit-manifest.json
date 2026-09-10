@@ -6,7 +6,7 @@
   "locked": "2026-08-19",
   "owner": "Encik Beku Aircond Sdn Bhd (1561739-D)",
   "fileCount": 181,
-  "totalBytes": 62425398,
+  "totalBytes": 62427034,
   "entries": [
     {
       "path": ".gitattributes",
@@ -681,7 +681,7 @@
     {
       "path": "website/about.html",
       "bytes": 100740,
-      "sha256": "9fb4cef5912393f81ae0fabf6f6fb3c55b5a411b3289a121b8c14989fc48606f"
+      "sha256": "160e7aca371534e76639495542e81c24a9fe1713bfab6c244783ee8a928a6fc9"
     },
     {
       "path": "website/anim.js",
@@ -691,7 +691,7 @@
     {
       "path": "website/brand.html",
       "bytes": 28313,
-      "sha256": "829155540e1a5f9a84271ef25db0c35f1f27785c2b3d9c452da96f4a143ad99f"
+      "sha256": "97c2ab3403b1654c4ee33135ce49ec8a6fa7c8550a05d89460103fc3eafe07bb"
     },
     {
       "path": "website/downloads/Encik-Beku-Brand-Guidelines-2026-v1.0.pdf",
@@ -891,7 +891,7 @@
     {
       "path": "website/index.html",
       "bytes": 3785,
-      "sha256": "d6b9e92ce04df788b76d7fc266de06d87e873c9c0cebba98f4196ddc714b05dc"
+      "sha256": "9c23a905c3d78e90d30c76d64d95b8b4927992bed54c452c572da3a0489b87b6"
     },
     {
       "path": "website/locations.js",
@@ -901,17 +901,17 @@
     {
       "path": "website/services.html",
       "bytes": 27333,
-      "sha256": "d15d817472595c3f08425807dc06ba45b46e6a2c6d1c1d6b4b3cb9589bc90873"
+      "sha256": "3f2eeafaa7b34f0f9db83f06136e1ce12898dea36c6ae76b11048ef9ecb47de0"
     },
     {
       "path": "website/site-preview.html",
-      "bytes": 2310355,
-      "sha256": "811b2e169acf811910b70621105097d3a7908c4565699243aca18be37165ae44"
+      "bytes": 2310734,
+      "sha256": "0c557311be1a00a41b4e46f540d62f4a156cc1776d85dddbc0a5f0c9d18a09fc"
     },
     {
       "path": "website/site.css",
-      "bytes": 54601,
-      "sha256": "bc3b2e32a7774f63f4aa0c2d39a61d2821b4a854409fa6521d4edebb99de1b53"
+      "bytes": 55858,
+      "sha256": "7231514f2601be9ea5d109df8c306bdc2b075a71bbe118066ddfad4cef277f97"
     }
   ]
 }
