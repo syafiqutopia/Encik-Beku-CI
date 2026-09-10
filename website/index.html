@@ -5,12 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Encik Beku</title>
 <meta name="description" content="The official source for Encik Beku company information, brand identity and guidelines, official brand assets, and complete service information with pricing.">
-<link rel="stylesheet" href="../fonts/fonts.css?v=mtrzff9y">
-<link rel="stylesheet" href="../tokens/tokens.css?v=mtrzff9y">
-<link rel="stylesheet" href="site.css?v=mtrzff9y">
+<link rel="stylesheet" href="../fonts/fonts.css?v=mtv0xip3">
+<link rel="stylesheet" href="../tokens/tokens.css?v=mtv0xip3">
+<link rel="stylesheet" href="site.css?v=mtv0xip3">
 <link rel="icon" href="../svg/mark/encik-beku-mark-navy.svg">
+<!-- Both layers are above the fold and the page is nothing else, so neither
+     should wait on the parser to be discovered. -->
+<link rel="preload" as="image" href="img/hero-sky.jpg">
+<link rel="preload" as="image" href="img/hero-crew.avif" type="image/avif">
 </head>
-<body>
+<body class="home">
 
 <!-- Brand loader — horizontal wipe, per the webisoft reference.
      CSS-only and self-dismissing; see the note in site.css. -->
@@ -37,92 +41,48 @@
 
 <main>
 
-<!-- The photograph, shown whole: no crop, no scrim, no filter. Its own
-     aspect ratio sets the hero height. Copy overlaid bottom-left per the
-     approved design; see the contrast note in site.css. -->
-<section class="hero-overlay">
-  <img src="img/hero-team-1788.jpg"
-       srcset="img/hero-team-900.jpg 900w, img/hero-team-1788.jpg 1788w"
-       sizes="100vw" width="1788" height="1006"
-       alt="Five Encik Beku technicians standing together in uniform on a rooftop">
+<!-- The whole page: one screen, two photographic layers.
+     The sky plate and the cut-out technicians are separate images that drift
+     against each other with the pointer. Nesting matters — .layer carries the
+     entrance animation, the <img> inside carries the parallax transform, so
+     the two never fight over the same property. See site.css and hero.js. -->
+<section class="hero">
+  <div class="hero-stage">
+    <div class="layer layer-sky">
+      <img data-depth="0.35" src="img/hero-sky.jpg" alt=""
+           width="1920" height="1080" fetchpriority="high">
+    </div>
+    <div class="layer layer-crew">
+      <picture>
+        <source srcset="img/hero-crew.avif" type="image/avif">
+        <img data-depth="1" src="img/hero-crew.png"
+             width="1788" height="1006" fetchpriority="high"
+             alt="Five Encik Beku technicians standing together in uniform">
+      </picture>
+    </div>
+    <div class="hero-fade" aria-hidden="true"></div>
+  </div>
+
   <div class="copy">
     <div class="wrap">
       <h1 data-i18n="hero.title">Solutions Made Simple</h1>
       <p class="lede" data-i18n="hero.lede">Explore our company, brand identity and complete range of services.</p>
       <div class="cta-row">
-        <a class="btn btn-lg pill on-photo" href="about.html" data-i18n="hero.cta">Explore Our Story</a>
+        <a class="btn btn-lg pill on-photo" href="about.html">
+          <span data-i18n="hero.cta">Explore Our Story</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"
+               fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- The one accent field on the page. Items are service statements, not
-     performance claims — see CLAIMS-TO-VERIFY.md. Duplicated once and marked
-     aria-hidden so the marquee can loop seamlessly without repeating to
-     screen readers. -->
-<div class="strip" role="img" aria-label="The twelve Encik Beku brands">
-  <div class="track">
-    <div class="item"><img src="img/brands/encik-beku.png" alt="Encik Beku" loading="lazy"></div>
-    <div class="item"><img src="img/brands/wiring.png" alt="Wiring Rumah Anda" loading="lazy"></div>
-    <div class="item"><img src="img/brands/bang-guard.png" alt="Bang Guard" loading="lazy"></div>
-    <div class="item"><img src="img/brands/epoxy-flakes.png" alt="Epoxy Flakes" loading="lazy"></div>
-    <div class="item"><img src="img/brands/cabine.png" alt="Cabiné" loading="lazy"></div>
-    <div class="item"><img src="img/brands/cat-rumah.png" alt="Cat Rumah" loading="lazy"></div>
-    <div class="item"><img src="img/brands/mr-ceiling.png" alt="Mr Ceiling" loading="lazy"></div>
-    <div class="item"><img src="img/brands/encik-paip.png" alt="Encik Paip" loading="lazy"></div>
-    <div class="item"><img src="img/brands/partition.png" alt="Partition" loading="lazy"></div>
-    <div class="item"><img src="img/brands/invisiguard.png" alt="InvisiGuard" loading="lazy"></div>
-    <div class="item"><img src="img/brands/wall-panel.png" alt="Wall Panel" loading="lazy"></div>
-    <div class="item"><img src="img/brands/decking.png" alt="Decking" loading="lazy"></div>
-    <div class="item" aria-hidden="true"><img src="img/brands/encik-beku.png" alt="" loading="lazy"></div>
-    <div class="item" aria-hidden="true"><img src="img/brands/wiring.png" alt="" loading="lazy"></div>
-    <div class="item" aria-hidden="true"><img src="img/brands/bang-guard.png" alt="" loading="lazy"></div>
-    <div class="item" aria-hidden="true"><img src="img/brands/epoxy-flakes.png" alt="" loading="lazy"></div>
-    <div class="item" aria-hidden="true"><img src="img/brands/cabine.png" alt="" loading="lazy"></div>
-    <div class="item" aria-hidden="true"><img src="img/brands/cat-rumah.png" alt="" loading="lazy"></div>
-    <div class="item" aria-hidden="true"><img src="img/brands/mr-ceiling.png" alt="" loading="lazy"></div>
-    <div class="item" aria-hidden="true"><img src="img/brands/encik-paip.png" alt="" loading="lazy"></div>
-    <div class="item" aria-hidden="true"><img src="img/brands/partition.png" alt="" loading="lazy"></div>
-    <div class="item" aria-hidden="true"><img src="img/brands/invisiguard.png" alt="" loading="lazy"></div>
-    <div class="item" aria-hidden="true"><img src="img/brands/wall-panel.png" alt="" loading="lazy"></div>
-    <div class="item" aria-hidden="true"><img src="img/brands/decking.png" alt="" loading="lazy"></div>
-  </div>
-</div>
-
 </main>
 
-<footer class="site">
-  <div class="wrap">
-    <div class="foot-grid">
-      <div>
-        <img src="../svg/logo/encik-beku-secondary-dark.svg" alt="Encik Beku">
-        <p style="max-width:38ch">The official source for Encik Beku company information, brand identity and service resources.</p>
-      </div>
-      <div>
-        <h4 data-i18n="foot.sections">Sections</h4>
-        <ul>
-          <li><a href="about.html">Who we are</a></li>
-          <li><a href="brand.html">Our brand</a></li>
-          <li><a href="services.html">What we do</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 data-i18n="foot.contact">Contact</h4>
-        <ul>
-          <li><a href="tel:+60189294628">+6018 929 4628</a></li>
-          <li><a href="mailto:encikbekuaircondmy@gmail.com">encikbekuaircondmy@gmail.com</a></li>
-          <li><a href="https://www.serviceaircond.my">www.serviceaircond.my</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="legal">
-      Encik Beku Aircond Sdn Bhd (1561739-D) · 5, Jln Bukit Badong 26/4, Hicom Industrial Estate, 40400 Shah Alam, Selangor<br>
-      Encik Beku Aircond N9 Sdn Bhd (1611987-U) · Encik Beku Aircond Selatan Sdn Bhd (1611766-A)
-    </div>
-  </div>
-</footer>
-
-<script src="anim.js?v=mtrzff9y"></script>
+<script src="anim.js?v=mtv0xip3"></script>
 <script src="i18n.js"></script>
+<script src="hero.js?v=mtv0xip3"></script>
 </body>
 </html>
