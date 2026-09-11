@@ -6,7 +6,7 @@
   "locked": "2026-08-19",
   "owner": "Encik Beku Aircond Sdn Bhd (1561739-D)",
   "fileCount": 184,
-  "totalBytes": 64851454,
+  "totalBytes": 64849643,
   "entries": [
     {
       "path": ".gitattributes",
@@ -685,13 +685,13 @@
     },
     {
       "path": "website/README.md",
-      "bytes": 7384,
-      "sha256": "d7aeb299840d49a62b5dc50261dc35ec4e5bbad4796613f75224f4168b7bf332"
+      "bytes": 6905,
+      "sha256": "9b7288532fe32af757d150c7240664f31d33f74f050cb4ea8a77752d7a0649c8"
     },
     {
       "path": "website/about.html",
-      "bytes": 102143,
-      "sha256": "8e9c17904700465ec493fc10422e8af21e04f59289a431c2b904be5c472faf11"
+      "bytes": 101034,
+      "sha256": "2125191ca9a233cba0b15976bb2de9ae91f16bf8f2c6729d02a1045e6618e6a4"
     },
     {
       "path": "website/anim.js",
@@ -701,7 +701,7 @@
     {
       "path": "website/brand.html",
       "bytes": 28313,
-      "sha256": "cb6efb5704ec2f210c3e06629b4f3196b81e851ad7b232fe7e49f6ee9a7d4964"
+      "sha256": "cae34058abae571e6e8f5ca9c3026a09a4a77010f86f91aa1f0d4e6aa9648d11"
     },
     {
       "path": "website/downloads/Encik-Beku-Brand-Guidelines-2026-v1.0.pdf",
@@ -906,7 +906,7 @@
     {
       "path": "website/index.html",
       "bytes": 3785,
-      "sha256": "a21f09aad6f824d0598be1b0b7d29a2774a8133a736b98a1bca39f2426056f85"
+      "sha256": "998a4b3dc7d8401516f85a5d94899032688b588c8882d8a0dcc6c95ba1bd34b1"
     },
     {
       "path": "website/locations.js",
@@ -916,12 +916,12 @@
     {
       "path": "website/services.html",
       "bytes": 27333,
-      "sha256": "56f9bdcf78b4c943f53c1e9728094212b2edaaf28f07250cb95ba1a548bb7b10"
+      "sha256": "fb16254b35f9961b9b8b5b643cd5d99325ed6f319d926ff955957e5ded75527d"
     },
     {
       "path": "website/site-preview.html",
-      "bytes": 2666364,
-      "sha256": "f20de14c10f10e099274e6a1aa1006b0bb932667505ea59989e64727f5a3d4bb"
+      "bytes": 2666141,
+      "sha256": "46e289c277e48c006eba183d61385f906d177d7c504d280572b2a138f31ecdd7"
     },
     {
       "path": "website/site.css",

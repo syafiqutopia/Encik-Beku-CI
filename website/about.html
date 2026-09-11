@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Who We Are</title>
 <meta name="description" content="Encik Beku — an established Malaysian air conditioning and technical services company. Company overview, vision and mission, locations, services, service websites and contact details.">
-<link rel="stylesheet" href="../fonts/fonts.css?v=mtwgd0a5">
-<link rel="stylesheet" href="../tokens/tokens.css?v=mtwgd0a5">
-<link rel="stylesheet" href="site.css?v=mtwgd0a5">
+<link rel="stylesheet" href="../fonts/fonts.css?v=mtwgk8ze">
+<link rel="stylesheet" href="../tokens/tokens.css?v=mtwgk8ze">
+<link rel="stylesheet" href="site.css?v=mtwgk8ze">
 <link rel="icon" href="../svg/mark/encik-beku-mark-navy.svg">
 <style>
   /* ─────────────────────────────────────────────────────────────
@@ -16,16 +16,7 @@
      structure; shared components stay in site.css.
      ───────────────────────────────────────────────────────────── */
 
-  /* ── Hero band ──
-     The van in the photograph is white and falls directly behind the centred
-     headline, where white type measures 1.1:1. A flat tint cannot fix that at
-     any strength - measured on this band, #035CC2 gives 1.47:1 at 30%, 2.32:1
-     at 60% and still only 2.87:1 at 72%, by which point the photograph is
-     gone. So the tint stays light at the 30% that keeps the technician clearly
-     visible, and the darkening is confined to the rows the words occupy. It
-     runs the full width on purpose: an ellipse sized to the headline left a
-     dark smudge hanging in the sky beside it, because a soft oval edge is
-     still an edge. A vertical falloff has none to notice. */
+  /* ── Hero band ── */
   .hero-band {
     position: relative;
     display: grid; align-content: center;
@@ -35,16 +26,9 @@
     color: var(--eb-fg-on-brand);
     background-color: var(--eb-bg-brand);   /* on brand before the photo loads */
     background-image:
-      linear-gradient(180deg,
-        rgba(2, 26, 60, 0) 0%,    rgba(2, 26, 60, .30) 26%,
-        rgba(2, 26, 60, .70) 44%, rgba(2, 26, 60, .70) 58%,
-        rgba(2, 26, 60, .30) 76%, rgba(2, 26, 60, 0) 100%),
       linear-gradient(rgba(3, 92, 194, .30), rgba(3, 92, 194, .30)),
       url('img/about-hero.jpg');
-    /* Top-anchored. The supplied frame already ends at the technician's neck,
-       so any downward offset puts the band's own edge through his shoulders
-       and leaves a torso with nothing on top of it. */
-    background-position: center, center, 50% 0%;
+    background-position: center, 50% 0%;
     background-size: cover;
     background-repeat: no-repeat;
   }
@@ -1361,7 +1345,7 @@
   select(0);
 })();
 </script>
-<script src="anim.js?v=mtwgd0a5"></script>
+<script src="anim.js?v=mtwgk8ze"></script>
 <script src="i18n.js?v=mt9lnepq"></script>
 <script src="locations.js?v=mt9t4jmd"></script>
 </body>
