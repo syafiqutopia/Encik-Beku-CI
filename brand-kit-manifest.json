@@ -5,13 +5,18 @@
   "version": "1.0.0",
   "locked": "2026-08-19",
   "owner": "Encik Beku Aircond Sdn Bhd (1561739-D)",
-  "fileCount": 181,
-  "totalBytes": 62427034,
+  "fileCount": 184,
+  "totalBytes": 64851190,
   "entries": [
     {
       "path": ".gitattributes",
       "bytes": 66,
       "sha256": "1a1dbe176bc233b499d35a57db7513f2941c99ab9759f177830c9149be99005b"
+    },
+    {
+      "path": ".github/workflows/publish.yml",
+      "bytes": 5442,
+      "sha256": "f40db48a3a904340db639f0b33d98f77a7120fa9e49194743d4ba0af9939019e"
     },
     {
       "path": ".gitignore",
@@ -157,6 +162,11 @@
       "path": "_source/README.md",
       "bytes": 1216,
       "sha256": "fdfc0f506187466ae5513e8e9aa74a4c53c47792f8099abe64bff48701a75472"
+    },
+    {
+      "path": "_source/encik-beku-about-hero.png",
+      "bytes": 1807265,
+      "sha256": "f46ad07240fefffe55ef55c59ee535b2160c23db34c6bec4c783727eb895a1a8"
     },
     {
       "path": "_source/encik-beku-brand-guidelines-2026.pdf",
@@ -584,9 +594,9 @@
       "sha256": "3f1ec892a587ff792f8d48c66d24834abda4aa81aafc41699835d63e222099cb"
     },
     {
-      "path": "tools/build-hero-layers.sh",
-      "bytes": 1254,
-      "sha256": "ce9fe8b778577c453e837c2003471abe8ca9bdfea979ec1db3191353cd460937"
+      "path": "tools/build-heroes.sh",
+      "bytes": 1683,
+      "sha256": "b54496ce63927a748d231fa0efbc7ae4ecc58cafc3a45962988ac8cf1e9ad227"
     },
     {
       "path": "tools/build-logos.sh",
@@ -605,8 +615,8 @@
     },
     {
       "path": "tools/build-site-preview.mjs",
-      "bytes": 10102,
-      "sha256": "2dc016f175bedf9cd74cf32b349b58ddddfcce22c54dd7792c3987409217787e"
+      "bytes": 11023,
+      "sha256": "257cffb1cc87b4e07629a563b4a9cc33ee23670c5f751de38cbe54ff774ff880"
     },
     {
       "path": "tools/build-tokens.mjs",
@@ -675,13 +685,13 @@
     },
     {
       "path": "website/README.md",
-      "bytes": 6822,
-      "sha256": "d2f14b11a0c31ed2ece175ae561a350714c5e13d2f638790c0d1339db82a6f97"
+      "bytes": 7384,
+      "sha256": "d7aeb299840d49a62b5dc50261dc35ec4e5bbad4796613f75224f4168b7bf332"
     },
     {
       "path": "website/about.html",
-      "bytes": 100740,
-      "sha256": "160e7aca371534e76639495542e81c24a9fe1713bfab6c244783ee8a928a6fc9"
+      "bytes": 101899,
+      "sha256": "cdb7121728966975d386794b521b787e5af60a95ab77872bacf1bbda277fa649"
     },
     {
       "path": "website/anim.js",
@@ -691,7 +701,7 @@
     {
       "path": "website/brand.html",
       "bytes": 28313,
-      "sha256": "97c2ab3403b1654c4ee33135ce49ec8a6fa7c8550a05d89460103fc3eafe07bb"
+      "sha256": "df8ee2a4390725c887ed397e0f0f6a8e475fae148beafc695c5bc1abb6e80c56"
     },
     {
       "path": "website/downloads/Encik-Beku-Brand-Guidelines-2026-v1.0.pdf",
@@ -717,6 +727,11 @@
       "path": "website/i18n.js",
       "bytes": 8383,
       "sha256": "968e891737f3d6e46b6330692975f170d8426d54b0c199fddf7ba399190e92ed"
+    },
+    {
+      "path": "website/img/about-hero.jpg",
+      "bytes": 252768,
+      "sha256": "3a481d89197153fecb678d3771197ceee9c71be463ff29bc54c6eaf11144fe15"
     },
     {
       "path": "website/img/brands/bang-guard.png",
@@ -891,7 +906,7 @@
     {
       "path": "website/index.html",
       "bytes": 3785,
-      "sha256": "9c23a905c3d78e90d30c76d64d95b8b4927992bed54c452c572da3a0489b87b6"
+      "sha256": "729ea4d24c5e47e1b1c73ee1ec8c8fe10a8b4f723728cec46079f595e2604266"
     },
     {
       "path": "website/locations.js",
@@ -901,12 +916,12 @@
     {
       "path": "website/services.html",
       "bytes": 27333,
-      "sha256": "3f2eeafaa7b34f0f9db83f06136e1ce12898dea36c6ae76b11048ef9ecb47de0"
+      "sha256": "d4d6ea45995a51427114412ff931afc59d4717449f309783dc45c09b04b49254"
     },
     {
       "path": "website/site-preview.html",
-      "bytes": 2310734,
-      "sha256": "0c557311be1a00a41b4e46f540d62f4a156cc1776d85dddbc0a5f0c9d18a09fc"
+      "bytes": 2666344,
+      "sha256": "6b56df1508ff6a114fdc8ebb7941bfb31a5915b31da5d1724ed64a5cc822e276"
     },
     {
       "path": "website/site.css",

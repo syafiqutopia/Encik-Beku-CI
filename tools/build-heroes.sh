@@ -1,5 +1,6 @@
 #!/bin/bash
-# Home page hero — two parallax layers.
+# Page hero imagery — the home page's two parallax layers, and the banner
+# behind the Who we are title.
 #
 # The client supplied a background plate (rooftop and sky, people removed) and
 # the five technicians cut out on transparency. Both are 1788x1006 and register
@@ -22,8 +23,15 @@ sips        -s format avif -s formatOptions 60 \
 sips -Z 1024 -s format png \
      _source/encik-beku-hero-crew.png --out "$OUT/hero-crew.png"  >/dev/null
 
-printf 'hero layers:\n'
+# Who we are banner. Opaque, so JPEG; 1920 is the widest it is ever drawn at.
+sips -Z 1920 -s format jpeg -s formatOptions 80 \
+     _source/encik-beku-about-hero.png --out "$OUT/about-hero.jpg" >/dev/null
+
+printf 'home hero layers:\n'
 for f in hero-sky.jpg hero-crew.avif hero-crew.png; do
   printf '  %-16s %s\n' "$f" "$(du -h "$OUT/$f" | cut -f1)"
 done
-printf '  %-16s %s\n' "combined" "$(du -ch "$OUT"/hero-sky.jpg "$OUT"/hero-crew.avif | tail -1 | cut -f1)"
+printf '  %-16s %s  (what the page actually downloads)\n' "combined" \
+  "$(du -ch "$OUT"/hero-sky.jpg "$OUT"/hero-crew.avif | tail -1 | cut -f1)"
+printf 'who we are banner:\n'
+printf '  %-16s %s\n' "about-hero.jpg" "$(du -h "$OUT/about-hero.jpg" | cut -f1)"

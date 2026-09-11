@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Who We Are</title>
 <meta name="description" content="Encik Beku — an established Malaysian air conditioning and technical services company. Company overview, vision and mission, locations, services, service websites and contact details.">
-<link rel="stylesheet" href="../fonts/fonts.css?v=mtv1jino">
-<link rel="stylesheet" href="../tokens/tokens.css?v=mtv1jino">
-<link rel="stylesheet" href="site.css?v=mtv1jino">
+<link rel="stylesheet" href="../fonts/fonts.css?v=mtwfv9kh">
+<link rel="stylesheet" href="../tokens/tokens.css?v=mtwfv9kh">
+<link rel="stylesheet" href="site.css?v=mtwfv9kh">
 <link rel="icon" href="../svg/mark/encik-beku-mark-navy.svg">
 <style>
   /* ─────────────────────────────────────────────────────────────
@@ -16,13 +16,33 @@
      structure; shared components stay in site.css.
      ───────────────────────────────────────────────────────────── */
 
-  /* ── Hero band ── */
+  /* ── Hero band ──
+     The van in the photograph is white and falls directly behind the centred
+     headline, where white type measures about 1.1:1. A flat tint strong
+     enough to fix that would erase the picture, so the work is split: a brand
+     wash over the whole frame, and a soft pool under the title only. The
+     edges keep their sky and van; the middle gets dark enough to read on.
+     Stops are tuned to a measured floor - see the note above the gradient. */
   .hero-band {
-    background: linear-gradient(112deg,
-      var(--eb-french-blue) 0%, var(--eb-tech-blue) 58%, var(--eb-blue-400) 100%);
-    color: var(--eb-fg-on-brand);
-    padding: var(--eb-space-10) 0;
+    position: relative;
+    display: grid; align-content: center;
+    min-height: clamp(17rem, 30vw, 28rem);
+    padding: var(--eb-space-8) 0;
     text-align: center;
+    color: var(--eb-fg-on-brand);
+    background-color: var(--eb-bg-brand);   /* on brand before the photo loads */
+    background-image:
+      radial-gradient(ellipse 96% 130% at 50% 50%,
+        rgba(2, 26, 60, .86) 0%,  rgba(2, 26, 60, .62) 50%,
+        rgba(2, 26, 60, .34) 80%, rgba(2, 26, 60, .18) 100%),
+      linear-gradient(180deg, rgba(3, 92, 194, .42) 0%, rgba(27, 63, 131, .58) 100%),
+      url('img/about-hero.jpg');
+    /* Top-anchored. The supplied frame already ends at the technician's neck,
+       so any downward offset puts the band's own edge through his shoulders
+       and leaves a torso with nothing on top of it. */
+    background-position: center, center, 50% 0%;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
   .hero-band h1 {
     text-transform: uppercase;
@@ -1337,7 +1357,7 @@
   select(0);
 })();
 </script>
-<script src="anim.js?v=mtv1jino"></script>
+<script src="anim.js?v=mtwfv9kh"></script>
 <script src="i18n.js?v=mt9lnepq"></script>
 <script src="locations.js?v=mt9t4jmd"></script>
 </body>

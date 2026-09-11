@@ -24,13 +24,25 @@ photographic layers (`img/hero-sky.jpg` and `img/hero-crew.avif`) that settle in
 as the loader clears and then drift against the pointer.
 
 Rebuild them from the supplied plates with
-[`tools/build-hero-layers.sh`](../tools/build-hero-layers.sh). The travel budget
+[`tools/build-heroes.sh`](../tools/build-heroes.sh). The travel budget
 lives in `site.css` as px multipliers on `--px`/`--py`; `hero.js` only writes
 those two numbers and never touches `transform`.
 
 The gradient stops in `.hero-fade` are tuned to a measured contrast floor —
 white runs 4.57-5.57:1 across 390 to 2560 wide. Weaken them and the headline
 drops below 4.5:1. Re-measure if you change them.
+
+### The Who we are banner
+
+The title band is photographic. The van in the shot is white and sits directly
+behind the centred headline, where bare white type measures about 1.1:1, so the
+treatment is two layers: a brand wash over the whole frame and a soft pool
+under the title. Measured white-on-band runs 6.37-9.20:1 from 390 to 2560 wide.
+Lighten either layer and re-measure before shipping it.
+
+The photograph is top-anchored on purpose - the supplied frame already ends at
+the technician's neck, so any downward offset puts the band's own edge through
+his shoulders.
 
 ### The locations map
 

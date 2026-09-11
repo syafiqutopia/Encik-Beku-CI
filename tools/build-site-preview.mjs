@@ -79,6 +79,8 @@ const LOGO = {
   // preview always resolves the <img src> and never the AVIF.
   'img/hero-sky.jpg':                          `data:image/jpeg;base64,${b64('website/img/hero-sky.jpg')}`,
   'img/hero-crew.png':                         `data:image/png;base64,${b64('website/img/hero-crew.png')}`,
+  // Referenced from about.html's page CSS rather than from markup.
+  'img/about-hero.jpg':                        `data:image/jpeg;base64,${b64('website/img/about-hero.jpg')}`,
   'img/covers/company-profile.jpg':            `data:image/jpeg;base64,${b64('website/img/covers/company-profile.jpg')}`,
   'img/covers/brand-guidelines.jpg':           `data:image/jpeg;base64,${b64('website/img/covers/brand-guidelines.jpg')}`,
   'img/covers/service-catalogue.jpg':          `data:image/jpeg;base64,${b64('website/img/covers/service-catalogue.jpg')}`,
@@ -130,10 +132,21 @@ const panels = PAGES.map((p, i) => {
   return `<section class="panel" id="panel-${p.id}"${i ? ' hidden' : ''}>${main}</section>`;
 }).join('\n');
 
-const extraCss = ['website/brand.html', 'website/services.html']
+// Every page that carries its own <style>. about.html was missing here, so
+// the whole Who-we-are layout - seven sections, accordions, the map and the
+// photographic title band - rendered unstyled in the preview while looking
+// correct on the real page. Verified collision-free: its 56 class names do
+// not overlap the other pages', which matters because these all concatenate
+// into one stylesheet here even though they are page-scoped in the site.
+const extraCss = ['website/about.html', 'website/brand.html', 'website/services.html']
   .map((f) => {
     const m = read(f).match(/<style>([\s\S]*?)<\/style>/);
-    return m ? stripCssComments(m[1]) : '';
+    if (!m) return '';
+    let css = stripCssComments(m[1]);
+    // Page CSS can reference images too - url('img/about-hero.jpg') - and a
+    // single-file preview has nowhere to resolve a relative path from.
+    for (const [rel, uri] of Object.entries(LOGO)) css = css.replaceAll(rel, uri);
+    return css;
   }).join('\n');
 
 let footerOut = footer;
