@@ -1,0 +1,90 @@
+/* ─────────────────────────────────────────────────────────────
+ * ENCIK BEKU — Satoshi @font-face declarations
+ *
+ * Import once, before tokens.css. From your app's stylesheet, using paths
+ * relative to that stylesheet — for example:
+ *   @import url('../fonts/fonts.css');
+ *   @import url('../tokens/tokens.css');
+ *
+ * The src paths BELOW are relative to this file, so keep fonts.css sitting
+ * next to the .otf files when you move the folder.
+ * Licence: see LICENSE-SATOSHI.md — read it before redistributing.
+ * ─────────────────────────────────────────────────────────────
+ */
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('./Satoshi-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('./Satoshi-LightItalic.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('./Satoshi-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('./Satoshi-Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Medium 500 — body copy (Guidelines p.22) */
+@font-face {
+  font-family: 'Satoshi';
+  src: url('./Satoshi-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('./Satoshi-MediumItalic.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Bold 700 — subheadlines */
+@font-face {
+  font-family: 'Satoshi';
+  src: url('./Satoshi-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('./Satoshi-BoldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Black 900 — headlines */
+@font-face {
+  font-family: 'Satoshi';
+  src: url('./Satoshi-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('./Satoshi-BlackItalic.otf') format('opentype');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}

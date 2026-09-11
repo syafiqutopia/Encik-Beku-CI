@@ -1,0 +1,1140 @@
+/* ─────────────────────────────────────────────────────────────
+ * ENCIK BEKU — website styles
+ *
+ * Shared by index / about / brand / catalog. Every colour, size,
+ * radius, shadow and duration resolves to an --eb-* token from the
+ * brand kit. A raw hex in this file is a gap in the kit, and belongs
+ * in tokens/tokens.source.mjs — not here.
+ * ───────────────────────────────────────────────────────────── */
+
+/* ═══════════════════════════════════════════════════════════
+ * Type scale
+ *
+ * Modelled on hatamex.agency, read from their stylesheet rather than
+ * guessed: they do NOT scale the root font size at all
+ * (`html{scroll-behavior:smooth;overflow-x:hidden}` — no font-size).
+ * Type is fixed, steps at breakpoints, and simply stops growing; the
+ * container caps at 1312px and centres.
+ *
+ * This replaces the earlier `font-size: clamp(16px, 1.25vw, 32px)`,
+ * which scaled the root with the viewport. That made the layout
+ * proportional, but it also meant body copy hit 32px on a 2560 display —
+ * which is why the site read as oversized in fullscreen.
+ *
+ * Headings still use clamp(), but every ceiling is a fixed rem value.
+ * With the root pinned at 16px those ceilings are absolute, so type
+ * grows with the window up to a point and then holds.
+ * ═══════════════════════════════════════════════════════════ */
+html {
+  font-size: 100%;          /* 16px. Never scaled — see above. */
+  color-scheme: light;      /* single-theme; ignore the browser's dark setting */
+  overflow-x: hidden;       /* nothing may push the page sideways */
+}
+
+:root {
+  --eb-space-1: 0.25rem;  --eb-space-2: 0.5rem;   --eb-space-3: 0.75rem;
+  --eb-space-4: 1rem;     --eb-space-5: 1.5rem;   --eb-space-6: 2rem;
+  --eb-space-7: 3rem;     --eb-space-8: 4rem;     --eb-space-9: 5.5rem;
+  --eb-space-10: 8rem;
+  --eb-radius-xs: 0.25rem; --eb-radius-sm: 0.5rem; --eb-radius-md: 0.75rem;
+  --eb-radius-lg: 1.125rem; --eb-radius-xl: 1.625rem;
+
+  --eb-ease-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
+  --eb-ease-smooth: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--eb-font-sans);
+  font-weight: var(--eb-fw-medium);
+  font-size: var(--eb-text-base);
+  line-height: var(--eb-leading-relaxed);
+  color: var(--eb-fg-1);
+  background: var(--eb-bg-1);
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+
+.wrap { width: min(82rem, 100% - var(--eb-space-6)); margin-inline: auto; }
+.section { padding: var(--eb-space-9) 0; }
+.section.tint { background: var(--eb-neutral-50); }
+.section.tight { padding: var(--eb-space-8) 0; }
+
+/* ── Type ────────────────────────────────────────────────── */
+h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
+.eyebrow {
+  font-size: var(--eb-text-sm); font-weight: var(--eb-fw-bold);
+  letter-spacing: var(--eb-tracking-wide); text-transform: uppercase;
+  color: var(--eb-fg-brand);
+}
+h1 {
+  font-size: clamp(2rem, 4.4vw, 3.25rem);
+  font-weight: var(--eb-fw-black);
+  line-height: var(--eb-leading-tight);
+  letter-spacing: var(--eb-tracking-tight);
+}
+h2 {
+  font-size: clamp(1.5rem, 2.9vw, 2.25rem);
+  font-weight: var(--eb-fw-black);
+  line-height: var(--eb-leading-snug);
+  letter-spacing: var(--eb-tracking-tight);
+}
+h3 { font-size: var(--eb-text-lg); font-weight: var(--eb-fw-bold); line-height: var(--eb-leading-snug); }
+h4 { font-size: var(--eb-text-md); font-weight: var(--eb-fw-bold); }
+p  { margin: 0; }
+.lede { font-size: var(--eb-text-md); color: var(--eb-fg-2); max-width: 62ch; }
+.prose { display: grid; gap: var(--eb-space-4); max-width: 68ch; color: var(--eb-fg-2); }
+.prose strong { color: var(--eb-fg-1); font-weight: var(--eb-fw-bold); }
+.sec-head { max-width: 64ch; margin-bottom: var(--eb-space-7); display: grid; gap: var(--eb-space-3); }
+.sec-head p { color: var(--eb-fg-2); }
+.muted { color: var(--eb-fg-2); }
+.small { font-size: var(--eb-text-sm); }
+.tnum  { font-variant-numeric: tabular-nums; }
+
+/* ── Buttons ─────────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: var(--eb-space-2);
+  height: 2.75rem; padding: 0 1.375rem;
+  border: 1px solid transparent;
+  border-radius: var(--eb-radius-sm);
+  font: inherit; font-size: 0.9375rem; font-weight: var(--eb-fw-bold);
+  letter-spacing: var(--eb-tracking-snug);
+  white-space: nowrap; flex-shrink: 0;
+  text-decoration: none; cursor: pointer;
+  transition: transform var(--eb-dur-fast) var(--eb-ease),
+              box-shadow var(--eb-dur-fast) var(--eb-ease),
+              background-color var(--eb-dur-fast) var(--eb-ease);
+}
+.btn:hover { transform: translateY(-2px); }
+.btn svg { flex-shrink: 0; }
+.btn-lg { height: 3.375rem; padding: 0 1.875rem; font-size: 1.0625rem; }
+.btn-sm { height: 2.25rem; padding: 0 0.875rem; font-size: 0.8125rem; }
+
+.btn-primary { background: var(--eb-bg-brand); color: var(--eb-fg-on-brand); box-shadow: var(--eb-shadow-brand); }
+.btn-primary:hover { background: var(--eb-brand-hover); }
+/* Near-black ink, never white — white on Pumpkin is 2.65:1. CI.md §6.3 */
+.btn-accent { background: var(--eb-bg-accent); color: var(--eb-on-accent); box-shadow: var(--eb-shadow-accent); }
+.btn-accent:hover { background: var(--eb-accent-hover); }
+.btn-ghost { background: transparent; color: var(--eb-fg-brand); border-color: var(--eb-border-2); }
+.btn-ghost:hover { background: var(--eb-bg-2); }
+.btn-ghost.on-blue { color: var(--eb-fg-on-brand); border-color: var(--eb-border-on-brand-strong); }
+.btn-ghost.on-blue:hover { background: var(--eb-bg-on-brand-hover); }
+
+:where(a, button, input, select):focus-visible {
+  outline: 2px solid var(--eb-border-brand);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--eb-focus-ring);
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+header.site {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--eb-bg-1);
+  border-bottom: 1px solid var(--eb-border-1);
+}
+.nav {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;   /* nav · logo · language */
+  align-items: center;
+  gap: var(--eb-space-5);
+  height: 4.5rem;
+}
+.nav .logo { width: 11.25rem; flex-shrink: 0; }   /* ≥120px secondary min, CI.md §2.8 */
+.nav .brand { justify-self: center; display: block; }
+.nav nav { display: flex; gap: var(--eb-space-6); align-items: center; }
+.nav nav a {
+  text-decoration: none;
+  font-size: var(--eb-text-sm); font-weight: var(--eb-fw-bold);
+  letter-spacing: var(--eb-tracking-wide); text-transform: uppercase;
+  color: var(--eb-fg-2);
+  padding: 0.375rem 0; border-bottom: 2px solid transparent;
+  transition: color var(--eb-dur-fast) var(--eb-ease);
+}
+.nav nav a:hover { color: var(--eb-fg-brand); }
+.nav nav a[aria-current="page"] { color: var(--eb-fg-brand); border-bottom-color: var(--eb-fg-brand); }
+
+/* ── Language switcher ──────────────────────────────────────
+ * One language per page is the rule (CI.md §8.3), so this swaps the whole
+ * page rather than mixing. Rendered as buttons, not links: it changes the
+ * current page's language, it does not navigate.
+ */
+.langs {
+  justify-self: end;
+  display: flex; align-items: center; gap: 0;
+  font-size: var(--eb-text-sm); font-weight: var(--eb-fw-bold);
+  letter-spacing: var(--eb-tracking-wide);
+}
+.langs button {
+  appearance: none; background: none; border: 0; cursor: pointer;
+  font: inherit; letter-spacing: inherit; text-transform: uppercase;
+  color: var(--eb-fg-3); padding: 0.375rem 0.55rem;
+  transition: color var(--eb-dur-fast) var(--eb-ease);
+}
+.langs button:hover { color: var(--eb-fg-brand); }
+.langs button[aria-pressed="true"] { color: var(--eb-fg-1); }
+.langs .sep { color: var(--eb-border-2); user-select: none; }
+
+@media (max-width: 940px) {
+  .nav {
+    grid-template-columns: auto 1fr; gap: var(--eb-space-3);
+    height: auto; padding: var(--eb-space-3) 0;
+  }
+  .nav .brand { justify-self: start; order: 1; }
+  .nav .logo { width: 9.375rem; }
+  .langs { order: 2; justify-self: end; }
+  .nav nav { order: 3; grid-column: 1 / -1; overflow-x: auto; gap: var(--eb-space-4); }
+}
+
+/* Anchored sections must clear the sticky header */
+:target, [id] { scroll-margin-top: 5.75rem; }
+
+/* ── Page head ───────────────────────────────────────────── */
+.pagehead {
+  background: var(--eb-bg-1); color: var(--eb-fg-1);
+  padding: var(--eb-space-9) 0 var(--eb-space-8);
+  position: relative; overflow: hidden;
+  border-bottom: 1px solid var(--eb-border-1);
+}
+.pagehead .wrap { position: relative; z-index: 1; }
+
+/* Split hero — copy left, photograph right. The photo carries the right side,
+   so the radiating-lines motif is suppressed here; running both makes the
+   field busy and the stripes read as artefacts across the sky. */
+.pagehead.split::after { display: none; }
+.pagehead.split .wrap {
+  display: grid; grid-template-columns: 1.02fr 0.98fr;
+  gap: var(--eb-space-7); align-items: center;
+}
+.hero-photo {
+  border-radius: var(--eb-radius-lg); overflow: hidden;
+  box-shadow: 0 24px 60px rgba(13, 31, 66, .35);
+  /* A hairline of Frozen Lake ties the photo to the palette without a border
+     that would read as the keyline the logo rules forbid elsewhere. */
+  outline: 1px solid var(--eb-border-on-brand); outline-offset: 0;
+}
+/* height:auto, not 100% — with `height:100%` the winner depends on whether the
+   parent resolves a definite height, so the same markup rendered 370px tall on
+   the multi-page site and 800px in the single-file build. Letting aspect-ratio
+   govern alone makes the box deterministic in any container. */
+.hero-photo img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+@media (max-width: 900px) {
+  .pagehead.split .wrap { grid-template-columns: 1fr; gap: var(--eb-space-6); }
+  .hero-photo { order: -1; }
+}
+.pagehead .eyebrow { color: var(--eb-fg-brand); }
+.pagehead h1 { margin: var(--eb-space-3) 0 var(--eb-space-4); }
+.pagehead .lede { color: var(--eb-fg-2); }
+.cta-row { display: flex; flex-wrap: wrap; gap: var(--eb-space-3); margin-top: var(--eb-space-5); }
+
+/* ── Cards ───────────────────────────────────────────────── */
+.card {
+  background: var(--eb-bg-1); border: 1px solid var(--eb-border-1);
+  border-radius: var(--eb-radius-md); padding: var(--eb-space-5);
+  display: grid; gap: var(--eb-space-2); align-content: start;
+}
+.grid { display: grid; gap: var(--eb-space-4); }
+.g2 { grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); }
+.g3 { grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr)); }
+.g4 { grid-template-columns: repeat(auto-fit, minmax(13.4375rem, 1fr)); }
+
+/* Hub cards — the three doors */
+.door {
+  display: grid; gap: var(--eb-space-3); align-content: start;
+  padding: var(--eb-space-6); border-radius: var(--eb-radius-lg);
+  border: 1px solid var(--eb-border-1); background: var(--eb-bg-1);
+  text-decoration: none; color: inherit;
+  box-shadow: var(--eb-shadow-xs);
+  transition: transform var(--eb-dur) var(--eb-ease), box-shadow var(--eb-dur) var(--eb-ease);
+}
+.door:hover { transform: translateY(-3px); box-shadow: var(--eb-shadow-lg); }
+.door .ic {
+  width: 3.25rem; height: 3.25rem; border-radius: var(--eb-radius-sm);
+  display: grid; place-items: center;
+  background: var(--eb-bg-tint); color: var(--eb-fg-brand);
+}
+.door .go {
+  margin-top: var(--eb-space-2); font-weight: var(--eb-fw-bold);
+  color: var(--eb-fg-brand); display: inline-flex; align-items: center; gap: 0.375rem;
+  font-size: var(--eb-text-sm);
+}
+
+/* ── Stats ───────────────────────────────────────────────── */
+.stat { border-top: 3px solid var(--eb-bg-brand); padding-top: var(--eb-space-4); }
+.stat:nth-child(2) { border-color: var(--eb-fresh-sky); }
+.stat:nth-child(3) { border-color: var(--eb-frozen-lake); }
+.stat:nth-child(4) { border-color: var(--eb-bg-accent); }
+.stat .big {
+  font-size: var(--eb-text-3xl); font-weight: var(--eb-fw-black);
+  line-height: 1; letter-spacing: var(--eb-tracking-tight); color: var(--eb-french-blue);
+}
+.stat .lbl { font-weight: var(--eb-fw-bold); margin: var(--eb-space-2) 0 var(--eb-space-1); }
+.stat p { font-size: var(--eb-text-sm); color: var(--eb-fg-2); }
+
+/* ── Download bar ────────────────────────────────────────── */
+.dl {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--eb-space-4);
+  padding: var(--eb-space-5); border-radius: var(--eb-radius-md);
+  background: var(--eb-bg-1); border: 1px solid var(--eb-border-1);
+}
+.dl .txt { flex: 1 1 20rem; display: grid; gap: 0.25rem; }
+.dl .txt b { font-weight: var(--eb-fw-bold); }
+.dl .meta { font-size: var(--eb-text-sm); color: var(--eb-fg-2); }
+
+/* ── Tables ──────────────────────────────────────────────── */
+.tablewrap { overflow-x: auto; border-radius: var(--eb-radius-md); border: 1px solid var(--eb-border-1); }
+table { width: 100%; border-collapse: collapse; font-size: var(--eb-text-sm); min-width: 32.5rem; }
+thead th {
+  text-align: left; padding: 0.75rem 0.875rem;
+  background: var(--eb-bg-brand); color: var(--eb-fg-on-brand);
+  font-size: var(--eb-text-xs); font-weight: var(--eb-fw-bold);
+  letter-spacing: var(--eb-tracking-wide); text-transform: uppercase;
+  white-space: nowrap;
+}
+thead th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+tbody td { padding: 0.6875rem 0.875rem; border-bottom: 1px solid var(--eb-border-1); vertical-align: top; }
+tbody tr:last-child td, tbody tr:last-child th { border-bottom: 0; }
+tbody tr:nth-child(even) { background: var(--eb-bg-2); }
+tbody th {
+  text-align: left; padding: 0.6875rem 0.875rem; font-weight: var(--eb-fw-bold);
+  border-bottom: 1px solid var(--eb-border-1); white-space: nowrap;
+}
+caption {
+  caption-side: top; text-align: left; padding: 0 0 var(--eb-space-3);
+  font-weight: var(--eb-fw-bold); color: var(--eb-fg-1);
+}
+.hp {
+  display: inline-block; min-width: 3.25rem; text-align: center;
+  padding: 2px 8px; border-radius: var(--eb-radius-xs);
+  background: var(--eb-bg-tint); color: var(--eb-french-blue);
+  font-size: var(--eb-text-xs); font-weight: var(--eb-fw-bold);
+}
+
+/* ── Price / service blocks ──────────────────────────────── */
+.svc-head {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--eb-space-3);
+  margin-bottom: var(--eb-space-3);
+}
+.from-price {
+  font-size: var(--eb-text-xl); font-weight: var(--eb-fw-black);
+  color: var(--eb-fg-brand); letter-spacing: var(--eb-tracking-tight);
+  font-variant-numeric: tabular-nums;
+}
+.from-label { font-size: var(--eb-text-sm); color: var(--eb-fg-2); }
+.note {
+  font-size: var(--eb-text-sm); color: var(--eb-fg-2);
+  border-left: 3px solid var(--eb-frozen-lake);
+  padding: 2px 0 2px var(--eb-space-3); margin-top: var(--eb-space-3);
+}
+
+/* ── Chips ───────────────────────────────────────────────── */
+.chip {
+  display: inline-flex; align-items: center; gap: 0.375rem;
+  padding: 0.3125rem 0.75rem; border-radius: var(--eb-radius-pill);
+  border: 1px solid; font-size: var(--eb-text-xs); font-weight: var(--eb-fw-bold);
+  line-height: 1; white-space: nowrap;
+}
+.chip.brand   { background: var(--eb-bg-brand); color: var(--eb-fg-on-brand); border-color: transparent; }
+.chip.accent  { background: var(--eb-bg-accent); color: var(--eb-on-accent); border-color: transparent; }
+.chip.tint    { background: var(--eb-bg-tint); color: var(--eb-french-blue); border-color: transparent; }
+.chip.ok      { background: rgba(13,129,73,.10); color: var(--eb-success); border-color: rgba(13,129,73,.24); }
+.chip.no      { background: rgba(180,35,24,.10); color: var(--eb-danger);  border-color: rgba(180,35,24,.24); }
+
+/* ── Brand page: swatches & assets ───────────────────────── */
+.swatch { border-radius: var(--eb-radius-md); overflow: hidden; border: 1px solid var(--eb-border-1); }
+.swatch .chip-fill { height: 6.75rem; display: grid; place-items: center; font-weight: var(--eb-fw-black); }
+.swatch .meta { padding: var(--eb-space-4); display: grid; gap: 0.1875rem; font-size: var(--eb-text-sm); }
+.swatch .meta b { font-size: var(--eb-text-base); font-weight: var(--eb-fw-bold); }
+.swatch .meta code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: var(--eb-text-xs); color: var(--eb-fg-2);
+}
+.swatch .role { color: var(--eb-fg-2); }
+
+.asset {
+  border: 1px solid var(--eb-border-1); border-radius: var(--eb-radius-md);
+  overflow: hidden; display: grid; grid-template-rows: 1fr auto;
+}
+.asset .prev { display: grid; place-items: center; padding: var(--eb-space-5); min-height: 9.375rem; }
+.asset .prev.light { background: var(--eb-bg-2); }
+.asset .prev.dark  { background: var(--eb-french-blue); }
+.asset .prev img { width: 100%; max-width: 13.125rem; }
+.asset .bar {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--eb-space-3);
+  padding: var(--eb-space-3) var(--eb-space-4); border-top: 1px solid var(--eb-border-1);
+  font-size: var(--eb-text-sm);
+}
+.asset .bar b { font-weight: var(--eb-fw-bold); }
+.asset .bar .fmt { color: var(--eb-fg-2); font-size: var(--eb-text-xs); }
+.dl-links { display: flex; gap: 0.625rem; }
+.dl-links a {
+  font-size: var(--eb-text-xs); font-weight: var(--eb-fw-bold);
+  color: var(--eb-fg-brand); text-decoration: none;
+  padding: 0.25rem 0.5625rem; border: 1px solid var(--eb-border-2); border-radius: var(--eb-radius-xs);
+}
+.dl-links a:hover { background: var(--eb-bg-tint); }
+
+.rules { display: grid; gap: var(--eb-space-3); }
+.rule {
+  display: flex; gap: var(--eb-space-3); align-items: flex-start;
+  padding: var(--eb-space-4); border-radius: var(--eb-radius-md);
+  border: 1px solid var(--eb-border-1); background: var(--eb-bg-1);
+}
+.rule .n {
+  width: 1.625rem; height: 1.625rem; flex-shrink: 0; border-radius: var(--eb-radius-pill);
+  display: grid; place-items: center; font-size: var(--eb-text-xs);
+  font-weight: var(--eb-fw-black); background: var(--eb-danger); color: var(--eb-fg-on-brand);
+}
+
+.typespec { display: grid; gap: var(--eb-space-4); }
+.typerow {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--eb-space-4);
+  padding-bottom: var(--eb-space-4); border-bottom: 1px solid var(--eb-border-1);
+}
+.typerow .demo { flex: 1 1 21.25rem; }
+.typerow .spec { font-size: var(--eb-text-sm); color: var(--eb-fg-2); min-width: 11.875rem; }
+
+/* ── Branches & contact ──────────────────────────────────── */
+.branch { display: flex; gap: var(--eb-space-3); align-items: flex-start; }
+.branch svg { color: var(--eb-fg-brand); flex-shrink: 0; margin-top: 0.1875rem; }
+.branch b { display: block; }
+.branch span { font-size: var(--eb-text-sm); color: var(--eb-fg-2); }
+
+.band {
+  background: var(--eb-bg-brand-deep); color: var(--eb-fg-on-brand);
+  border-radius: var(--eb-radius-xl); padding: var(--eb-space-7);
+  display: flex; flex-wrap: wrap; gap: var(--eb-space-5);
+  align-items: center; justify-content: space-between;
+}
+.band p { margin-top: var(--eb-space-2); color: var(--eb-fg-on-brand-muted); max-width: 46ch; }
+
+/* ── Footer ──────────────────────────────────────────────── */
+footer.site {
+  background: var(--eb-bg-brand); color: var(--eb-fg-on-brand-muted);
+  padding: var(--eb-space-8) 0 var(--eb-space-6); font-size: var(--eb-text-sm);
+  margin-top: var(--eb-space-8);
+}
+footer.site img { width: 11.25rem; margin-bottom: var(--eb-space-4); }
+.foot-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: var(--eb-space-6); }
+@media (max-width: 780px) { .foot-grid { grid-template-columns: 1fr; } }
+footer.site h4 {
+  font-size: var(--eb-text-xs); text-transform: uppercase;
+  letter-spacing: var(--eb-tracking-wide); color: var(--eb-fg-on-brand-muted);
+  margin-bottom: var(--eb-space-3);
+}
+footer.site ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--eb-space-2); }
+/* WCAG 2.2 SC 2.5.8 — a footer link is a standalone target, not inline
+   prose, so it needs 24px at every width. Mobile widens it to 44px below. */
+footer.site ul a { display: inline-flex; align-items: center; min-height: 1.5rem; }
+footer.site a { text-decoration: none; }
+footer.site a:hover { color: var(--eb-fg-on-brand); }
+.legal {
+  margin-top: var(--eb-space-7); padding-top: var(--eb-space-4);
+  border-top: 1px solid var(--eb-border-on-brand);
+  color: var(--eb-fg-on-brand-muted); font-size: var(--eb-text-xs); line-height: 1.6;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn:hover, .door:hover { transform: none; }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+ * Resource-site components
+ * The site is a corporate profile + brand book + catalogue, not a
+ * sales page: informational actions, no urgency devices, no floating
+ * contact button. See Website Structure brief §1 and §24.
+ * ═══════════════════════════════════════════════════════════ */
+
+/* ── Pillar cards (homepage) ─────────────────────────────── */
+.pillar {
+  display: grid; gap: var(--eb-space-3); align-content: start;
+  padding: var(--eb-space-6); border-radius: var(--eb-radius-lg);
+  border: 1px solid var(--eb-border-1); background: var(--eb-bg-1);
+  box-shadow: var(--eb-shadow-xs);
+}
+.pillar h3 { font-size: var(--eb-text-xl); font-weight: var(--eb-fw-black); }
+.pillar .claim { font-weight: var(--eb-fw-bold); color: var(--eb-fg-1); }
+.pillar p { color: var(--eb-fg-2); font-size: var(--eb-text-sm); }
+.pillar .acts { display: flex; flex-wrap: wrap; gap: var(--eb-space-3); margin-top: var(--eb-space-3); }
+.pillar .primary {
+  font-weight: var(--eb-fw-bold); color: var(--eb-fg-brand);
+  text-decoration: none; display: inline-flex; align-items: center; gap: 0.375rem;
+}
+.pillar .primary:hover { text-decoration: underline; }
+.pillar .secondary {
+  font-size: var(--eb-text-sm); font-weight: var(--eb-fw-bold);
+  color: var(--eb-fg-2); text-decoration: none;
+  display: inline-flex; align-items: center; gap: 0.375rem;
+}
+.pillar .secondary:hover { color: var(--eb-fg-brand); }
+
+/* ── Service cards & category bands ──────────────────────────
+   Encik Beku's own work photography, lifted out of the source PDFs by
+   tools/build-service-photos.sh. Every frame is the same cast in the same
+   uniform, so the set reads as one company rather than as stock.
+   The originals are portrait; both crops sit high because the work — hands,
+   tools, the unit being serviced — is in the upper half of every frame. */
+.svccard {
+  display: grid; grid-template-rows: auto 1fr; align-content: start;
+  border: 1px solid var(--eb-border-1); border-radius: var(--eb-radius-md);
+  background: var(--eb-bg-1); overflow: hidden;
+}
+.svccard img {
+  display: block; width: 100%; height: auto; aspect-ratio: 4 / 5;
+  object-fit: cover; object-position: 50% 30%;
+  align-self: start;            /* a stretched grid item ignores aspect-ratio */
+  background: var(--eb-bg-2);
+}
+.svccard .txt { padding: var(--eb-space-4) var(--eb-space-5) var(--eb-space-5); }
+.svccard h4 { font-size: var(--eb-text-base); margin-bottom: 0.35rem; }
+.svccard p { color: var(--eb-fg-2); font-size: var(--eb-text-sm); }
+
+/* A category opens with a face, so a long price list gains a rhythm. */
+.catband {
+  display: grid; grid-template-columns: 13.5rem minmax(0, 1fr);
+  gap: var(--eb-space-6); align-items: center;
+  margin-bottom: var(--eb-space-7);
+}
+.catband img {
+  display: block; width: 100%; height: auto; aspect-ratio: 4 / 5;
+  align-self: start;
+  object-fit: cover; object-position: 50% 30%;
+  border-radius: var(--eb-radius-md); background: var(--eb-bg-2);
+}
+.catband .sec-head { margin-bottom: 0; }
+@media (max-width: 700px) {
+  .catband { grid-template-columns: 1fr; gap: var(--eb-space-4); }
+  .catband img { aspect-ratio: 16 / 9; object-position: 50% 28%; }
+}
+
+/* ── Download card — brief §20 ───────────────────────────── */
+.dlcard {
+  display: grid; grid-template-columns: 8.25rem 1fr;
+  gap: var(--eb-space-5); align-items: start;
+  padding: var(--eb-space-5); border-radius: var(--eb-radius-md);
+  border: 1px solid var(--eb-border-1); background: var(--eb-bg-1);
+}
+.dlcard .cover {
+  border-radius: var(--eb-radius-sm); overflow: hidden;
+  border: 1px solid var(--eb-border-1); background: var(--eb-bg-2);
+  /* No fixed ratio: the Brand Guidelines is A4 landscape, the other two are
+     A4 portrait. Each cover keeps its own shape rather than being cropped. */
+}
+.dlcard .cover img { width: 100%; height: auto; display: block; }
+.dlcard .body { display: grid; gap: var(--eb-space-2); }
+.dlcard h3 { font-size: var(--eb-text-lg); }
+.dlcard p { color: var(--eb-fg-2); font-size: var(--eb-text-sm); }
+.dlcard .specs {
+  display: flex; flex-wrap: wrap; gap: 0.375rem 0.875rem;
+  font-size: var(--eb-text-xs); color: var(--eb-fg-3);
+  font-variant-numeric: tabular-nums;
+}
+.dlcard .specs b { color: var(--eb-fg-2); font-weight: var(--eb-fw-bold); }
+.dlcard .acts { display: flex; flex-wrap: wrap; gap: var(--eb-space-3); margin-top: var(--eb-space-2); }
+@media (max-width: 620px) {
+  .dlcard { grid-template-columns: 1fr; }
+  .dlcard .cover { max-width: 132px; }
+}
+
+/* ── Service ecosystem — brief §6.8 ──────────────────────── */
+.eco { display: grid; gap: var(--eb-space-3); max-width: 680px; }
+.eco .tier {
+  display: flex; align-items: center; gap: var(--eb-space-4);
+  padding: var(--eb-space-4) var(--eb-space-5);
+  border-radius: var(--eb-radius-md); background: var(--eb-bg-2);
+  border-left: 4px solid var(--eb-frozen-lake);
+}
+.eco .tier.root { background: var(--eb-bg-brand); color: var(--eb-fg-on-brand); border-left-color: var(--eb-bg-accent); }
+.eco .tier.root .sub { color: var(--eb-fg-on-brand-muted); }
+.eco .tier b { font-weight: var(--eb-fw-bold); white-space: nowrap; }
+.eco .tier .sub { font-size: var(--eb-text-sm); color: var(--eb-fg-2); }
+.eco .link { width: 2px; height: 0.875rem; background: var(--eb-border-2); margin-left: 1.75rem; }
+
+/* ── Definition rows (Company at a glance, tone of voice) ── */
+.deflist { display: grid; gap: 0; }
+.defrow {
+  display: grid; grid-template-columns: 13.75rem 1fr; gap: var(--eb-space-4);
+  padding: var(--eb-space-3) 0; border-bottom: 1px solid var(--eb-border-1);
+}
+.defrow:last-child { border-bottom: 0; }
+.defrow dt { font-weight: var(--eb-fw-bold); color: var(--eb-fg-1); }
+.defrow dd { margin: 0; color: var(--eb-fg-2); }
+@media (max-width: 620px) { .defrow { grid-template-columns: 1fr; gap: 2px; } }
+
+/* ── Do / Don't lists — brief §11 ────────────────────────── */
+.dodont { display: grid; gap: var(--eb-space-2); }
+.dodont li { display: flex; gap: var(--eb-space-3); align-items: flex-start; font-size: var(--eb-text-sm); }
+.dodont { list-style: none; margin: 0; padding: 0; }
+.dodont .yes, .dodont .no {
+  width: 1.25rem; height: 1.25rem; flex-shrink: 0; border-radius: var(--eb-radius-pill);
+  display: grid; place-items: center; margin-top: 1px;
+}
+.dodont .yes { background: rgba(13,129,73,.12); color: var(--eb-success); }
+.dodont .no  { background: rgba(180,35,24,.10); color: var(--eb-danger); }
+
+/* ── Tagline ─────────────────────────────────────────────── */
+.tagline {
+  font-weight: var(--eb-fw-black);
+  font-size: var(--eb-text-2xl);
+  letter-spacing: var(--eb-tracking-tight);
+  color: var(--eb-fg-brand);
+}
+
+/* ── Effective-date stamp — brief §17, §21 ───────────────── */
+.stamp {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.375rem 0.875rem; border-radius: var(--eb-radius-pill);
+  background: var(--eb-bg-tint); color: var(--eb-french-blue);
+  font-size: var(--eb-text-xs); font-weight: var(--eb-fw-bold);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ═══════════════════════════════════════════════════════════
+ * Home hero — one screen, two photographic layers
+ *
+ * The page is nothing but this: a sky plate and the five technicians cut
+ * out on transparency, drifting against each other with the pointer.
+ * Nothing scrolls, so there is no scroll parallax to hang the depth on.
+ *
+ * The lower third fades into brand blue. That began as the client's
+ * mockup, but it also retires a debt: this hero previously ran white type
+ * straight over the photograph at 1.5-2.0:1 against a 4.5:1 requirement,
+ * recorded here as a signed-off trade.
+ *
+ * The bed is deliberately confined to the bottom third: ramping from 40%
+ * swallowed half the frame and drained the colour out of the crew, and the
+ * plate is the point. It starts late and climbs hard instead.
+ *
+ * That leaves the contrast floor tight, so it is measured off the composited
+ * page rather than off the flat token, which would flatter it. Body copy and
+ * the CTA run 4.68-5.67:1 across 390 to 2560 wide; the headline runs
+ * 3.69-4.87:1 and is large text (64px/900), where the bar is 3.0:1. Weaken
+ * the .40/.90 stops or raise .hero .copy off the bottom and the headline
+ * goes under 3.0. Re-measure if you touch either.
+ *
+ * The sky is inset past the frame by a fixed 14px — more than the 9px it
+ * can travel — so an edge is never exposed, at any window width. The
+ * technicians are never cover-cropped: `cover` clipped the outer two men on
+ * anything taller than 16:9, so that plate is sized by width at its natural
+ * aspect and hung past the bottom, where the frame's shin crop stays under
+ * the opaque part of the bed.
+ * ═══════════════════════════════════════════════════════════ */
+
+/* Header floats on the photograph. Absolute, not sticky: a white-on-photo
+   header would vanish the moment it scrolled onto white content. */
+header.site.overlay {
+  position: absolute; inset: 0 0 auto; z-index: 30;
+  background: transparent; border-bottom: 0;
+}
+header.site.overlay .nav nav a,
+header.site.overlay .langs button { color: var(--eb-fg-on-brand-muted); }
+header.site.overlay .langs button[aria-pressed="true"] { color: var(--eb-fg-on-brand); }
+header.site.overlay .langs .sep { color: var(--eb-border-on-brand-strong); }
+header.site.overlay .nav nav a:hover { border-bottom-color: var(--eb-fg-on-brand); }
+header.site.overlay .nav nav a[aria-current="page"] {
+  color: var(--eb-fg-on-brand); border-bottom-color: var(--eb-fg-on-brand);
+}
+
+/* The page itself is the grid, so header + hero come to exactly one screen.
+   On desktop the header is absolute and contributes no row; below 700px it
+   goes static and takes its own height out of the hero's share instead of
+   adding to it. The loader is fixed and never a row either way. */
+body.home { min-height: 100svh; display: flex; flex-direction: column; }
+body.home main { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+
+.hero {
+  position: relative;
+  flex: 1; min-height: 0;
+  display: grid; align-content: end;
+  background: var(--eb-bg-brand);   /* any pixel the photo misses is on-brand */
+  overflow: hidden;
+}
+.hero-stage {
+  position: absolute; inset: 0; overflow: hidden;
+  /* hero.js writes these, unitless, -1..1. Declared here so that if the
+     script never runs the calc()s below resolve to 0 and the hero is
+     simply still. The px multipliers are the travel budget, and they live
+     in CSS because how far each plane moves is a design value. */
+  --px: 0; --py: 0;
+}
+.layer picture { display: contents; }
+.layer img { max-width: none; }     /* release the global img { max-width:100% } */
+
+/* The sky is a full-bleed plate, so it is inset past the frame by more than
+   it can ever travel. A fixed inset, not a percentage: 106% gave less slack
+   than the travel budget in a narrow window and exposed an edge. */
+.layer-sky { position: absolute; inset: -14px; }
+.layer-sky img {
+  display: block; width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: 50% 0;           /* top-anchored: pushes the concrete down and out */
+  transform: translate3d(calc(var(--px) * 9px), calc(var(--py) * 5px), 0);
+}
+
+/* The technicians are NEVER cover-cropped — the cut-out is the content, and
+   `cover` clipped the outer two men at any viewport taller than 16:9. Sized
+   by width at natural aspect and hung past the bottom edge instead, so the
+   shins the supplied frame cuts off sit under the opaque part of the bed.
+   The two plates no longer need to register: the fade hides the horizon. */
+.hero { --crew-w: min(112vw, 110rem); --crew-drop: 6vh; }
+/* Centred by arithmetic, not by `margin: auto` — auto margins resolve to 0
+   the moment the plate is wider than the frame, which is exactly the case on
+   a phone, and it sat hard against the left edge. Not by `transform` either:
+   the entrance animation owns that on this element. */
+.layer-crew {
+  position: absolute;
+  left: calc((100% - var(--crew-w)) / 2); width: var(--crew-w);
+  bottom: calc(var(--crew-drop) * -1);
+}
+.layer-crew img {
+  display: block; width: 100%; height: auto;
+  transform: translate3d(calc(var(--px) * 22px), calc(var(--py) * 12px), 0);
+}
+/* Two full-screen composited planes are only worth GPU promotion while
+   something is actually moving them. */
+.hero-stage.is-live .layer img { will-change: transform; }
+
+.hero-fade {
+  position: absolute; inset: 0; pointer-events: none;
+  /* Confined to the bottom quarter. Ramping from 40% swallowed half the
+     frame and drained the crew; the plate is the point, so the bed starts
+     late and climbs hard instead of leaning across the whole image. */
+  background: linear-gradient(180deg,
+    rgba(3, 92, 194, 0) 0%,    rgba(3, 92, 194, 0) 58%,
+    rgba(3, 92, 194, .40) 66%, rgba(3, 92, 194, .90) 73%,
+    rgba(3, 92, 194, .99) 81%, var(--eb-blue-600) 100%);
+}
+
+.hero .copy {
+  position: relative; z-index: 1;
+  padding-bottom: var(--eb-space-7);
+  color: var(--eb-fg-on-brand);
+  text-align: center;
+}
+.hero h1 {
+  margin: 0 auto var(--eb-space-3);
+  font-size: clamp(2.1rem, 5.6vw, 4rem);
+  text-transform: uppercase;
+  line-height: .95;
+  letter-spacing: -0.02em;
+  max-width: 18ch;
+}
+.hero .lede {
+  color: var(--eb-fg-on-brand);
+  max-width: 34ch; margin-inline: auto;
+  font-size: var(--eb-text-md);
+}
+.hero .cta-row { margin-top: var(--eb-space-5); justify-content: center; }
+
+/* Pill controls, per the approved design */
+.btn.pill { border-radius: var(--eb-radius-pill); }
+.btn.on-photo {
+  background: var(--eb-neutral-0); color: var(--eb-fg-brand);
+  border-color: transparent; box-shadow: var(--eb-shadow-md);
+  gap: 0.5rem;
+}
+.btn.on-photo:hover { background: var(--eb-blue-50); }
+.btn.on-photo svg { transition: transform var(--eb-dur) var(--eb-ease-quart); }
+.btn.on-photo:hover svg { transform: translateX(3px); }
+
+/* A phone is tall and narrow; covering it whole would scale the frame until
+   the outer two technicians fell off the sides. The photo takes a band
+   instead and the blue field carries the copy — the group stays intact and
+   reads far larger than fitting the full frame to width would allow. */
+@media (max-width: 700px) {
+  /* The stage takes whatever the copy leaves, so the page is exactly one
+     screen on any phone rather than a fixed band that overflows on short
+     ones. minmax(0,1fr) lets it shrink below the image's intrinsic size. */
+  .hero { grid-template-rows: minmax(0, 1fr) auto; align-content: stretch; }
+  .hero-stage { position: relative; }
+  .hero .copy { padding: var(--eb-space-6) 0 var(--eb-space-8); }
+  header.site.overlay { position: static; background: var(--eb-bg-brand); }
+  .hero h1 { max-width: none; }
+
+  /* The five men occupy the middle 78.8% of the cut-out (opaque bbox x191-1600
+     of 1788), so 125vw is the largest that still lands all of them inside a
+     390px screen — 127vw starts eating the outer man. Only sky is lost. */
+  .hero { --crew-w: 125vw; --crew-drop: 3vh; }
+
+  /* The supplied cut-out ends mid-shin at the frame edge, and the plate's
+     horizon lands inside a stage this short. Neither is hidden by the gentle
+     mobile bed, so the crop is hung below the stage and the sky is scaled
+     past its own horizon — leaving sky only. */
+  .layer-sky img { height: 150%; }
+
+  /* The copy sits on solid blue below the photo here, so the bed has no text
+     to carry and only has to blend the plate into it. Ramping as hard as the
+     desktop gradient does would drain the colour out of the crew. */
+  .hero-fade {
+    background: linear-gradient(180deg,
+      rgba(3, 92, 194, 0) 0%,   rgba(3, 92, 194, 0) 64%,
+      rgba(3, 92, 194, .45) 86%, var(--eb-bg-brand) 100%);
+  }
+}
+
+/* ── Pillar cards (homepage) ─────────────────────────────── */
+.pillar {
+  display: grid; gap: var(--eb-space-3); align-content: start;
+  padding: var(--eb-space-6); border-radius: var(--eb-radius-lg);
+  border: 1px solid var(--eb-border-1); background: var(--eb-bg-1);
+  box-shadow: var(--eb-shadow-xs);
+}
+.pillar h3 { font-size: var(--eb-text-xl); font-weight: var(--eb-fw-black); }
+.pillar .claim { font-weight: var(--eb-fw-bold); color: var(--eb-fg-1); }
+.pillar p { color: var(--eb-fg-2); font-size: var(--eb-text-sm); }
+.pillar .acts { display: flex; flex-wrap: wrap; gap: var(--eb-space-3); margin-top: var(--eb-space-3); }
+.pillar .primary {
+  font-weight: var(--eb-fw-bold); color: var(--eb-fg-brand);
+  text-decoration: none; display: inline-flex; align-items: center; gap: 0.375rem;
+}
+.pillar .primary:hover { text-decoration: underline; }
+.pillar .secondary {
+  font-size: var(--eb-text-sm); font-weight: var(--eb-fw-bold);
+  color: var(--eb-fg-2); text-decoration: none;
+  display: inline-flex; align-items: center; gap: 0.375rem;
+}
+.pillar .secondary:hover { color: var(--eb-fg-brand); }
+
+/* ── Service cards & category bands ──────────────────────────
+   Encik Beku's own work photography, lifted out of the source PDFs by
+   tools/build-service-photos.sh. Every frame is the same cast in the same
+   uniform, so the set reads as one company rather than as stock.
+   The originals are portrait; both crops sit high because the work — hands,
+   tools, the unit being serviced — is in the upper half of every frame. */
+.svccard {
+  display: grid; grid-template-rows: auto 1fr; align-content: start;
+  border: 1px solid var(--eb-border-1); border-radius: var(--eb-radius-md);
+  background: var(--eb-bg-1); overflow: hidden;
+}
+.svccard img {
+  display: block; width: 100%; height: auto; aspect-ratio: 4 / 5;
+  object-fit: cover; object-position: 50% 30%;
+  align-self: start;            /* a stretched grid item ignores aspect-ratio */
+  background: var(--eb-bg-2);
+}
+.svccard .txt { padding: var(--eb-space-4) var(--eb-space-5) var(--eb-space-5); }
+.svccard h4 { font-size: var(--eb-text-base); margin-bottom: 0.35rem; }
+.svccard p { color: var(--eb-fg-2); font-size: var(--eb-text-sm); }
+
+/* A category opens with a face, so a long price list gains a rhythm. */
+.catband {
+  display: grid; grid-template-columns: 13.5rem minmax(0, 1fr);
+  gap: var(--eb-space-6); align-items: center;
+  margin-bottom: var(--eb-space-7);
+}
+.catband img {
+  display: block; width: 100%; height: auto; aspect-ratio: 4 / 5;
+  align-self: start;
+  object-fit: cover; object-position: 50% 30%;
+  border-radius: var(--eb-radius-md); background: var(--eb-bg-2);
+}
+.catband .sec-head { margin-bottom: 0; }
+@media (max-width: 700px) {
+  .catband { grid-template-columns: 1fr; gap: var(--eb-space-4); }
+  .catband img { aspect-ratio: 16 / 9; object-position: 50% 28%; }
+}
+
+/* ── Download card — brief §20 ───────────────────────────── */
+.dlcard {
+  display: grid; grid-template-columns: 8.25rem 1fr;
+  gap: var(--eb-space-5); align-items: start;
+  padding: var(--eb-space-5); border-radius: var(--eb-radius-md);
+  border: 1px solid var(--eb-border-1); background: var(--eb-bg-1);
+}
+.dlcard .cover {
+  border-radius: var(--eb-radius-sm); overflow: hidden;
+  border: 1px solid var(--eb-border-1); background: var(--eb-bg-2);
+  /* No fixed ratio: the Brand Guidelines is A4 landscape, the other two are
+     A4 portrait. Each cover keeps its own shape rather than being cropped. */
+}
+.dlcard .cover img { width: 100%; height: auto; display: block; }
+.dlcard .body { display: grid; gap: var(--eb-space-2); }
+.dlcard h3 { font-size: var(--eb-text-lg); }
+.dlcard p { color: var(--eb-fg-2); font-size: var(--eb-text-sm); }
+.dlcard .specs {
+  display: flex; flex-wrap: wrap; gap: 0.375rem 0.875rem;
+  font-size: var(--eb-text-xs); color: var(--eb-fg-3);
+  font-variant-numeric: tabular-nums;
+}
+.dlcard .specs b { color: var(--eb-fg-2); font-weight: var(--eb-fw-bold); }
+.dlcard .acts { display: flex; flex-wrap: wrap; gap: var(--eb-space-3); margin-top: var(--eb-space-2); }
+@media (max-width: 620px) {
+  .dlcard { grid-template-columns: 1fr; }
+  .dlcard .cover { max-width: 132px; }
+}
+
+/* ── Service ecosystem — brief §6.8 ──────────────────────── */
+.eco { display: grid; gap: var(--eb-space-3); max-width: 680px; }
+.eco .tier {
+  display: flex; align-items: center; gap: var(--eb-space-4);
+  padding: var(--eb-space-4) var(--eb-space-5);
+  border-radius: var(--eb-radius-md); background: var(--eb-bg-2);
+  border-left: 4px solid var(--eb-frozen-lake);
+}
+.eco .tier.root { background: var(--eb-bg-brand); color: var(--eb-fg-on-brand); border-left-color: var(--eb-bg-accent); }
+.eco .tier.root .sub { color: var(--eb-fg-on-brand-muted); }
+.eco .tier b { font-weight: var(--eb-fw-bold); white-space: nowrap; }
+.eco .tier .sub { font-size: var(--eb-text-sm); color: var(--eb-fg-2); }
+.eco .link { width: 2px; height: 0.875rem; background: var(--eb-border-2); margin-left: 1.75rem; }
+
+/* ── Definition rows (Company at a glance, tone of voice) ── */
+.deflist { display: grid; gap: 0; }
+.defrow {
+  display: grid; grid-template-columns: 13.75rem 1fr; gap: var(--eb-space-4);
+  padding: var(--eb-space-3) 0; border-bottom: 1px solid var(--eb-border-1);
+}
+.defrow:last-child { border-bottom: 0; }
+.defrow dt { font-weight: var(--eb-fw-bold); color: var(--eb-fg-1); }
+.defrow dd { margin: 0; color: var(--eb-fg-2); }
+@media (max-width: 620px) { .defrow { grid-template-columns: 1fr; gap: 2px; } }
+
+/* ── Do / Don't lists — brief §11 ────────────────────────── */
+.dodont { display: grid; gap: var(--eb-space-2); }
+.dodont li { display: flex; gap: var(--eb-space-3); align-items: flex-start; font-size: var(--eb-text-sm); }
+.dodont { list-style: none; margin: 0; padding: 0; }
+.dodont .yes, .dodont .no {
+  width: 1.25rem; height: 1.25rem; flex-shrink: 0; border-radius: var(--eb-radius-pill);
+  display: grid; place-items: center; margin-top: 1px;
+}
+.dodont .yes { background: rgba(13,129,73,.12); color: var(--eb-success); }
+.dodont .no  { background: rgba(180,35,24,.10); color: var(--eb-danger); }
+
+/* ── Tagline ─────────────────────────────────────────────── */
+.tagline {
+  font-weight: var(--eb-fw-black);
+  font-size: var(--eb-text-2xl);
+  letter-spacing: var(--eb-tracking-tight);
+  color: var(--eb-fg-brand);
+}
+
+/* ── Effective-date stamp — brief §17, §21 ───────────────── */
+.stamp {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.375rem 0.875rem; border-radius: var(--eb-radius-pill);
+  background: var(--eb-bg-tint); color: var(--eb-french-blue);
+  font-size: var(--eb-text-xs); font-weight: var(--eb-fw-bold);
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* ── Small screens ────────────────────────────────────────────
+ * The root font size holds at 16px below 1280px, so headline sizes step
+ * down here rather than through a vw term (which would reintroduce the
+ * double-scaling this file deliberately avoids).
+ */
+@media (max-width: 900px) {
+  h1 { font-size: var(--eb-text-3xl); }
+  h2 { font-size: var(--eb-text-xl); }
+  .hero h1 { font-size: var(--eb-text-3xl); }
+}
+@media (max-width: 600px) {
+  h1 { font-size: var(--eb-text-2xl); }
+  h2 { font-size: var(--eb-text-lg); }
+  .hero h1 { font-size: var(--eb-text-2xl); }
+  .hero .lede { font-size: var(--eb-text-base); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+ * Brand loader
+ *
+ * Sequence taken from the webisoft reference, measured off the clip
+ * rather than eyeballed (ink-coverage profile per frame):
+ *
+ *   0.00–0.50s  mark appears, wordmark wipes in left → right
+ *   0.50–4.70s  hold                    (their clip holds ~4s; a web
+ *                                        loader cannot afford that, so
+ *                                        it is compressed to ~0.6s)
+ *   4.90–5.65s  logo collapses horizontally and wipes away
+ *   5.65–6.14s  field clears
+ *
+ * Compressed here to ~2.2s total. The signature move is the horizontal
+ * clip wipe in both directions — in from the left, out to the left.
+ *
+ * CSS-only and self-dismissing: a JS overlay that fails to initialise
+ * strands the visitor on a blank blue screen. Ends at visibility:hidden
+ * with pointer-events:none throughout, so it can never swallow clicks.
+ * Home page only.
+ * ═══════════════════════════════════════════════════════════ */
+.loader {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--eb-bg-brand);
+  display: grid; place-items: center;
+  pointer-events: none;
+  animation: eb-loader-out 0.55s var(--eb-ease-smooth) 1.45s forwards;
+}
+@keyframes eb-loader-out { to { opacity: 0; visibility: hidden; } }
+
+.loader .mark {
+  /* NOT rem. The root font size is viewport-proportional (see the fluid
+     scale block), so a rem width doubles on a large display — 21rem was
+     336px at 1280 but 672px at 2560. A px/vw clamp keeps the loader mark
+     a consistent physical size and stops it growing in fullscreen. */
+  width: clamp(120px, 10vw, 180px);
+  /* A slight settle under the wipe. The wipe alone reads mechanical; this
+     takes the hard edge off without changing its character. */
+  transform: scale(0.985);
+  animation: eb-mark-settle 1.8s var(--eb-ease-smooth) forwards;
+}
+@keyframes eb-mark-settle { to { transform: scale(1); } }
+
+/* The wipe. clip-path travels in from the left, holds, then exits to the
+   left — matching the reference's collapse rather than a plain fade.
+   easeInOutQuart (from the reference's own CustomEase set) rather than
+   easeOutQuart: it eases in as well as out, so neither end snaps. */
+.loader .wordmark {
+  display: block; width: 100%; height: auto;
+  clip-path: inset(0 100% 0 0);
+  animation:
+    eb-wipe-in  0.70s var(--eb-ease-smooth) 0.10s forwards,
+    eb-wipe-out 0.55s var(--eb-ease-smooth) 1.10s forwards;
+}
+@keyframes eb-wipe-in  { to { clip-path: inset(0 0 0 0); } }
+@keyframes eb-wipe-out { to { clip-path: inset(0 0 0 100%); } }
+
+@media (prefers-reduced-motion: reduce) { .loader { display: none; } }
+
+/* ═══════════════════════════════════════════════════════════
+ * Scroll reveals
+ *
+ * Motion language taken from praxis4.vercel.app, matched to the values
+ * in their bundle rather than eyeballed. Their signature curve is
+ * easeOutQuart — a long, decelerating settle that makes the stagger
+ * legible instead of snappy.
+ *
+ * Everything here is gated behind .has-anim, which only anim.js sets.
+ * No script, no hiding — content can never be trapped invisible.
+ * ═══════════════════════════════════════════════════════════ */
+
+
+/* Masked line reveal — their SplitText({mask:"lines"}) equivalent. */
+.anim-line { display: block; overflow: hidden; }
+.anim-line-i { display: block; will-change: transform; }
+.has-anim [data-anim="lines"] .anim-line-i {
+  transform: translateY(110%);
+  transition: transform 1.2s var(--eb-ease-quart);
+}
+.has-anim [data-anim="lines"].is-in .anim-line-i { transform: none; }
+
+/* Block rise — their yPercent:111 / 0.8s. */
+.has-anim [data-anim="rise"],
+.has-anim [data-anim="stagger"] > * {
+  opacity: 0;
+  transform: translateY(2rem);
+  transition: opacity 0.8s var(--eb-ease-quart), transform 0.8s var(--eb-ease-quart);
+}
+.has-anim [data-anim="rise"].is-in,
+.has-anim [data-anim="stagger"].is-in > * {
+  opacity: 1;
+  transform: none;
+}
+
+/* Image clip reveal — their clip-path wipe, trimmed from 2s to 1.2s. */
+.has-anim [data-anim="img"] {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 1.2s var(--eb-ease-quart);
+}
+.has-anim [data-anim="img"].is-in { clip-path: inset(0 0 0 0); }
+
+/* Nothing on this page scrolls, so the hero arrives on a timer instead —
+   handing off from the loader, which finishes at 2.00s (0.55s fade starting
+   at 1.45s). Sky first, technicians a beat later, then the copy: the depth
+   is legible before the pointer is ever moved. Pure CSS, so a failed script
+   cannot strand the page mid-entrance.
+   These five delays are tuned to the loader. Retime it and they move too. */
+.has-anim .hero .copy > .wrap > * {
+  opacity: 0; transform: translateY(1.5rem);
+  animation: eb-hero-in 0.9s var(--eb-ease-quart) forwards;
+}
+
+/* The two plates do not just appear — they settle, and at different rates,
+   so the depth is legible before the pointer is ever moved. The crew comes
+   from further out and a beat later, which reads as it stepping forward out
+   of the sky. Transform is free here: the crew is centred by arithmetic on
+   `left`, and the drift lives on the <img> inside. */
+.has-anim .hero .layer { opacity: 0; animation-fill-mode: forwards; }
+.has-anim .hero .layer-sky {
+  animation: eb-sky-in 1.6s var(--eb-ease-quart) 1.45s forwards;
+}
+.has-anim .hero .layer-crew {
+  animation: eb-crew-in 1.5s var(--eb-ease-quart) 1.62s forwards;
+}
+@keyframes eb-sky-in  { from { opacity: 0; transform: scale(1.05); }
+                        to   { opacity: 1; transform: none; } }
+@keyframes eb-crew-in { from { opacity: 0; transform: scale(1.10) translateY(2.5%); }
+                        to   { opacity: 1; transform: none; } }
+.has-anim .hero .copy > .wrap > *:nth-child(1) { animation-delay: 1.85s; }
+.has-anim .hero .copy > .wrap > *:nth-child(2) { animation-delay: 1.98s; }
+.has-anim .hero .copy > .wrap > *:nth-child(3) { animation-delay: 2.11s; }
+@keyframes eb-hero-in { to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .has-anim [data-anim],
+  .has-anim [data-anim="stagger"] > *,
+  .has-anim .hero .layer,
+  .has-anim .hero .copy > .wrap > * {
+    opacity: 1 !important; transform: none !important;
+    clip-path: none !important; animation: none !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+ * Touch targets
+ *
+ * On a phone, a 17px-tall footer link is a coin-flip to hit. WCAG 2.2
+ * asks for 24px minimum; 44px is the comfortable figure. These rules
+ * only add hit area — they change padding and line-height, never the
+ * type size or the visual rhythm of the page.
+ * ═══════════════════════════════════════════════════════════ */
+@media (max-width: 940px) {
+  /* text links that sit inline in lists and cards */
+  footer.site ul a,
+  .pillar .primary,
+  .pillar .secondary,
+  .dl-links a,
+  .catnav a,
+  .brandnav a,
+  .secnav a {
+    display: inline-flex; align-items: center;
+    min-height: 2.75rem;              /* 44px */
+  }
+  footer.site ul { gap: 0; }
+  footer.site ul a { padding-block: 0.25rem; }
+
+  /* the logo is a link back to home */
+  .nav .brand { display: inline-flex; align-items: center; min-height: 2.75rem; }
+
+  /* language switcher: comfortable to tap, still visually compact */
+  .langs button { min-height: 2.75rem; padding-inline: 0.7rem; }
+
+  /* nav items get real vertical room once they wrap to their own row */
+  .nav nav a { min-height: 2.75rem; display: inline-flex; align-items: center; }
+}
+
+/* ── Mobile overflow fixes ───────────────────────────────────
+ * Found by measuring, not by eye: about.html pushed the document 48px
+ * wider than a 390px viewport.
+ *
+ * The ecosystem tiers are a flex row with a nowrap label, so a long
+ * tier name plus its description could not fit and forced the page
+ * sideways. They stack on small screens instead.
+ */
+@media (max-width: 620px) {
+  .eco .tier { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+  .eco .tier b { white-space: normal; }
+  .eco .link { margin-left: 1rem; }
+}
+
+/* Belt and braces: a wide table must scroll inside its own wrapper and
+   never widen the page. min-width:0 lets the wrapper shrink below its
+   content inside a flex/grid parent, which is what allows that.
+   The 58rem cap keeps a price row scannable — four short columns stretched
+   across the full 82rem wrap put 550px between a capacity and its price.
+   Both limits live here because this rule is the last word on .tablewrap. */
+.tablewrap { max-width: min(58rem, 100%); min-width: 0; }
+table { max-width: none; }

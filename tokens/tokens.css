@@ -1,0 +1,302 @@
+/* ─────────────────────────────────────────────────────────────
+ * ENCIK BEKU — design tokens (CSS custom properties)
+ * v1.0.0 · locked 2026-08-19 · Encik Beku Aircond Sdn Bhd
+ *
+ * GENERATED FILE — do not edit by hand.
+ * Source: tokens/tokens.source.mjs · rebuild: node tools/build-tokens.mjs
+ * ─────────────────────────────────────────────────────────────
+ */
+
+
+:root {
+
+  /* ── Brand palette · 60/30/10 (Guidelines p.19) ───────── */
+  --eb-tech-blue: #035CC2;   /* Primary · 60% · dominant brand colour */
+  --eb-french-blue: #1B3F83; /* Secondary · 30% · deep headlines, dark surfaces */
+  --eb-fresh-sky: #00B0FC;   /* Secondary · 30% · bright highlight, fills only */
+  --eb-frozen-lake: #7BD2F6; /* Accent · 10% · soft tint, callout fills */
+  --eb-pumpkin: #F47F30;     /* Accent · 10% · the only warm accent, CTAs */
+
+  /* ── Logo inks · reproduction ONLY, never for layout ──── */
+  --eb-ink-navy: #24366F;
+  --eb-ink-orange: #F67F31;
+  --eb-ink-sky: #7BD3F7;
+  --eb-ink-white: #FFFFFF;
+
+  /* ── Blue scale ──────────────────────────────────────── */
+  --eb-blue-50: #EAF3FD;
+  --eb-blue-100: #D2E6FB;
+  --eb-blue-200: #A9CFF6;
+  --eb-blue-300: #7BD2F6;
+  --eb-blue-400: #2D86E0;
+  --eb-blue-500: #035CC2;
+  --eb-blue-600: #024A9E;
+  --eb-blue-700: #1B3F83;
+  --eb-blue-800: #142F62;
+  --eb-blue-900: #0D1F42;
+
+  /* ── Neutral scale ───────────────────────────────────── */
+  --eb-neutral-0: #FFFFFF;
+  --eb-neutral-50: #F5F7FA;
+  --eb-neutral-100: #ECEFF3;
+  --eb-neutral-200: #DDE3EA;
+  --eb-neutral-300: #C3CCD7;
+  --eb-neutral-400: #9AA6B4;
+  --eb-neutral-500: #6B7785;
+  --eb-neutral-600: #4B5563;
+  --eb-neutral-700: #333B45;
+  --eb-neutral-800: #1C222A;
+  --eb-neutral-900: #0B0E12;
+
+  /* ── Accessibility-derived (CI.md §9) ─────────────────── */
+  --eb-pumpkin-ink: #B84E06;
+  --eb-on-accent: #0B0E12;
+
+  /* ── Status · outside the brand palette by design ─────── */
+  --eb-success: #0D8149;
+  --eb-warning: #B54708;
+  --eb-danger: #B42318;
+  --eb-info: #1B3F83;
+  --eb-whatsapp: #25D366;
+
+  /* ── Typography (Guidelines p.21–22) ──────────────────── */
+  --eb-font-sans: 'Satoshi', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --eb-font-display: 'Satoshi', system-ui, sans-serif;
+  --eb-fw-light: 300;
+  --eb-fw-regular: 400;
+  --eb-fw-medium: 500;
+  --eb-fw-bold: 700;
+  --eb-fw-black: 900;
+  --eb-text-xs: 0.75rem;
+  --eb-text-sm: 0.875rem;
+  --eb-text-base: 1rem;
+  --eb-text-md: 1.125rem;
+  --eb-text-lg: 1.375rem;
+  --eb-text-xl: 1.75rem;
+  --eb-text-2xl: 2.25rem;
+  --eb-text-3xl: 3rem;
+  --eb-text-4xl: 4rem;
+  --eb-text-5xl: 5.25rem;
+  --eb-leading-tight: 1.02;
+  --eb-leading-snug: 1.18;
+  --eb-leading-normal: 1.5;
+  --eb-leading-relaxed: 1.65;
+  --eb-tracking-tight: -0.02em;
+  --eb-tracking-snug: -0.01em;
+  --eb-tracking-normal: 0;
+  --eb-tracking-wide: 0.08em;
+
+  /* ── Space · radius · shadow · motion ─────────────────── */
+  --eb-space-1: 4px;
+  --eb-space-2: 8px;
+  --eb-space-3: 12px;
+  --eb-space-4: 16px;
+  --eb-space-5: 24px;
+  --eb-space-6: 32px;
+  --eb-space-7: 48px;
+  --eb-space-8: 64px;
+  --eb-space-9: 96px;
+  --eb-space-10: 128px;
+  --eb-radius-xs: 4px;
+  --eb-radius-sm: 8px;
+  --eb-radius-md: 12px;
+  --eb-radius-lg: 18px;
+  --eb-radius-xl: 26px;
+  --eb-radius-pill: 999px;
+  --eb-shadow-xs: 0 1px 2px rgba(13, 31, 66, 0.06);
+  --eb-shadow-sm: 0 2px 6px rgba(13, 31, 66, 0.08);
+  --eb-shadow-md: 0 8px 20px rgba(13, 31, 66, 0.10);
+  --eb-shadow-lg: 0 18px 40px rgba(13, 31, 66, 0.14);
+  --eb-shadow-brand: 0 10px 28px rgba(3, 92, 194, 0.30);
+  --eb-shadow-accent: 0 8px 20px rgba(244, 127, 48, 0.32);
+  --eb-dur-fast: 140ms;
+  --eb-dur: 220ms;
+  --eb-dur-slow: 420ms;
+  --eb-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --eb-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ── Semantic · light theme (consume these) ───────────── */
+  --eb-fg-1: #0B0E12;
+  --eb-fg-2: #6B7785;
+  --eb-fg-3: #9AA6B4;
+  --eb-fg-brand: #035CC2;
+  --eb-fg-on-brand: #FFFFFF;
+  --eb-fg-on-brand-muted: rgba(255, 255, 255, 0.86);
+  --eb-fg-on-brand-subtle: rgba(255, 255, 255, 0.72);
+  --eb-border-on-brand: rgba(255, 255, 255, 0.22);
+  --eb-border-on-brand-strong: rgba(255, 255, 255, 0.45);
+  --eb-bg-on-brand-hover: rgba(255, 255, 255, 0.12);
+  --eb-fg-on-accent: #0B0E12;
+  --eb-fg-accent: #B84E06;
+  --eb-bg-1: #FFFFFF;
+  --eb-bg-2: #F5F7FA;
+  --eb-bg-3: #ECEFF3;
+  --eb-bg-brand: #035CC2;
+  --eb-bg-brand-deep: #1B3F83;
+  --eb-bg-accent: #F47F30;
+  --eb-bg-tint: #EAF3FD;
+  --eb-border-1: #DDE3EA;
+  --eb-border-2: #C3CCD7;
+  --eb-border-brand: #035CC2;
+  --eb-brand-hover: #024FA8;
+  --eb-brand-press: #024089;
+  --eb-accent-hover: #E06F1C;
+  --eb-accent-press: #D2600F;
+  --eb-focus-ring: rgba(3, 92, 194, 0.35);
+}
+
+/* ── Dark theme ───────────────────────────────────────────── */
+:root[data-theme="dark"] {
+  --eb-fg-1: #F5F7FA;
+  --eb-fg-2: #C3CCD7;
+  --eb-fg-3: #9AA6B4;
+  --eb-fg-brand: #7BD2F6;
+  --eb-fg-on-brand: #FFFFFF;
+  --eb-fg-on-brand-muted: rgba(255, 255, 255, 0.86);
+  --eb-fg-on-brand-subtle: rgba(255, 255, 255, 0.72);
+  --eb-border-on-brand: rgba(255, 255, 255, 0.22);
+  --eb-border-on-brand-strong: rgba(255, 255, 255, 0.45);
+  --eb-bg-on-brand-hover: rgba(255, 255, 255, 0.12);
+  --eb-fg-on-accent: #0B0E12;
+  --eb-fg-accent: #F47F30;
+  --eb-bg-1: #0D1F42;
+  --eb-bg-2: #0A1730;
+  --eb-bg-3: #142F62;
+  --eb-bg-brand: #035CC2;
+  --eb-bg-brand-deep: #1B3F83;
+  --eb-bg-accent: #F47F30;
+  --eb-bg-tint: rgba(123, 210, 246, 0.12);
+  --eb-border-1: rgba(255, 255, 255, 0.14);
+  --eb-border-2: rgba(255, 255, 255, 0.24);
+  --eb-border-brand: #7BD2F6;
+  --eb-brand-hover: #2D86E0;
+  --eb-brand-press: #035CC2;
+  --eb-accent-hover: #F79A5C;
+  --eb-accent-press: #F47F30;
+  --eb-focus-ring: rgba(123, 210, 246, 0.45);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --eb-fg-1: #F5F7FA;
+    --eb-fg-2: #C3CCD7;
+    --eb-fg-3: #9AA6B4;
+    --eb-fg-brand: #7BD2F6;
+    --eb-fg-on-brand: #FFFFFF;
+    --eb-fg-on-brand-muted: rgba(255, 255, 255, 0.86);
+    --eb-fg-on-brand-subtle: rgba(255, 255, 255, 0.72);
+    --eb-border-on-brand: rgba(255, 255, 255, 0.22);
+    --eb-border-on-brand-strong: rgba(255, 255, 255, 0.45);
+    --eb-bg-on-brand-hover: rgba(255, 255, 255, 0.12);
+    --eb-fg-on-accent: #0B0E12;
+    --eb-fg-accent: #F47F30;
+    --eb-bg-1: #0D1F42;
+    --eb-bg-2: #0A1730;
+    --eb-bg-3: #142F62;
+    --eb-bg-brand: #035CC2;
+    --eb-bg-brand-deep: #1B3F83;
+    --eb-bg-accent: #F47F30;
+    --eb-bg-tint: rgba(123, 210, 246, 0.12);
+    --eb-border-1: rgba(255, 255, 255, 0.14);
+    --eb-border-2: rgba(255, 255, 255, 0.24);
+    --eb-border-brand: #7BD2F6;
+    --eb-brand-hover: #2D86E0;
+    --eb-brand-press: #035CC2;
+    --eb-accent-hover: #F79A5C;
+    --eb-accent-press: #F47F30;
+    --eb-focus-ring: rgba(123, 210, 246, 0.45);
+  }
+}
+
+/* ── Reduced motion ───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --eb-dur-fast: 0ms;
+    --eb-dur: 0ms;
+    --eb-dur-slow: 0ms;
+  }
+}
+
+/* ── Semantic type classes ────────────────────────────────── */
+.eb-display {
+  font-family: var(--eb-font-display);
+  font-weight: var(--eb-fw-black);
+  font-size: var(--eb-text-5xl);
+  line-height: var(--eb-leading-tight);
+  letter-spacing: var(--eb-tracking-tight);
+  color: var(--eb-fg-1);
+  text-transform: uppercase;
+}
+.eb-h1 {
+  font-family: var(--eb-font-display);
+  font-weight: var(--eb-fw-black);
+  font-size: var(--eb-text-3xl);
+  line-height: var(--eb-leading-tight);
+  letter-spacing: var(--eb-tracking-tight);
+  color: var(--eb-fg-1);
+}
+.eb-h2 {
+  font-family: var(--eb-font-sans);
+  font-weight: var(--eb-fw-black);
+  font-size: var(--eb-text-2xl);
+  line-height: var(--eb-leading-snug);
+  letter-spacing: var(--eb-tracking-snug);
+  color: var(--eb-fg-1);
+}
+.eb-h3 {
+  font-family: var(--eb-font-sans);
+  font-weight: var(--eb-fw-bold);
+  font-size: var(--eb-text-xl);
+  line-height: var(--eb-leading-snug);
+  letter-spacing: var(--eb-tracking-snug);
+  color: var(--eb-fg-1);
+}
+.eb-h4 {
+  font-family: var(--eb-font-sans);
+  font-weight: var(--eb-fw-bold);
+  font-size: var(--eb-text-lg);
+  line-height: var(--eb-leading-snug);
+  letter-spacing: var(--eb-tracking-normal);
+  color: var(--eb-fg-1);
+}
+.eb-body {
+  font-family: var(--eb-font-sans);
+  font-weight: var(--eb-fw-medium);
+  font-size: var(--eb-text-base);
+  line-height: var(--eb-leading-relaxed);
+  letter-spacing: var(--eb-tracking-normal);
+  color: var(--eb-fg-1);
+}
+.eb-body-sm {
+  font-family: var(--eb-font-sans);
+  font-weight: var(--eb-fw-medium);
+  font-size: var(--eb-text-sm);
+  line-height: var(--eb-leading-normal);
+  letter-spacing: var(--eb-tracking-normal);
+  color: var(--eb-fg-2);
+}
+.eb-caption {
+  font-family: var(--eb-font-sans);
+  font-weight: var(--eb-fw-medium);
+  font-size: var(--eb-text-xs);
+  line-height: var(--eb-leading-normal);
+  letter-spacing: var(--eb-tracking-normal);
+  color: var(--eb-fg-3);
+}
+.eb-eyebrow {
+  font-family: var(--eb-font-sans);
+  font-weight: var(--eb-fw-bold);
+  font-size: var(--eb-text-sm);
+  line-height: var(--eb-leading-normal);
+  letter-spacing: var(--eb-tracking-wide);
+  color: var(--eb-fg-brand);
+  text-transform: uppercase;
+}
+.eb-price {
+  font-family: var(--eb-font-sans);
+  font-weight: var(--eb-fw-black);
+  font-size: var(--eb-text-2xl);
+  line-height: var(--eb-leading-tight);
+  letter-spacing: var(--eb-tracking-tight);
+  color: var(--eb-fg-brand);
+}

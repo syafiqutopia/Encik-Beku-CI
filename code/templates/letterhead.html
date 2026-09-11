@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Encik Beku — Letterhead</title>
+<!--
+  ENCIK BEKU · A4 letterhead template
+
+  Print at A4, margins "None"/"Default" — the page paints its own margins.
+  Replace the [BRACKETED] fields. The footer entity block is the registered
+  company list from the Company Profile; delete the branches that do not
+  apply to the sending office, but keep the sending entity's registration
+  number — it is a statutory requirement on Malaysian company correspondence.
+-->
+<link rel="stylesheet" href="../../fonts/fonts.css">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<style>
+  @page { size: A4; margin: 0; }
+
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--eb-font-sans);
+    font-weight: var(--eb-fw-medium);
+    color: var(--eb-fg-1);
+    background: var(--eb-neutral-100);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .sheet {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  /* Brand rule across the head of the page: 60% primary, 30% secondary, 10% accent */
+  .rule { display: flex; height: 6px; flex-shrink: 0; }
+  .rule i { display: block; height: 100%; }
+  .rule .a { width: 60%; background: var(--eb-tech-blue); }
+  .rule .b { width: 30%; background: var(--eb-fresh-sky); }
+  .rule .c { width: 10%; background: var(--eb-pumpkin); }
+
+  header {
+    padding: 18mm 20mm 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12mm;
+  }
+  header img { width: 62mm; height: auto; display: block; }
+
+  .contact {
+    text-align: right;
+    font-size: 9pt;
+    line-height: 1.55;
+    color: var(--eb-fg-2);
+  }
+  .contact strong { color: var(--eb-french-blue); font-weight: var(--eb-fw-bold); }
+  .contact a { color: inherit; text-decoration: none; }
+
+  main { padding: 14mm 20mm 0; flex: 1; font-size: 10.5pt; line-height: 1.65; }
+
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 9.5pt;
+    color: var(--eb-fg-2);
+    border-bottom: 1px solid var(--eb-border-1);
+    padding-bottom: 4mm;
+    margin-bottom: 8mm;
+  }
+
+  h1 {
+    font-weight: var(--eb-fw-black);
+    font-size: 17pt;
+    line-height: 1.2;
+    letter-spacing: var(--eb-tracking-tight);
+    color: var(--eb-french-blue);
+    margin: 0 0 6mm;
+  }
+
+  p { margin: 0 0 4.5mm; }
+
+  .sign { margin-top: 12mm; }
+  .sign .name { font-weight: var(--eb-fw-bold); margin-top: 14mm; }
+  .sign .role { color: var(--eb-fg-2); font-size: 9.5pt; }
+
+  footer {
+    margin-top: auto;
+    padding: 6mm 20mm 10mm;
+    border-top: 1px solid var(--eb-border-1);
+    font-size: 7.6pt;
+    line-height: 1.5;
+    color: var(--eb-fg-3);
+  }
+  .entities { display: flex; gap: 6mm; }
+  .entities div { flex: 1; }
+  .entities b { color: var(--eb-fg-2); font-weight: var(--eb-fw-bold); display: block; }
+
+  @media print { body { background: #fff; } .sheet { margin: 0; } }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="rule"><i class="a"></i><i class="b"></i><i class="c"></i></div>
+
+  <header>
+    <img src="../../svg/logo/encik-beku-secondary-light.svg" alt="Encik Beku">
+    <div class="contact">
+      <strong>Encik Beku Aircond Sdn Bhd</strong><br>
+      5, Jln Bukit Badong 26/4, Hicom Industrial Estate<br>
+      40400 Shah Alam, Selangor<br>
+      +6018 929 4628 · <a href="mailto:encikbekuaircondmy@gmail.com">encikbekuaircondmy@gmail.com</a><br>
+      <a href="https://www.serviceaircond.my">www.serviceaircond.my</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="meta">
+      <span>Ref: <b>[EB/2026/000]</b></span>
+      <span>[19 August 2026]</span>
+    </div>
+
+    <p>
+      [Recipient Name]<br>
+      [Company Name]<br>
+      [Address Line 1]<br>
+      [Postcode, City, State]
+    </p>
+
+    <h1>[Subject line of the letter]</h1>
+
+    <p>Dear [Name],</p>
+
+    <p>[Body paragraph. Keep it direct — say what the reader needs to do and by
+    when. Encik Beku's voice is fast, practical and plain; avoid corporate
+    padding.]</p>
+
+    <p>[Second paragraph if needed.]</p>
+
+    <p>If you have any questions, call us on +6018 929 4628 or message us on
+    WhatsApp and we will respond within 5 minutes during working hours.</p>
+
+    <div class="sign">
+      <p>Yours sincerely,</p>
+      <div class="name">[Full Name]</div>
+      <div class="role">[Position] · Encik Beku Aircond Sdn Bhd</div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="entities">
+      <div><b>HQ · Shah Alam (1561739-D)</b>5, Jln Bukit Badong 26/4, Hicom Industrial Estate, 40400 Shah Alam, Selangor</div>
+      <div><b>Negeri Sembilan (1611987-U)</b>7 Jalan Dahlia 4/3, Taman Dahlia, Bandar Baru Salak Tinggi, 43900 Sepang, Selangor</div>
+      <div><b>Johor (1611766-A)</b>38, Jalan Ros Merah 2/11, Taman Johor Jaya, 81100 Johor Bahru, Johor</div>
+      <div><b>Pulau Pinang &amp; Melaka (1561739-D)</b>335-B, Jalan Irving, 10400 George Town · 354, Jalan Portugis, Kampung Dua, 75200 Melaka</div>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

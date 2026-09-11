@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Encik Beku</title>
+<meta name="description" content="The official source for Encik Beku company information, brand identity and guidelines, official brand assets, and complete service information with pricing.">
+<link rel="stylesheet" href="../fonts/fonts.css?v=mtwgk8ze">
+<link rel="stylesheet" href="../tokens/tokens.css?v=mtwgk8ze">
+<link rel="stylesheet" href="site.css?v=mtwgk8ze">
+<link rel="icon" href="../svg/mark/encik-beku-mark-navy.svg">
+<!-- Both layers are above the fold and the page is nothing else, so neither
+     should wait on the parser to be discovered. -->
+<link rel="preload" as="image" href="img/hero-sky.jpg">
+<link rel="preload" as="image" href="img/hero-crew.avif" type="image/avif">
+</head>
+<body class="home">
+
+<!-- Brand loader — horizontal wipe, per the webisoft reference.
+     CSS-only and self-dismissing; see the note in site.css. -->
+<div class="loader" aria-hidden="true">
+  <div class="mark">
+    <img class="wordmark" src="../svg/logo/encik-beku-primary-dark.svg" alt="">
+  </div>
+</div>
+
+
+<header class="site overlay">
+  <div class="wrap nav">
+    <nav>
+      <a href="about.html" data-i18n="nav.about">Who we are</a>
+      <a href="brand.html" data-i18n="nav.brand">Our brand</a>
+      <a href="services.html" data-i18n="nav.services">What we do</a>
+    </nav>
+    <a class="brand" href="index.html" aria-label="Encik Beku"><img class="logo" src="../svg/logo/encik-beku-secondary-dark.svg" alt="Encik Beku"></a>
+    <div class="langs" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button><span class="sep">|</span><button type="button" data-lang="ms" aria-pressed="false">Bahasa</button><span class="sep">|</span><button type="button" data-lang="zh" aria-pressed="false">中文</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- The whole page: one screen, two photographic layers.
+     The sky plate and the cut-out technicians are separate images that drift
+     against each other with the pointer. Nesting matters — .layer carries the
+     entrance animation, the <img> inside carries the parallax transform, so
+     the two never fight over the same property. See site.css and hero.js. -->
+<section class="hero">
+  <div class="hero-stage">
+    <div class="layer layer-sky">
+      <img data-depth="0.35" src="img/hero-sky.jpg" alt=""
+           width="1920" height="1080" fetchpriority="high">
+    </div>
+    <div class="layer layer-crew">
+      <picture>
+        <source srcset="img/hero-crew.avif" type="image/avif">
+        <img data-depth="1" src="img/hero-crew.png"
+             width="1788" height="1006" fetchpriority="high"
+             alt="Five Encik Beku technicians standing together in uniform">
+      </picture>
+    </div>
+    <div class="hero-fade" aria-hidden="true"></div>
+  </div>
+
+  <div class="copy">
+    <div class="wrap">
+      <h1 data-i18n="hero.title">Solutions Made Simple</h1>
+      <p class="lede" data-i18n="hero.lede">Explore our company, brand identity and complete range of services.</p>
+      <div class="cta-row">
+        <a class="btn btn-lg pill on-photo" href="about.html">
+          <span data-i18n="hero.cta">Explore Our Story</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"
+               fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script src="anim.js?v=mtwgk8ze"></script>
+<script src="i18n.js"></script>
+<script src="hero.js?v=mtwgk8ze"></script>
+</body>
+</html>
