@@ -1,0 +1,127 @@
+name: Publish the site
+
+# Pages serves the gh-pages branch, and that branch used to be updated by hand
+# after every merge - so the client preview drifted behind main with no signal
+# that it had. This closes that gap: main is the only thing anyone edits, and
+# the published branch is derived from it.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Never let two publishes race for the same branch. Queue instead of cancelling:
+# a cancelled publish would leave gh-pages on whichever commit won.
+concurrency:
+  group: publish-gh-pages
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      # Only what the site actually serves. The rest of the repo - sources,
+      # tools, docs, screen recordings, the loose brand PNGs at the root - is
+      # deliberately left behind: it is several hundred MB and none of it is
+      # reachable from a page.
+      #
+      # The four sibling folders are NOT optional. Every page links out to
+      # ../svg, ../fonts, ../code, ../distribution and ../tokens for logos,
+      # webfonts, templates and downloads, so publishing website/ alone would
+      # ship a site with broken assets on every page.
+      - name: Assemble the publishable tree
+        run: |
+          set -euo pipefail
+          mkdir -p _site
+          for dir in website code distribution fonts svg tokens; do
+            if [ ! -d "$dir" ]; then
+              echo "::error::$dir/ is missing - the site links into it and would publish broken"
+              exit 1
+            fi
+            cp -R "$dir" _site/
+          done
+
+      # Underscore-prefixed paths are invisible to Jekyll, which Pages still
+      # runs over a branch source.
+      - name: Disable Jekyll
+        run: touch _site/.nojekyll
+
+      # This is a client preview, not a launch. It stays out of search results
+      # until someone decides otherwise - deliberately, and visibly from main
+      # rather than as an untracked file on the published branch.
+      - name: Keep the preview out of search results
+        run: |
+          cat > _site/robots.txt <<'EOF'
+          User-agent: *
+          Disallow: /
+          EOF
+
+      # The site lives under /website/, so the repo root would otherwise be a
+      # 404 for anyone who trims the URL.
+      - name: Redirect the root to the site
+        run: |
+          cat > _site/index.html <<'EOF'
+          <!doctype html>
+          <html lang="en"><head><meta charset="utf-8">
+          <meta name="robots" content="noindex, nofollow">
+          <title>Encik Beku</title>
+          <meta http-equiv="refresh" content="0; url=website/">
+          <link rel="canonical" href="website/">
+          </head><body><p><a href="website/">Continue to the Encik Beku site</a></p></body></html>
+          EOF
+
+      # A page that 404s on its own stylesheet still returns 200, so serving is
+      # not proof of anything. Resolve every local href/src against the tree
+      # that is about to be published and fail the run if one dangles.
+      - name: Check no page links to something that was not published
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import pathlib, re, sys, urllib.parse
+          site = pathlib.Path('_site')
+          ref = re.compile(r'(?:src|href)="([^"#?][^"]*)"')
+          missing = []
+          for page in sorted(site.rglob('*.html')):
+              for raw in ref.findall(page.read_text(encoding='utf-8', errors='ignore')):
+                  url = urllib.parse.urlsplit(raw)
+                  if url.scheme or url.netloc:      # external
+                      continue
+                  target = urllib.parse.unquote(url.path)
+                  if not target:
+                      continue
+                  # Templates carry fill-in tokens - code/email/signature.html
+                  # ships [LOGO_URL] and tells the reader to replace it. Those
+                  # are not links and there is nothing to resolve.
+                  if target.startswith(('[', '{')):
+                      continue
+                  base = site if target.startswith('/') else page.parent
+                  resolved = (base / target.lstrip('/')).resolve()
+                  if resolved.is_dir():
+                      resolved = resolved / 'index.html'
+                  if not resolved.exists():
+                      missing.append(f'{page.relative_to(site)} -> {raw}')
+          if missing:
+              print('::error::these links would 404 on the published site:')
+              for m in missing:
+                  print(f'  {m}')
+              sys.exit(1)
+          print(f'all local links resolve across {len(list(site.rglob("*.html")))} pages')
+          PY
+
+      # Committed rather than force-pushed, so the published branch keeps a
+      # history someone can read and roll back to.
+      - name: Publish to gh-pages
+        run: |
+          set -euo pipefail
+          cd _site
+          git init -q -b gh-pages
+          git config user.name  'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -q -m "Publish ${GITHUB_SHA::7}: $(git -C "$GITHUB_WORKSPACE" log -1 --format=%s)"
+          git push -q --force "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" gh-pages
+          echo "published ${GITHUB_SHA::7} to gh-pages"
