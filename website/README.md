@@ -9,13 +9,28 @@ floating contact button, no urgency devices (§1, §24).
 
 | Page | URL | For | Document |
 |---|---|---|---|
-| `index.html` | `/` | Everyone — the three pillars | — |
+| `index.html` | `/` | Everyone — one full-screen parallax hero | — |
 | `about.html` | `/about` | Corporate partners, customers | Company Profile · 10pp |
 | `brand.html` | `/brand` | Designers, freelancers, print vendors | Brand Guidelines · 22pp |
 | `services.html` | `/services` | Customers and property managers | Service Catalogue · 34pp |
 
 Documents use versioned filenames per §21, and every download card shows type,
 pages, language, size, version and updated date per §20.
+
+### The home page
+
+One screen, and nothing below it — no marquee, no footer. Depth comes from two
+photographic layers (`img/hero-sky.jpg` and `img/hero-crew.avif`) that settle in
+as the loader clears and then drift against the pointer.
+
+Rebuild them from the supplied plates with
+[`tools/build-hero-layers.sh`](../tools/build-hero-layers.sh). The travel budget
+lives in `site.css` as px multipliers on `--px`/`--py`; `hero.js` only writes
+those two numbers and never touches `transform`.
+
+The gradient stops in `.hero-fade` are tuned to a measured contrast floor —
+white runs 4.57-5.57:1 across 390 to 2560 wide. Weaken them and the headline
+drops below 4.5:1. Re-measure if you change them.
 
 ### The locations map
 
@@ -57,7 +72,7 @@ Downloads are ordinary `<a download>` links and work on any real host.
 
 ```
 website/
-├── index.html      three pillars, company at a glance, document library
+├── index.html      one screen: the two-layer parallax hero, nothing else
 ├── about.html      introduction, glance, vision/mission, values, ecosystem,
 │                   who we serve, locations, registered entities
 ├── brand.html      overview + tagline, logo story, logo system, misuse,
@@ -65,7 +80,7 @@ website/
 ├── services.html   five service categories, verified pricing, effective date
 ├── site.css        shared styles — every value a token
 ├── downloads/      the three PDFs, versioned filenames
-├── img/            hero photograph + PDF cover thumbnails
+├── img/            hero parallax layers, service photos, PDF covers
 ├── CLAIMS-TO-VERIFY.md   every factual claim and its source (brief §30)
 └── site-preview.html GENERATED — do not edit
 ```

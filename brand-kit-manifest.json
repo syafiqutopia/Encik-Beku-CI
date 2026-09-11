@@ -5,8 +5,8 @@
   "version": "1.0.0",
   "locked": "2026-08-19",
   "owner": "Encik Beku Aircond Sdn Bhd (1561739-D)",
-  "fileCount": 176,
-  "totalBytes": 57121598,
+  "fileCount": 181,
+  "totalBytes": 62427034,
   "entries": [
     {
       "path": ".gitattributes",
@@ -172,6 +172,16 @@
       "path": "_source/encik-beku-company-profile-2026.pdf",
       "bytes": 15336027,
       "sha256": "7fe4120931503d2bbfb5441221f53e7dad01a27b6f0c7738079bb682be9638ae"
+    },
+    {
+      "path": "_source/encik-beku-hero-crew.png",
+      "bytes": 2482162,
+      "sha256": "530c6c50a27154331d799812ded29a87ecb1677fa2260b47511edd5414089027"
+    },
+    {
+      "path": "_source/encik-beku-hero-sky.png",
+      "bytes": 2020080,
+      "sha256": "536aaf611207411278ecacd656a85cec7983078d0054559d7e1b7e611423b5df"
     },
     {
       "path": "_source/encik-beku-home-hero.png",
@@ -574,6 +584,11 @@
       "sha256": "3f1ec892a587ff792f8d48c66d24834abda4aa81aafc41699835d63e222099cb"
     },
     {
+      "path": "tools/build-hero-layers.sh",
+      "bytes": 1254,
+      "sha256": "ce9fe8b778577c453e837c2003471abe8ca9bdfea979ec1db3191353cd460937"
+    },
+    {
       "path": "tools/build-logos.sh",
       "bytes": 2693,
       "sha256": "3e16a15b0ca7029841b4969dceb8fddcc3b75d04260ba8b2274dc67a831d3a2b"
@@ -590,8 +605,8 @@
     },
     {
       "path": "tools/build-site-preview.mjs",
-      "bytes": 9624,
-      "sha256": "fb1112e2bf4d43045fe7b10823ef4bda24fa7c1a6c7dde5321fe06c60e2d3a49"
+      "bytes": 10102,
+      "sha256": "2dc016f175bedf9cd74cf32b349b58ddddfcce22c54dd7792c3987409217787e"
     },
     {
       "path": "tools/build-tokens.mjs",
@@ -630,8 +645,8 @@
     },
     {
       "path": "tools/stamp-assets.mjs",
-      "bytes": 1194,
-      "sha256": "ee7d7039716af7bc562ff2922b46ab563c13665b50c1f140de7961f4133fdce7"
+      "bytes": 1205,
+      "sha256": "b447a5d750a2605ebd6693d992fd410313816ca2c584725cf2bbc1c5bd4f8fed"
     },
     {
       "path": "tools/svg-to-pdf.swift",
@@ -660,13 +675,13 @@
     },
     {
       "path": "website/README.md",
-      "bytes": 6102,
-      "sha256": "e78be17f9f27b26e06b00303fa9671aa58bfcaf92b0092970ca3851165593cf2"
+      "bytes": 6822,
+      "sha256": "d2f14b11a0c31ed2ece175ae561a350714c5e13d2f638790c0d1339db82a6f97"
     },
     {
       "path": "website/about.html",
       "bytes": 100740,
-      "sha256": "7968d032a300988851f2f739553e8433e16215114a85b1a1ab1774c185ce61d3"
+      "sha256": "160e7aca371534e76639495542e81c24a9fe1713bfab6c244783ee8a928a6fc9"
     },
     {
       "path": "website/anim.js",
@@ -676,7 +691,7 @@
     {
       "path": "website/brand.html",
       "bytes": 28313,
-      "sha256": "a61bb2f10208728f84a7f72b3a704aecd9ce22a6b8348543875426c2f46c783c"
+      "sha256": "97c2ab3403b1654c4ee33135ce49ec8a6fa7c8550a05d89460103fc3eafe07bb"
     },
     {
       "path": "website/downloads/Encik-Beku-Brand-Guidelines-2026-v1.0.pdf",
@@ -692,6 +707,11 @@
       "path": "website/downloads/Encik-Beku-Service-Catalogue-2026-v1.0.pdf",
       "bytes": 3276799,
       "sha256": "43d1422fea05b54e0591ce41ce2b0f20fe1ab18230643106d4aad2bc7034f752"
+    },
+    {
+      "path": "website/hero.js",
+      "bytes": 2610,
+      "sha256": "19b01758ffca4c5bfcc54b0498d8af55c75a22fb109b7c91eae4822cbc4a437c"
     },
     {
       "path": "website/i18n.js",
@@ -774,14 +794,19 @@
       "sha256": "b60699dcda2ca24f902860e008d066031004024705547c641b76d840497002c1"
     },
     {
-      "path": "website/img/hero-team-1788.jpg",
-      "bytes": 549850,
-      "sha256": "4681ba4efc9e0e5690b6ce9b77dd8a27bd6b9bc3a88a660445597859aa9160c9"
+      "path": "website/img/hero-crew.avif",
+      "bytes": 132786,
+      "sha256": "c64887fee8477d506d76ce1693a6168c105596c7f96dbe58e09965255fd5325b"
     },
     {
-      "path": "website/img/hero-team-900.jpg",
-      "bytes": 116440,
-      "sha256": "db32fceebe0cc70e71f2f59c4b303f2942d5677fba43e26c280e0d2501719156"
+      "path": "website/img/hero-crew.png",
+      "bytes": 658912,
+      "sha256": "e686db5004bb62ad143c4f95dc87a8685be8d6f628daaa34fdf5652a507d234d"
+    },
+    {
+      "path": "website/img/hero-sky.jpg",
+      "bytes": 220130,
+      "sha256": "401be16d1d85899c7aa67a5c29896266ce5e7031b939c4419203a3f6d8f5ee60"
     },
     {
       "path": "website/img/malaysia.svg",
@@ -865,8 +890,8 @@
     },
     {
       "path": "website/index.html",
-      "bytes": 6712,
-      "sha256": "0b307b82924571c0a9ef3afed9c2eff308affbdb8a58300367a2f56f2e56d1da"
+      "bytes": 3785,
+      "sha256": "9c23a905c3d78e90d30c76d64d95b8b4927992bed54c452c572da3a0489b87b6"
     },
     {
       "path": "website/locations.js",
@@ -876,17 +901,17 @@
     {
       "path": "website/services.html",
       "bytes": 27333,
-      "sha256": "e57835083747d34b5d435fda17ebf7ffb9d47255e467e44d7388203237df47df"
+      "sha256": "3f2eeafaa7b34f0f9db83f06136e1ce12898dea36c6ae76b11048ef9ecb47de0"
     },
     {
       "path": "website/site-preview.html",
-      "bytes": 1866967,
-      "sha256": "fe80532d367fe900366ceb8155dc7179961831fa7f4435d0e310d50a1a906a89"
+      "bytes": 2310734,
+      "sha256": "0c557311be1a00a41b4e46f540d62f4a156cc1776d85dddbc0a5f0c9d18a09fc"
     },
     {
       "path": "website/site.css",
-      "bytes": 44115,
-      "sha256": "901a9250679c469b2ee8fec444803038ddd3a3931a0778fba6531575d75232ed"
+      "bytes": 55858,
+      "sha256": "7231514f2601be9ea5d109df8c306bdc2b075a71bbe118066ddfad4cef277f97"
     }
   ]
 }

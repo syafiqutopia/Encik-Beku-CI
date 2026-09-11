@@ -596,19 +596,34 @@ footer.site a:hover { color: var(--eb-fg-on-brand); }
 }
 
 /* ═══════════════════════════════════════════════════════════
- * Photo hero — whole image, copy overlaid
+ * Home hero — one screen, two photographic layers
  *
- * The photograph is used EXACTLY as supplied: no crop, no scrim, no
- * filter, no object-fit cover. `height: auto` lets its own aspect ratio
- * set the hero height, so the full frame is always visible.
+ * The page is nothing but this: a sky plate and the five technicians cut
+ * out on transparency, drifting against each other with the pointer.
+ * Nothing scrolls, so there is no scroll parallax to hang the depth on.
  *
- * The copy is overlaid bottom-left per the approved design. Measured
- * honestly: white text over this frame runs 1.5–2.0:1 worst-case where
- * the sky shows through, against a 4.5:1 AA requirement. Fixing that
- * would need a scrim on the image, which is explicitly ruled out, so
- * this is a signed-off trade — not an oversight. If it ever needs
- * addressing, the routes that do NOT touch the layout are a darker
- * export of the photograph, or a text-shadow on .hero-overlay .copy.
+ * The lower third fades into brand blue. That began as the client's
+ * mockup, but it also retires a debt: this hero previously ran white type
+ * straight over the photograph at 1.5-2.0:1 against a 4.5:1 requirement,
+ * recorded here as a signed-off trade.
+ *
+ * The bed is deliberately confined to the bottom third: ramping from 40%
+ * swallowed half the frame and drained the colour out of the crew, and the
+ * plate is the point. It starts late and climbs hard instead.
+ *
+ * That leaves the contrast floor tight, so it is measured off the composited
+ * page rather than off the flat token, which would flatter it. Body copy and
+ * the CTA run 4.68-5.67:1 across 390 to 2560 wide; the headline runs
+ * 3.69-4.87:1 and is large text (64px/900), where the bar is 3.0:1. Weaken
+ * the .40/.90 stops or raise .hero .copy off the bottom and the headline
+ * goes under 3.0. Re-measure if you touch either.
+ *
+ * The sky is inset past the frame by a fixed 14px — more than the 9px it
+ * can travel — so an edge is never exposed, at any window width. The
+ * technicians are never cover-cropped: `cover` clipped the outer two men on
+ * anything taller than 16:9, so that plate is sized by width at its natural
+ * aspect and hung past the bottom, where the frame's shin crop stays under
+ * the opaque part of the bed.
  * ═══════════════════════════════════════════════════════════ */
 
 /* Header floats on the photograph. Absolute, not sticky: a white-on-photo
@@ -626,17 +641,83 @@ header.site.overlay .nav nav a[aria-current="page"] {
   color: var(--eb-fg-on-brand); border-bottom-color: var(--eb-fg-on-brand);
 }
 
-.hero-overlay { position: relative; background: var(--eb-neutral-900); }
-.hero-overlay > img {
-  display: block; width: 100%; height: auto;   /* whole frame, never cropped */
+/* The page itself is the grid, so header + hero come to exactly one screen.
+   On desktop the header is absolute and contributes no row; below 700px it
+   goes static and takes its own height out of the hero's share instead of
+   adding to it. The loader is fixed and never a row either way. */
+body.home { min-height: 100svh; display: flex; flex-direction: column; }
+body.home main { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+
+.hero {
+  position: relative;
+  flex: 1; min-height: 0;
+  display: grid; align-content: end;
+  background: var(--eb-bg-brand);   /* any pixel the photo misses is on-brand */
+  overflow: hidden;
 }
-.hero-overlay .copy {
-  position: absolute; left: 0; right: 0; bottom: 0;
-  padding-bottom: var(--eb-space-8);
+.hero-stage {
+  position: absolute; inset: 0; overflow: hidden;
+  /* hero.js writes these, unitless, -1..1. Declared here so that if the
+     script never runs the calc()s below resolve to 0 and the hero is
+     simply still. The px multipliers are the travel budget, and they live
+     in CSS because how far each plane moves is a design value. */
+  --px: 0; --py: 0;
+}
+.layer picture { display: contents; }
+.layer img { max-width: none; }     /* release the global img { max-width:100% } */
+
+/* The sky is a full-bleed plate, so it is inset past the frame by more than
+   it can ever travel. A fixed inset, not a percentage: 106% gave less slack
+   than the travel budget in a narrow window and exposed an edge. */
+.layer-sky { position: absolute; inset: -14px; }
+.layer-sky img {
+  display: block; width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: 50% 0;           /* top-anchored: pushes the concrete down and out */
+  transform: translate3d(calc(var(--px) * 9px), calc(var(--py) * 5px), 0);
+}
+
+/* The technicians are NEVER cover-cropped — the cut-out is the content, and
+   `cover` clipped the outer two men at any viewport taller than 16:9. Sized
+   by width at natural aspect and hung past the bottom edge instead, so the
+   shins the supplied frame cuts off sit under the opaque part of the bed.
+   The two plates no longer need to register: the fade hides the horizon. */
+.hero { --crew-w: min(112vw, 110rem); --crew-drop: 6vh; }
+/* Centred by arithmetic, not by `margin: auto` — auto margins resolve to 0
+   the moment the plate is wider than the frame, which is exactly the case on
+   a phone, and it sat hard against the left edge. Not by `transform` either:
+   the entrance animation owns that on this element. */
+.layer-crew {
+  position: absolute;
+  left: calc((100% - var(--crew-w)) / 2); width: var(--crew-w);
+  bottom: calc(var(--crew-drop) * -1);
+}
+.layer-crew img {
+  display: block; width: 100%; height: auto;
+  transform: translate3d(calc(var(--px) * 22px), calc(var(--py) * 12px), 0);
+}
+/* Two full-screen composited planes are only worth GPU promotion while
+   something is actually moving them. */
+.hero-stage.is-live .layer img { will-change: transform; }
+
+.hero-fade {
+  position: absolute; inset: 0; pointer-events: none;
+  /* Confined to the bottom quarter. Ramping from 40% swallowed half the
+     frame and drained the crew; the plate is the point, so the bed starts
+     late and climbs hard instead of leaning across the whole image. */
+  background: linear-gradient(180deg,
+    rgba(3, 92, 194, 0) 0%,    rgba(3, 92, 194, 0) 58%,
+    rgba(3, 92, 194, .40) 66%, rgba(3, 92, 194, .90) 73%,
+    rgba(3, 92, 194, .99) 81%, var(--eb-blue-600) 100%);
+}
+
+.hero .copy {
+  position: relative; z-index: 1;
+  padding-bottom: var(--eb-space-7);
   color: var(--eb-fg-on-brand);
   text-align: center;
 }
-.hero-overlay h1 {
+.hero h1 {
   margin: 0 auto var(--eb-space-3);
   font-size: clamp(2.1rem, 5.6vw, 4rem);
   text-transform: uppercase;
@@ -644,77 +725,202 @@ header.site.overlay .nav nav a[aria-current="page"] {
   letter-spacing: -0.02em;
   max-width: 18ch;
 }
-.hero-overlay .lede {
+.hero .lede {
   color: var(--eb-fg-on-brand);
-  max-width: 34ch;
-  margin-inline: auto;
+  max-width: 34ch; margin-inline: auto;
   font-size: var(--eb-text-md);
 }
-.hero-overlay .cta-row { margin-top: var(--eb-space-5); justify-content: center; }
+.hero .cta-row { margin-top: var(--eb-space-5); justify-content: center; }
 
 /* Pill controls, per the approved design */
 .btn.pill { border-radius: var(--eb-radius-pill); }
 .btn.on-photo {
   background: var(--eb-neutral-0); color: var(--eb-fg-brand);
   border-color: transparent; box-shadow: var(--eb-shadow-md);
+  gap: 0.5rem;
 }
 .btn.on-photo:hover { background: var(--eb-blue-50); }
+.btn.on-photo svg { transition: transform var(--eb-dur) var(--eb-ease-quart); }
+.btn.on-photo:hover svg { transform: translateX(3px); }
 
-/* Below ~700px the image is short enough that overlaid copy would cover the
-   technicians entirely, so it drops onto Tech Blue underneath instead. The
-   header comes off the photograph for the same reason — at this width the
-   nav wraps to a second row and lands across the faces, where white type has
-   no reliable contrast. On Tech Blue it is a guaranteed 6.34:1, and the
-   white-wordmark logo still reads correctly. */
+/* A phone is tall and narrow; covering it whole would scale the frame until
+   the outer two technicians fell off the sides. The photo takes a band
+   instead and the blue field carries the copy — the group stays intact and
+   reads far larger than fitting the full frame to width would allow. */
 @media (max-width: 700px) {
+  /* The stage takes whatever the copy leaves, so the page is exactly one
+     screen on any phone rather than a fixed band that overflows on short
+     ones. minmax(0,1fr) lets it shrink below the image's intrinsic size. */
+  .hero { grid-template-rows: minmax(0, 1fr) auto; align-content: stretch; }
+  .hero-stage { position: relative; }
+  .hero .copy { padding: var(--eb-space-6) 0 var(--eb-space-8); }
   header.site.overlay { position: static; background: var(--eb-bg-brand); }
-  .hero-overlay .copy {
-    position: static; background: var(--eb-bg-brand);
-    padding: var(--eb-space-6) 0;
+  .hero h1 { max-width: none; }
+
+  /* The five men occupy the middle 78.8% of the cut-out (opaque bbox x191-1600
+     of 1788), so 125vw is the largest that still lands all of them inside a
+     390px screen — 127vw starts eating the outer man. Only sky is lost. */
+  .hero { --crew-w: 125vw; --crew-drop: 3vh; }
+
+  /* The supplied cut-out ends mid-shin at the frame edge, and the plate's
+     horizon lands inside a stage this short. Neither is hidden by the gentle
+     mobile bed, so the crop is hung below the stage and the sky is scaled
+     past its own horizon — leaving sky only. */
+  .layer-sky img { height: 150%; }
+
+  /* The copy sits on solid blue below the photo here, so the bed has no text
+     to carry and only has to blend the plate into it. Ramping as hard as the
+     desktop gradient does would drain the colour out of the crew. */
+  .hero-fade {
+    background: linear-gradient(180deg,
+      rgba(3, 92, 194, 0) 0%,   rgba(3, 92, 194, 0) 64%,
+      rgba(3, 92, 194, .45) 86%, var(--eb-bg-brand) 100%);
   }
-  .hero-overlay h1 { max-width: none; }
 }
 
-/* ── Feature strip ───────────────────────────────────────────
- * Pumpkin Spice, used once, as the single accent field on the page —
- * this is where the 10% budget is spent. Ink is near-black, never white:
- * white on Pumpkin is 2.65:1 and fails, near-black is 7.30:1. (The
- * reference this is modelled on uses white on orange; that part is not
- * reproducible within our own contrast rule.)
- */
-.strip {
-  background: var(--eb-bg-brand); color: var(--eb-fg-on-brand);
-  overflow: hidden; padding: var(--eb-space-5) 0;
+/* ── Pillar cards (homepage) ─────────────────────────────── */
+.pillar {
+  display: grid; gap: var(--eb-space-3); align-content: start;
+  padding: var(--eb-space-6); border-radius: var(--eb-radius-lg);
+  border: 1px solid var(--eb-border-1); background: var(--eb-bg-1);
+  box-shadow: var(--eb-shadow-xs);
 }
-.strip .track {
-  display: flex; align-items: center; gap: var(--eb-space-6);
-  width: max-content;
-  /* Twelve logos make a longer track than the eight labels did, so the
-     duration rises more than the count to actually read slower. */
-  animation: strip-scroll 60s linear infinite;
+.pillar h3 { font-size: var(--eb-text-xl); font-weight: var(--eb-fw-black); }
+.pillar .claim { font-weight: var(--eb-fw-bold); color: var(--eb-fg-1); }
+.pillar p { color: var(--eb-fg-2); font-size: var(--eb-text-sm); }
+.pillar .acts { display: flex; flex-wrap: wrap; gap: var(--eb-space-3); margin-top: var(--eb-space-3); }
+.pillar .primary {
+  font-weight: var(--eb-fw-bold); color: var(--eb-fg-brand);
+  text-decoration: none; display: inline-flex; align-items: center; gap: 0.375rem;
 }
-.strip .item {
-  display: inline-flex; align-items: center; justify-content: center;
-  flex: none; height: 4.25rem; padding: 0 1.5rem;
-  /* The logos are drawn for white grounds — several are near-black or grey
-     and would sink into the blue, so each one keeps its own white plate. */
-  background: var(--eb-bg-1); border-radius: var(--eb-radius-md);
+.pillar .primary:hover { text-decoration: underline; }
+.pillar .secondary {
+  font-size: var(--eb-text-sm); font-weight: var(--eb-fw-bold);
+  color: var(--eb-fg-2); text-decoration: none;
+  display: inline-flex; align-items: center; gap: 0.375rem;
 }
-.strip .item img {
-  display: block; max-height: 2.75rem; max-width: 9rem;
-  width: auto; height: auto;
+.pillar .secondary:hover { color: var(--eb-fg-brand); }
+
+/* ── Service cards & category bands ──────────────────────────
+   Encik Beku's own work photography, lifted out of the source PDFs by
+   tools/build-service-photos.sh. Every frame is the same cast in the same
+   uniform, so the set reads as one company rather than as stock.
+   The originals are portrait; both crops sit high because the work — hands,
+   tools, the unit being serviced — is in the upper half of every frame. */
+.svccard {
+  display: grid; grid-template-rows: auto 1fr; align-content: start;
+  border: 1px solid var(--eb-border-1); border-radius: var(--eb-radius-md);
+  background: var(--eb-bg-1); overflow: hidden;
 }
-@keyframes strip-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+.svccard img {
+  display: block; width: 100%; height: auto; aspect-ratio: 4 / 5;
+  object-fit: cover; object-position: 50% 30%;
+  align-self: start;            /* a stretched grid item ignores aspect-ratio */
+  background: var(--eb-bg-2);
 }
-.strip:hover .track { animation-play-state: paused; }
-@media (prefers-reduced-motion: reduce) {
-  .strip { padding-inline: var(--eb-space-6); }
-  .strip .track { animation: none; width: 100%; flex-wrap: wrap; gap: var(--eb-space-5); justify-content: center; }
-  .strip .track [aria-hidden="true"] { display: none; }
+.svccard .txt { padding: var(--eb-space-4) var(--eb-space-5) var(--eb-space-5); }
+.svccard h4 { font-size: var(--eb-text-base); margin-bottom: 0.35rem; }
+.svccard p { color: var(--eb-fg-2); font-size: var(--eb-text-sm); }
+
+/* A category opens with a face, so a long price list gains a rhythm. */
+.catband {
+  display: grid; grid-template-columns: 13.5rem minmax(0, 1fr);
+  gap: var(--eb-space-6); align-items: center;
+  margin-bottom: var(--eb-space-7);
+}
+.catband img {
+  display: block; width: 100%; height: auto; aspect-ratio: 4 / 5;
+  align-self: start;
+  object-fit: cover; object-position: 50% 30%;
+  border-radius: var(--eb-radius-md); background: var(--eb-bg-2);
+}
+.catband .sec-head { margin-bottom: 0; }
+@media (max-width: 700px) {
+  .catband { grid-template-columns: 1fr; gap: var(--eb-space-4); }
+  .catband img { aspect-ratio: 16 / 9; object-position: 50% 28%; }
 }
 
+/* ── Download card — brief §20 ───────────────────────────── */
+.dlcard {
+  display: grid; grid-template-columns: 8.25rem 1fr;
+  gap: var(--eb-space-5); align-items: start;
+  padding: var(--eb-space-5); border-radius: var(--eb-radius-md);
+  border: 1px solid var(--eb-border-1); background: var(--eb-bg-1);
+}
+.dlcard .cover {
+  border-radius: var(--eb-radius-sm); overflow: hidden;
+  border: 1px solid var(--eb-border-1); background: var(--eb-bg-2);
+  /* No fixed ratio: the Brand Guidelines is A4 landscape, the other two are
+     A4 portrait. Each cover keeps its own shape rather than being cropped. */
+}
+.dlcard .cover img { width: 100%; height: auto; display: block; }
+.dlcard .body { display: grid; gap: var(--eb-space-2); }
+.dlcard h3 { font-size: var(--eb-text-lg); }
+.dlcard p { color: var(--eb-fg-2); font-size: var(--eb-text-sm); }
+.dlcard .specs {
+  display: flex; flex-wrap: wrap; gap: 0.375rem 0.875rem;
+  font-size: var(--eb-text-xs); color: var(--eb-fg-3);
+  font-variant-numeric: tabular-nums;
+}
+.dlcard .specs b { color: var(--eb-fg-2); font-weight: var(--eb-fw-bold); }
+.dlcard .acts { display: flex; flex-wrap: wrap; gap: var(--eb-space-3); margin-top: var(--eb-space-2); }
+@media (max-width: 620px) {
+  .dlcard { grid-template-columns: 1fr; }
+  .dlcard .cover { max-width: 132px; }
+}
+
+/* ── Service ecosystem — brief §6.8 ──────────────────────── */
+.eco { display: grid; gap: var(--eb-space-3); max-width: 680px; }
+.eco .tier {
+  display: flex; align-items: center; gap: var(--eb-space-4);
+  padding: var(--eb-space-4) var(--eb-space-5);
+  border-radius: var(--eb-radius-md); background: var(--eb-bg-2);
+  border-left: 4px solid var(--eb-frozen-lake);
+}
+.eco .tier.root { background: var(--eb-bg-brand); color: var(--eb-fg-on-brand); border-left-color: var(--eb-bg-accent); }
+.eco .tier.root .sub { color: var(--eb-fg-on-brand-muted); }
+.eco .tier b { font-weight: var(--eb-fw-bold); white-space: nowrap; }
+.eco .tier .sub { font-size: var(--eb-text-sm); color: var(--eb-fg-2); }
+.eco .link { width: 2px; height: 0.875rem; background: var(--eb-border-2); margin-left: 1.75rem; }
+
+/* ── Definition rows (Company at a glance, tone of voice) ── */
+.deflist { display: grid; gap: 0; }
+.defrow {
+  display: grid; grid-template-columns: 13.75rem 1fr; gap: var(--eb-space-4);
+  padding: var(--eb-space-3) 0; border-bottom: 1px solid var(--eb-border-1);
+}
+.defrow:last-child { border-bottom: 0; }
+.defrow dt { font-weight: var(--eb-fw-bold); color: var(--eb-fg-1); }
+.defrow dd { margin: 0; color: var(--eb-fg-2); }
+@media (max-width: 620px) { .defrow { grid-template-columns: 1fr; gap: 2px; } }
+
+/* ── Do / Don't lists — brief §11 ────────────────────────── */
+.dodont { display: grid; gap: var(--eb-space-2); }
+.dodont li { display: flex; gap: var(--eb-space-3); align-items: flex-start; font-size: var(--eb-text-sm); }
+.dodont { list-style: none; margin: 0; padding: 0; }
+.dodont .yes, .dodont .no {
+  width: 1.25rem; height: 1.25rem; flex-shrink: 0; border-radius: var(--eb-radius-pill);
+  display: grid; place-items: center; margin-top: 1px;
+}
+.dodont .yes { background: rgba(13,129,73,.12); color: var(--eb-success); }
+.dodont .no  { background: rgba(180,35,24,.10); color: var(--eb-danger); }
+
+/* ── Tagline ─────────────────────────────────────────────── */
+.tagline {
+  font-weight: var(--eb-fw-black);
+  font-size: var(--eb-text-2xl);
+  letter-spacing: var(--eb-tracking-tight);
+  color: var(--eb-fg-brand);
+}
+
+/* ── Effective-date stamp — brief §17, §21 ───────────────── */
+.stamp {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.375rem 0.875rem; border-radius: var(--eb-radius-pill);
+  background: var(--eb-bg-tint); color: var(--eb-french-blue);
+  font-size: var(--eb-text-xs); font-weight: var(--eb-fw-bold);
+  font-variant-numeric: tabular-nums;
+}
 
 
 /* ── Small screens ────────────────────────────────────────────
@@ -725,13 +931,13 @@ header.site.overlay .nav nav a[aria-current="page"] {
 @media (max-width: 900px) {
   h1 { font-size: var(--eb-text-3xl); }
   h2 { font-size: var(--eb-text-xl); }
-  .hero-overlay h1 { font-size: var(--eb-text-3xl); }
+  .hero h1 { font-size: var(--eb-text-3xl); }
 }
 @media (max-width: 600px) {
   h1 { font-size: var(--eb-text-2xl); }
   h2 { font-size: var(--eb-text-lg); }
-  .hero-overlay h1 { font-size: var(--eb-text-2xl); }
-  .hero-overlay .lede { font-size: var(--eb-text-base); }
+  .hero h1 { font-size: var(--eb-text-2xl); }
+  .hero .lede { font-size: var(--eb-text-base); }
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -835,22 +1041,43 @@ header.site.overlay .nav nav a[aria-current="page"] {
 }
 .has-anim [data-anim="img"].is-in { clip-path: inset(0 0 0 0); }
 
-/* The hero copy sits over the photograph and is above the fold, so it is
-   timed off the loader lift (1.28s + 0.72s) rather than off scroll. */
-.has-anim .hero-overlay .copy > .wrap > * {
-  opacity: 0;
-  transform: translateY(1.5rem);
+/* Nothing on this page scrolls, so the hero arrives on a timer instead —
+   handing off from the loader, which finishes at 2.00s (0.55s fade starting
+   at 1.45s). Sky first, technicians a beat later, then the copy: the depth
+   is legible before the pointer is ever moved. Pure CSS, so a failed script
+   cannot strand the page mid-entrance.
+   These five delays are tuned to the loader. Retime it and they move too. */
+.has-anim .hero .copy > .wrap > * {
+  opacity: 0; transform: translateY(1.5rem);
   animation: eb-hero-in 0.9s var(--eb-ease-quart) forwards;
 }
-.has-anim .hero-overlay .copy > .wrap > *:nth-child(1) { animation-delay: 1.75s; }
-.has-anim .hero-overlay .copy > .wrap > *:nth-child(2) { animation-delay: 1.88s; }
-.has-anim .hero-overlay .copy > .wrap > *:nth-child(3) { animation-delay: 2.01s; }
+
+/* The two plates do not just appear — they settle, and at different rates,
+   so the depth is legible before the pointer is ever moved. The crew comes
+   from further out and a beat later, which reads as it stepping forward out
+   of the sky. Transform is free here: the crew is centred by arithmetic on
+   `left`, and the drift lives on the <img> inside. */
+.has-anim .hero .layer { opacity: 0; animation-fill-mode: forwards; }
+.has-anim .hero .layer-sky {
+  animation: eb-sky-in 1.6s var(--eb-ease-quart) 1.45s forwards;
+}
+.has-anim .hero .layer-crew {
+  animation: eb-crew-in 1.5s var(--eb-ease-quart) 1.62s forwards;
+}
+@keyframes eb-sky-in  { from { opacity: 0; transform: scale(1.05); }
+                        to   { opacity: 1; transform: none; } }
+@keyframes eb-crew-in { from { opacity: 0; transform: scale(1.10) translateY(2.5%); }
+                        to   { opacity: 1; transform: none; } }
+.has-anim .hero .copy > .wrap > *:nth-child(1) { animation-delay: 1.85s; }
+.has-anim .hero .copy > .wrap > *:nth-child(2) { animation-delay: 1.98s; }
+.has-anim .hero .copy > .wrap > *:nth-child(3) { animation-delay: 2.11s; }
 @keyframes eb-hero-in { to { opacity: 1; transform: none; } }
 
 @media (prefers-reduced-motion: reduce) {
   .has-anim [data-anim],
   .has-anim [data-anim="stagger"] > *,
-  .has-anim .hero-overlay .copy > .wrap > * {
+  .has-anim .hero .layer,
+  .has-anim .hero .copy > .wrap > * {
     opacity: 1 !important; transform: none !important;
     clip-path: none !important; animation: none !important;
   }

@@ -74,9 +74,11 @@ const LOGO = {
   '../svg/logo/encik-beku-primary-dark.svg':    `data:image/svg+xml;base64,${b64('svg/logo/encik-beku-primary-dark.svg')}`,
   '../svg/logo/encik-beku-single-navy.svg':     `data:image/svg+xml;base64,${b64('svg/logo/encik-beku-single-navy.svg')}`,
   '../svg/mark/encik-beku-mark-light.svg':      `data:image/svg+xml;base64,${b64('svg/mark/encik-beku-mark-light.svg')}`,
-  // Hero photograph. Only the 1788w is inlined; the srcset is stripped
-  // below so the 900w reference cannot dangle in a single-file build.
-  'img/hero-team-1788.jpg':                    `data:image/jpeg;base64,${b64('website/img/hero-team-1788.jpg')}`,
+  // The home hero's two parallax layers. Only the PNG fallback is inlined:
+  // the builder strips every srcset, <source> included, so a single-file
+  // preview always resolves the <img src> and never the AVIF.
+  'img/hero-sky.jpg':                          `data:image/jpeg;base64,${b64('website/img/hero-sky.jpg')}`,
+  'img/hero-crew.png':                         `data:image/png;base64,${b64('website/img/hero-crew.png')}`,
   'img/covers/company-profile.jpg':            `data:image/jpeg;base64,${b64('website/img/covers/company-profile.jpg')}`,
   'img/covers/brand-guidelines.jpg':           `data:image/jpeg;base64,${b64('website/img/covers/brand-guidelines.jpg')}`,
   'img/covers/service-catalogue.jpg':          `data:image/jpeg;base64,${b64('website/img/covers/service-catalogue.jpg')}`,
@@ -89,7 +91,15 @@ const grab = (html, tag) => {
 };
 
 const home = read(PAGES[0].file);
-const footer = home.match(/<footer class="site">[\s\S]*?<\/footer>/)[0];
+// One shared footer for all four panels. Harvested from about.html, not the
+// home page: the home page is a single hero screen and carries no footer.
+const footer = (() => {
+  for (const p of PAGES) {
+    const m = read(p.file).match(/<footer class="site">[\s\S]*?<\/footer>/);
+    if (m) return m[0];
+  }
+  throw new Error('no <footer class="site"> found on any page');
+})();
 // The brand loader lives outside <main>, so lift it across explicitly.
 let loader = (home.match(/<div class="loader"[\s\S]*?\n<\/div>/) || [''])[0];
 // No floating contact button: brief §24 rules out repeated WhatsApp buttons
